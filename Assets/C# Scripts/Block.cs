@@ -22,6 +22,10 @@ public class Block
 
 	public void unserialize(string text){
 	}
+
+	public static Block createFromConfig(PieceConfig config){
+		return new Block ();
+	}
 }
 
 
