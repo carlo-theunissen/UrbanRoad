@@ -39,8 +39,9 @@ public class LevelFactory
 		return true;
 	}
 	private void setWidthHeight(Level level, string[] rows){
-		level.setHeight (rows.Length);
-		level.setWidth (rows[0].Length);
+		int length = rows [rows.Length - 1] == "" ? rows.Length - 1 : rows.Length;
+		level.setHeight (length);
+		level.setWidth (rows[0].Replace(",","").Length -1);
 	}
 	private void setStart(int width, int loc, Level level){
 		level.setStart (getPos (width, loc));
