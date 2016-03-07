@@ -43,24 +43,24 @@ public class LevelFactory
 		level.setHeight (length);
 		level.setWidth (rows[0].Replace(",","").Length -1);
 	}
-	private void setStart(int width, int loc, Level level){
-		level.setStart (getPos (width, loc));
+	private void setStart(int loc, Level level){
+		level.setStart (getPos (level.getWidth(), level.getHeight(), loc));
 	}
-	private void setEnd(int width, int loc, Level level){
-		level.setEnd (getPos (width, loc));
+	private void setEnd(int loc, Level level){
+		level.setEnd (getPos (level.getWidth(), level.getHeight(), loc));
 	}
-	private Vector2 getPos(int width, int pos){
-		return new Vector2 ((float) (pos % width),(float) (pos / width));
+	private Vector2 getPos(int width, int height, int pos){
+		return new Vector2 ((float) (pos % width),(float) (height - pos / width));
 	}
-	private void calculate(string data, int width, Level level){
+	private void calculate(string data, Level level){
 		Dictionary<int, int> blocks = new Dictionary<int, int>();
 		int index = 0;
 		foreach(char ch in data.ToCharArray ()){
 			if (ch == 'A') {
-				setStart (width, index, level);
+				setStart (index, level);
 			}
 			if (ch == 'B'){
-				setEnd(width, index, level);
+				setEnd(index, level);
 			}
 			if ((ch >= '1' && ch <= '9')) {
 				int id = int.Parse (ch.ToString ());
