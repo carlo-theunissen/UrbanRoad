@@ -22,7 +22,7 @@ public class LevelFactory
 		}
 		Level creation = new Level (id);
 		setWidthHeight (creation, rows);
-		calculate (data, rows [0].Length, creation);
+		calculate (data,  creation);
 		return creation;
 
 	}
