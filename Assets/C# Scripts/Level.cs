@@ -79,7 +79,7 @@ public class Level {
 	public void removeBlock(Block block){
 		for (int x = 0; x < grid.GetLength(0); x++) {
 			for (int y = 0; y < grid.GetLength(1); y++) {
-				if (grid [x, y].Equals( block )) {
+				if (grid [x, y] != null && grid [x, y].Equals( block )) {
 					grid [x, y] = null;
 				}
 			}

@@ -96,7 +96,7 @@ public class LevelFactory
 		level.setBlocks (block.ToArray ());
 
 	}
-	private Block makeBlock(PieceConfig config){
+	private Block makeBlock(PieceConfig config){  
 		return Block.createFromConfig (config);
 	}
 }
