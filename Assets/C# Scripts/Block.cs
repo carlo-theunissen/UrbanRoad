@@ -42,7 +42,7 @@ public class Block
 	public List<Vector2> getCollision(){
 		return collision;
 	}
-	public GameObject getPrefab(){
+	public GameObject getBlueprintPrefab(){
 		return prefab;
 	}
 
