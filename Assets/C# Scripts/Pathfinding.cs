@@ -29,7 +29,7 @@ public class Pathfinding
     {
         Vector2 start = level.getStart();
         Vector2 end = level.getFinish();
-        if (level.getPos(start) != null || level.getPos(level.getFinish()) != null) {
+        if (level.getPos(start) != null || level.getPos(end) != null) {
             return null;
         }
         List<Vector2> previous = new List<Vector2>();
@@ -47,6 +47,7 @@ public class Pathfinding
     }
     private RoadPiece[] makeRoadPieces(ref List<Vector2> previous) {
         //TODO
+		return null; 
     }
     private Vector2[] getNeighbors(Level level,Vector2 pos, ref List<Vector2> previous) {
         List<Vector2> array = new List<Vector2>();

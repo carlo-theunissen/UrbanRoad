@@ -4,38 +4,37 @@ using System.Collections;
 public class Grid : MonoBehaviour
 {
     public GameObject plane;
-    public int width = 10;
-    public int height = 10;
-
-    private GameObject[,] grid = new GameObject[10,10];
 
 
-    void Awake ()
-    {
-        for (int x = 0; x < width; x++) 
-        {
-            for (int z = 0; z < height; z++)
-            {
-                GameObject gridPlane = (GameObject)Instantiate(plane);
-                gridPlane.transform.position = new Vector3(gridPlane.transform.position.x + x,
-                    0, gridPlane.transform.position.z + z);
-                grid[x, z] = gridPlane;
-            }
-        }
+    private GameObject[,] grid;
+	private Level level;
 
-    }
+	private void makeGrid(){
 
-    void OnGui()
-    {
-        if (UnityEngine.GUI.Button(new Rect(10, 10, 150, 100), "Delete grid [3,3]"))
-            Destroy(grid[3, 3]);
-    }
+		for (int x = 0; x < level.getWidth (); x++) 
+		{
+			for (int z = 0; z < level.getHeight (); z++)
+			{
+				GameObject gridPlane = (GameObject)Instantiate(plane);
+				gridPlane.transform.position = new Vector3(x,
+					0, z);
+				grid[x, z] = gridPlane;
+			}
+		}
+	}
 
+
+	public void place(int x, int z, GameObject place, float deg = 0 ){
+		place.transform.position = new Vector3 (x, 0, z);
+		place.transform.Rotate (new Vector3 (0, deg, 0));
+	}
 
 	// Use this for initialization
 	void Start ()
     {
-	    
+		level = GameMode.getCurrentLevel ();
+		grid = new GameObject[level.getWidth (), level.getHeight ()];
+		makeGrid ();
 	}
 	
 	// Update is called once per frame
