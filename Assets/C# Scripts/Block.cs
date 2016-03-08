@@ -11,6 +11,11 @@ public class Block
 	private int uuid;
 	private Vector2 pos = new Vector2(-1,-1);
 	private float rotation;
+	private Texture2D placeholder;
+
+	public Texture2D getPlaceholder(){
+		return placeholder;
+	}
 
 	public Block setPos(Vector2 pos){
 		this.pos = pos;
@@ -27,11 +32,12 @@ public class Block
 	public int getId(){
 		return id;
 	}
-	public Block(int id, int uuid, List<Vector2> collision, GameObject prefab){
+	public Block(int id, int uuid, List<Vector2> collision, GameObject prefab, Texture2D placeholder){
 		this.id = id;
 		this.uuid = uuid;
 		this.collision = collision;
 		this.prefab = prefab;
+		this.placeholder = placeholder;
 	}
 	public List<Vector2> getCollision(){
 		return collision;
@@ -52,7 +58,7 @@ public class Block
 	}
 
 	public static Block createFromConfig(PieceConfig config){
-		return new Block (config.id, 0, config.collision, config.prefab);
+		return new Block (config.id, 0, config.collision, config.prefab, config.placeholder);
 	}
 }
 

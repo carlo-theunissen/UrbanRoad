@@ -3,6 +3,8 @@
 <pieces>
 	<piece id="1">
 		<prefab name="block_1" />
+		<placeholder image="block_1" />
+
 		<blocks>
 			<block x="0" y="1" />
 			<block x="1" y="1" />
@@ -12,6 +14,8 @@
 	</piece>
 	<piece id="2">
 		<prefab name="block_2" />
+		<placeholder image="block_2" />
+
 		<blocks>
 			<block x="0" y="0" />
 			<block x="0" y="1" />
@@ -21,6 +25,8 @@
 	</piece>
 	<piece id="3">
 		<prefab name="block_3" />
+		<placeholder image="block_3" />
+
 		<blocks>
 			<block x="0" y="0" />
 			<block x="0" y="1" />
@@ -30,6 +36,8 @@
 	</piece>
 	<piece id="4">
 		<prefab name="block_4" />
+		<placeholder image="block_4" />
+
 		<blocks>
 			<block x="1" y="0" />
 			<block x="1" y="1" />
@@ -39,6 +47,8 @@
 	</piece>
 	<piece id="5">
 		<prefab name="block_5" />
+		<placeholder image="block_5" />
+
 		<blocks>
 			<block x="0" y="0" />
 			<block x="0" y="1" />
@@ -48,6 +58,8 @@
 	</piece>
 	<piece id="6">
 		<prefab name="block_6" />
+		<placeholder image="block_6" />
+
 		<blocks>
 			<block x="1" y="0" />
 			<block x="1" y="1" />
@@ -57,6 +69,8 @@
 	</piece>
 	<piece id="7">
 		<prefab name="block_7" />
+		<placeholder image="block_7" />
+
 		<blocks>
 			<block x="0" y="0" />
 			<block x="0" y="1" />
@@ -66,6 +80,8 @@
 	</piece>
 	<piece id="8">
 		<prefab name="block_8" />
+		<placeholder image="block_8" />
+
 		<blocks>
 			<block x="1" y="0" />
 			<block x="1" y="1" />
@@ -74,6 +90,8 @@
 	</piece>
 	<piece id="9">
 		<prefab name="block_9" />
+		<placeholder image="block_9" />
+
 		<blocks>
 			<block x="0" y="0" />
 			<block x="0" y="1" />
@@ -82,6 +100,8 @@
 	</piece>
 	<piece id="10">
 		<prefab name="block_10" />
+		<placeholder image="block_10" />
+
 		<blocks>
 			<block x="0" y="0" />
 			<block x="1" y="0" />
