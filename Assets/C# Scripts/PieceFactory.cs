@@ -35,8 +35,10 @@ public class PieceFactory
 	}
 
 	private GameObject getPrefab(XmlNode node){
+
 		string name = node.Attributes ["name"].Value;
-		return (GameObject)Resources.Load (name);
+        Debug.Log(name);
+		return (GameObject)Resources.Load ("Prefabs/"+name);
 	}
 
 	private List<Vector2> getCollision(XmlNodeList list){
