@@ -9,7 +9,7 @@ public class Kickoff : MonoBehaviour {
         Block[] blocks = level.getBlocks();
         foreach (Block block in blocks)
         {
-            Instantiate(block.getPrefab(), new Vector3(0.0f, 0.25f, 0.0f), Quaternion.identity);
+            Instantiate(block.getBlueprintPrefab(), new Vector3(0.0f, 0.25f, 0.0f), Quaternion.identity);
         }
 
         
@@ -19,4 +19,5 @@ public class Kickoff : MonoBehaviour {
 	void Update () {
 	
 	}
+
 }

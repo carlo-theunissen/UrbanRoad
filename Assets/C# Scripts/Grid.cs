@@ -27,7 +27,7 @@ public class Grid : MonoBehaviour
 
     void OnGui()
     {
-        if (GUI.Button(new Rect(10, 10, 150, 100), "Delete grid [3,3]"))
+        if (UnityEngine.GUI.Button(new Rect(10, 10, 150, 100), "Delete grid [3,3]"))
             Destroy(grid[3, 3]);
     }
 
