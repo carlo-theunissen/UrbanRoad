@@ -29,7 +29,7 @@ public class PieceFactory
 		XmlNodeList blocks = node.SelectNodes ("blocks/block");
 		config.collision = getCollision (blocks);
 		config.blockCount = blocks.Count;
-		config.prefab = getPrefab (node.SelectSingleNode ("//prefab"));
+		config.prefab = getPrefab (node.SelectSingleNode ("prefab"));
 
 		return config;
 	}
@@ -37,7 +37,6 @@ public class PieceFactory
 	private GameObject getPrefab(XmlNode node){
 
 		string name = node.Attributes ["name"].Value;
-        Debug.Log(name);
 		return (GameObject)Resources.Load ("Prefabs/"+name);
 	}
 
