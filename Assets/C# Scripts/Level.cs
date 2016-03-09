@@ -89,13 +89,7 @@ public class Level {
 			.clearPos ()
 			.setRotation (0);
 	}
-
-	private Vector2 revertToOrigin(int x, int y){
-		return new Vector2 (x, (getHeight () - y - 1));
-	}
-	private Vector2 revertToOrigin(Vector2 old){
-		return revertToOrigin ((int) old.x, (int) old.y);
-	}
+		
 
 	public bool setBlock(int x, int y, Block block, float deg=0){
 		if (grid == null) {
@@ -106,7 +100,7 @@ public class Level {
 		}
 		Vector2 start = new Vector2 (x, y);
 		foreach(Vector2 col in block.getCollision()){
-			Vector2 temp = revertToOrigin( start + rotateVector(col, deg) );
+			Vector2 temp = VectorCalculation.revertToOrigin( start +  VectorCalculation.rotateVector(col, deg) , this);
 			grid [(int) temp.x, (int) temp.y] = block;
 		}
 
@@ -117,15 +111,6 @@ public class Level {
 		saveToDevice ();
 		return true;
 	}
-	private Vector2 rotateVector(Vector2 old, float deg){
-		float rad = deg * Mathf.Deg2Rad,
-		cs = Mathf.Cos (rad),
-		sn = Mathf.Sin (rad),
-		x = old.x * cs - old.y * sn,
-		y = old.x * sn + old.y * cs;
-
-		return new Vector2 (x, y);
-	}
 
 
 	public bool canSet(int x, int y, Block block, float deg=0){
@@ -135,7 +120,7 @@ public class Level {
 		}
 
 		foreach(Vector2 col in block.getCollision()){
-			Vector2 temp = revertToOrigin( start +  rotateVector(col, deg) );
+			Vector2 temp = VectorCalculation.revertToOrigin( start +  VectorCalculation.rotateVector(col, deg) , this);
 			if(temp.x >= getWidth() || temp.y >= getHeight() || getPos(temp) != null) {
 				return false; 
 			}

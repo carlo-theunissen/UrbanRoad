@@ -24,9 +24,12 @@ public class Grid : MonoBehaviour
 	}
 
 
-	public void place(int x, int z, GameObject place, float deg = 0 ){
+	public void placeDummy(float x, float z, GameObject place, float deg = 0 ){
+
+
 		place.transform.position = new Vector3 (x, 0, z);
 		place.transform.Rotate (new Vector3 (0, deg, 0));
+
 	}
 
 	// Use this for initialization

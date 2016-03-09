@@ -3,14 +3,15 @@ using System.Collections;
 
 public class Mouse : MonoBehaviour {
 
-    private GameObject follow;
+	private Block piece;
     private bool active = false;
 	public Grid grid;
+	private int deg = 0;
 
-    public void setFollow(GameObject follow)
-    {
-        this.follow = follow;
-    }
+
+	public void setPiece(Block block){
+		piece = block;
+	}
     public void setActive(bool active)
     {
 		Debug.Log (active);
@@ -33,18 +34,37 @@ public class Mouse : MonoBehaviour {
 
 		Vector2? pos = getMousePos ();
 
-		if (pos != null && follow != null) {
-			Vector2 temp = transformToGrid ((Vector2)pos);
-			grid.place ((int)temp.x, (int)temp.y, follow);
+		if (pos != null && piece != null) {
+			Vector2 location = gridPos ((Vector2)pos);
+			Debug.Log (location);
+			Vector2 temp = transformToGrid (location);
+			Debug.Log (temp);
+			grid.placeDummy (temp.x, temp.y, piece.getBlueprintPrefab(), deg);
 		}
-	
 	}
-	private Vector2 transformToGrid(Vector2 pos){
+
+	/**
+	 * Verkrijgt de linker boven hoek in pos en vertaald dat naar een vector zodat het object goed staat
+	 */ 
+	private Vector2 transformToGrid(Vector2 pos){ 
+		float width = 0;
+		float height = 0;
+
+		foreach(Vector2 collision in piece.getCollision ()){
+			Vector2 temp = VectorCalculation.rotateVector (collision, deg);
+			width = Mathf.Max (width, Mathf.Abs(temp.x));
+			height = Mathf.Max (height, Mathf.Abs(temp.y));
+		}
+
+		return pos - new Vector2 ((width+1)/2, (height+1)/2);
+
+	}
+	private Vector2 gridPos(Vector2 pos){
 		int width = GameMode.getCurrentLevel ().getWidth ();
 		int height = GameMode.getCurrentLevel ().getHeight ();
 
-		float x = Mathf.Round( pos.x / ((Screen.width - GUI.boxRightWidth) / width));
-		float y = Mathf.Round( pos.y / (Screen.height / height) );
+		float x = Mathf.Round( pos.x / ((Screen.width - GUI.boxRightWidth) / width)) -1;
+		float y = Mathf.Round( pos.y / (Screen.height / height) ) -1;
 
 		x = Mathf.Min (x, width-1);
 		x = Mathf.Max (0, x);

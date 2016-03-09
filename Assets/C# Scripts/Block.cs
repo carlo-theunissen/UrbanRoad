@@ -5,7 +5,9 @@ using System.Collections.Generic;
 
 public class Block
 {
-	private GameObject prefab;
+	private GameObject blueprintPrefab;
+	private GameObject blueprintObject;
+
 	private int id;
 	private List<Vector2> collision;
 	private int uuid;
@@ -32,18 +34,22 @@ public class Block
 	public int getId(){
 		return id;
 	}
-	public Block(int id, int uuid, List<Vector2> collision, GameObject prefab, Texture2D placeholder){
+	public Block(int id, int uuid, List<Vector2> collision, GameObject blueprintPrefab, Texture2D placeholder){
 		this.id = id;
 		this.uuid = uuid;
 		this.collision = collision;
-		this.prefab = prefab;
+		this.blueprintPrefab = blueprintPrefab;
 		this.placeholder = placeholder;
 	}
 	public List<Vector2> getCollision(){
 		return collision;
 	}
 	public GameObject getBlueprintPrefab(){
-		return prefab;
+		if (blueprintObject == null || !blueprintObject.activeInHierarchy) {
+			blueprintObject = Object.Instantiate (blueprintPrefab);
+		}
+
+		return blueprintObject;
 	}
 
 	public int getUuid(){

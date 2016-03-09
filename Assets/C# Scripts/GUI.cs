@@ -29,9 +29,8 @@ public class GUI : MonoBehaviour
         {
             if (UnityEngine.GUI.Button(new Rect(Screen.width - 130, 45 + i * 150, 135, 150), block.getPlaceholder()))
             {
-				GameObject obj = block.getBlueprintPrefab ();
 
-				blockplacer.setFollow (Object.Instantiate(obj));
+				blockplacer.setPiece (block);
 				blockplacer.setActive (true);
             }
             i++;
