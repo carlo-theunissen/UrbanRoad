@@ -6,10 +6,10 @@
 		<placeholder image="block_1" />
 
 		<blocks>
-			<block x="0" y="1" />
-			<block x="1" y="1" />
-			<block x="2" y="1" />
+			<block x="0" y="0" />
 			<block x="1" y="0" />
+			<block x="2" y="0" />
+			<block x="1" y="1" />
 		</blocks>
 	</piece>
 	<piece id="2">
@@ -18,9 +18,9 @@
 
 		<blocks>
 			<block x="0" y="0" />
-			<block x="0" y="1" />
-			<block x="0" y="2" />
-			<block x="0" y="3" />
+			<block x="1" y="0" />
+			<block x="2" y="0" />
+			<block x="3" y="0" />
 		</blocks>
 	</piece>
 	<piece id="3">
@@ -29,9 +29,9 @@
 
 		<blocks>
 			<block x="0" y="0" />
+			<block x="1" y="0" />
 			<block x="0" y="1" />
 			<block x="1" y="1" />
-			<block x="1" y="0" />
 		</blocks>
 	</piece>
 	<piece id="4">
@@ -40,8 +40,8 @@
 
 		<blocks>
 			<block x="1" y="0" />
-			<block x="1" y="1" />
 			<block x="0" y="1" />
+			<block x="1" y="1" />
 			<block x="0" y="2" />
 		</blocks>
 	</piece>
@@ -61,10 +61,10 @@
 		<placeholder image="block_6" />
 
 		<blocks>
+			<block x="0" y="0" />
 			<block x="1" y="0" />
-			<block x="1" y="1" />
-			<block x="1" y="2" />
-			<block x="0" y="2" />
+			<block x="2" y="0" />
+			<block x="2" y="1" />
 		</blocks>
 	</piece>
 	<piece id="7">
@@ -73,8 +73,8 @@
 
 		<blocks>
 			<block x="0" y="0" />
-			<block x="0" y="1" />
-			<block x="0" y="2" />
+			<block x="1" y="1" />
+			<block x="1" y="1" />
 			<block x="1" y="2" />
 		</blocks>
 	</piece>
@@ -83,8 +83,8 @@
 		<placeholder image="block_8" />
 
 		<blocks>
+			<block x="0" y="0" />
 			<block x="1" y="0" />
-			<block x="1" y="1" />
 			<block x="0" y="1" />
 		</blocks>
 	</piece>
