@@ -53,7 +53,7 @@ public class Block
 	}
 	public void removeBlueprintPrefab(){
 		if (blueprintObject != null && blueprintObject.activeInHierarchy) {
-			Object.Destroy (blueprintPrefab);
+			Object.Destroy (blueprintObject);
 		}
 	}
 

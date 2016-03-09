@@ -4,24 +4,28 @@ using System.Collections;
 public class Mouse : MonoBehaviour {
 
 	private Block piece;
-    private bool active = false;
+    private bool following = false;
 	private Vector2 dimensions;
 	public Grid grid;
 	private int deg = 0;
+	private Vector2? lastGridPos;
 
-
+	public void setDeg(int deg){
+		this.deg = deg;
+	}
 	public void setPiece(Block block){
 		piece = block;
 		setWidthHeight ();
 	}
-    public void setActive(bool active)
+    public void setFollowing(bool following)
     {
-        this.active = active;
+        this.following = following;
     }
 	private Vector2? getMousePos(){
 		if (Input.touchCount > 0) {
 			return Input.GetTouch (0).position;
 		}
+
 		if (Input.GetMouseButton (0)) {
 			return Input.mousePosition;
 		}
@@ -34,26 +38,41 @@ public class Mouse : MonoBehaviour {
 		if (pos.x < 0 || pos.y < 0 || pos.x + dimensions.x  > level.getWidth () || pos.y + dimensions.y > level.getHeight() ) {
 			return false;
 		}
-		return level.canSet((int) pos.x,(int) pos.y,piece,deg);
+		return true;
+		//return level.canSet((int) pos.x,(int) pos.y,piece,deg);
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (!active) {
+		if (!following) {
 			return;
 		}
 
-		Vector2? pos = getMousePos ();
+		Vector2? mousePos = getMousePos ();
 
-		if (pos != null && piece != null) {
-			Vector2 location = gridPos ((Vector2)pos);
-			Vector2 temp = transformToGrid (location);
+		if (mousePos != null && piece != null) {
+			
+			lastGridPos = gridPos ((Vector2)mousePos);
+			Vector2 temp = transformToGrid ((Vector2)lastGridPos);
 			GameObject prefab = piece.getBlueprintPrefab ();
 
-			Renderer rend = prefab.GetComponent<Renderer>();
-			rend.material.shader = Shader.Find("Specular");
-			rend.material.SetColor("_SpecColor", canPlacePiece(location) ? Color.white : Color.red);
+			Renderer rend = prefab.GetComponent<Renderer> ();
+			rend.material.shader = Shader.Find ("Specular");
+			rend.material.SetColor ("_SpecColor", canPlacePiece ((Vector2)lastGridPos) ? Color.white : Color.red);
 			grid.placeDummy (temp.x, temp.y, prefab, deg);
+		} else {
+			placeObject ();
+			following = false;
+		}
+	}
+
+	private void placeObject(){
+		if (lastGridPos != null && piece != null) {
+			if (canPlacePiece ((Vector2)lastGridPos)) {
+				Debug.Log ("place!!");
+			} else {
+				piece.removeBlueprintPrefab ();
+			}
 		}
 	}
 

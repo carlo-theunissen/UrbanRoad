@@ -27,11 +27,12 @@ public class GUI : MonoBehaviour
         int i = 0;
         foreach (Block block in blocks)
         {
-            if (UnityEngine.GUI.Button(new Rect(Screen.width - 130, 45 + i * 150, 135, 150), block.getPlaceholder()))
+			if (UnityEngine.GUI.RepeatButton(new Rect(Screen.width - 130, 45 + i * 150, 135, 150), block.getPlaceholder()))
             {
 
+				blockplacer.setDeg (90); 
 				blockplacer.setPiece (block);
-				blockplacer.setActive (true);
+				blockplacer.setFollowing (true);
             }
             i++;
             

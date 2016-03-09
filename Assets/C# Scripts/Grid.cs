@@ -28,7 +28,9 @@ public class Grid : MonoBehaviour
 
 
 		place.transform.position = new Vector3 (x, 0, z);
-		place.transform.Rotate (new Vector3 (0, deg, 0));
+		if (place.transform.rotation.eulerAngles.y != deg) {
+			place.transform.Rotate (new Vector3 (0, deg, 0));
+		}
 
 	}
 
