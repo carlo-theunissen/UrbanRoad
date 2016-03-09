@@ -51,6 +51,11 @@ public class Block
 
 		return blueprintObject;
 	}
+	public void removeBlueprintPrefab(){
+		if (blueprintObject != null && blueprintObject.activeInHierarchy) {
+			Object.Destroy (blueprintPrefab);
+		}
+	}
 
 	public int getUuid(){
 		return uuid;

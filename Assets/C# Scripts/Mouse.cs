@@ -5,16 +5,17 @@ public class Mouse : MonoBehaviour {
 
 	private Block piece;
     private bool active = false;
+	private Vector2 dimensions;
 	public Grid grid;
 	private int deg = 0;
 
 
 	public void setPiece(Block block){
 		piece = block;
+		setWidthHeight ();
 	}
     public void setActive(bool active)
     {
-		Debug.Log (active);
         this.active = active;
     }
 	private Vector2? getMousePos(){
@@ -26,6 +27,16 @@ public class Mouse : MonoBehaviour {
 		}
 		return null;
 	}
+
+	private bool canPlacePiece(Vector2 pos){
+		
+		Level level = GameMode.getCurrentLevel ();
+		if (pos.x < 0 || pos.y < 0 || pos.x + dimensions.x  > level.getWidth () || pos.y + dimensions.y > level.getHeight() ) {
+			return false;
+		}
+		return level.canSet((int) pos.x,(int) pos.y,piece,deg);
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (!active) {
@@ -36,17 +47,17 @@ public class Mouse : MonoBehaviour {
 
 		if (pos != null && piece != null) {
 			Vector2 location = gridPos ((Vector2)pos);
-			Debug.Log (location);
 			Vector2 temp = transformToGrid (location);
-			Debug.Log (temp);
-			grid.placeDummy (temp.x, temp.y, piece.getBlueprintPrefab(), deg);
+			GameObject prefab = piece.getBlueprintPrefab ();
+
+			Renderer rend = prefab.GetComponent<Renderer>();
+			rend.material.shader = Shader.Find("Specular");
+			rend.material.SetColor("_SpecColor", canPlacePiece(location) ? Color.white : Color.red);
+			grid.placeDummy (temp.x, temp.y, prefab, deg);
 		}
 	}
 
-	/**
-	 * Verkrijgt de linker boven hoek in pos en vertaald dat naar een vector zodat het object goed staat
-	 */ 
-	private Vector2 transformToGrid(Vector2 pos){ 
+	private void setWidthHeight(){
 		float width = 0;
 		float height = 0;
 
@@ -55,8 +66,14 @@ public class Mouse : MonoBehaviour {
 			width = Mathf.Max (width, Mathf.Abs(temp.x));
 			height = Mathf.Max (height, Mathf.Abs(temp.y));
 		}
+		dimensions = new Vector2 ((width + 1) , ((height + 1) ));
+	}
 
-		return pos - new Vector2 ((width+1)/2, (height+1)/2);
+	/**
+	 * Verkrijgt de linker boven hoek in pos en vertaald dat naar een vector zodat het object goed staat
+	 */ 
+	private Vector2 transformToGrid(Vector2 pos){ 
+		return pos + new Vector2 (dimensions.x  / 2 - 0.5f, dimensions.y / 2 - 0.5f);
 
 	}
 	private Vector2 gridPos(Vector2 pos){
