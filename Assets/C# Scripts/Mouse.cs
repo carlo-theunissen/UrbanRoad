@@ -39,8 +39,8 @@ public class Mouse : MonoBehaviour {
 		if (pos.x < 0 || pos.y < 0 || pos.x + dimensions.x  > level.getWidth () || pos.y + dimensions.y > level.getHeight() ) {
 			return false;
 		}
-		return true;
-		//return level.canSet((int) pos.x,(int) pos.y,piece,deg);
+		level.removeBlock (piece);
+		return level.canSet((int) pos.x,(int) pos.y,piece,deg);
 	}
 
 	// Update is called once per frame

@@ -77,17 +77,20 @@ public class Level {
 	}
 
 	public void removeBlock(Block block){
-		for (int x = 0; x < grid.GetLength(0); x++) {
-			for (int y = 0; y < grid.GetLength(1); y++) {
-				if (grid [x, y] != null && grid [x, y].Equals( block )) {
+		if (grid == null) {
+			clear ();
+		}
+		for (int y = 0; y < blockHeight; y++) {
+			for(int x = 0; x < blockWidth; x++){
+				if (grid [x, y] != null && grid [x, y].Equals (block)) {
 					grid [x, y] = null;
 				}
 			}
 		}
-
 		block
 			.clearPos ()
 			.setRotation (0);
+
 	}
 
 	private void printGrid(){
@@ -100,14 +103,7 @@ public class Level {
 		}
 	}
 
-	public bool setBlock(int x, int y, Block block, float deg=0){
-		if (grid == null) {
-			clear ();
-		}
-
-		removeBlock (block);
-
-		Vector2 start = new Vector2 (x, y);
+	private Vector2 getLeast(Block block, float deg){
 		Vector2 least = new Vector2();
 		bool calculated = false;
 		foreach(Vector2 col in block.getCollision()){
@@ -125,29 +121,48 @@ public class Level {
 		}
 		least.x = Mathf.Abs (least.x);
 		least.y = Mathf.Abs (least.y);
+		return least;
+	}
+	private Vector2 getGridPoint(Vector2 col, Vector2 start, Vector2 least, float deg){
+		Vector2 temp = start +  VectorCalculation.rotateVector(col, deg) + least;
+		return VectorCalculation.revertToOrigin (temp, this);
+	}
+	public bool setBlock(int x, int y, Block block, float deg=0){
+		if (grid == null) {
+			clear ();
+		}
+
+		removeBlock (block);
+
+		Vector2 start = new Vector2 (x, y);
+		Vector2 least = getLeast (block, deg);
 
 		foreach(Vector2 col in block.getCollision()){
-			Vector2 temp = start +  VectorCalculation.rotateVector(col, deg) + least;
-			temp = VectorCalculation.revertToOrigin (temp, this);
-		
+			Vector2 temp = getGridPoint (col, start, least, deg);
 			grid [(int)temp.x, (int)temp.y] = block;
 		}
 
 
-		saveToDevice ();
-		printGrid (); 
+		saveToDevice (); 
 		return true;
 	}
 
 
 	public bool canSet(int x, int y, Block block, float deg=0){
 		Vector2 start = new Vector2 (x, y);
+		if (grid == null) {
+			clear ();
+		}
+
 		if(x >= getWidth() || y >= getHeight() || getPos(start) != null) { 
 			return false; 
 		}
 
+	
+		Vector2 least = getLeast (block, deg);
+
 		foreach(Vector2 col in block.getCollision()){
-			Vector2 temp = VectorCalculation.revertToOrigin( start +  VectorCalculation.rotateVector(col, deg) , this);
+			Vector2 temp = getGridPoint (col, start, least, deg);
 			if(temp.x >= getWidth() || temp.y >= getHeight() || getPos(temp) != null) {
 				return false; 
 			}
