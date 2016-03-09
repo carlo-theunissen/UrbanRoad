@@ -18,7 +18,17 @@ public class Block
 	public Texture2D getPlaceholder(){
 		return placeholder;
 	}
+	public Vector2 getWidthHeight(float deg){
+		float width = 0;
+		float height = 0;
 
+		foreach(Vector2 collision in getCollision ()){
+			Vector2 temp = VectorCalculation.rotateVector (collision, deg);
+			width = Mathf.Max (width, Mathf.Abs(temp.x));
+			height = Mathf.Max (height, Mathf.Abs(temp.y));
+		}
+		return new Vector2 ((width + 1) , ((height + 1) ));
+	}
 	public Block setPos(Vector2 pos){
 		this.pos = pos;
 		return this;

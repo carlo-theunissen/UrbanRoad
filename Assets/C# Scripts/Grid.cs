@@ -28,9 +28,9 @@ public class Grid : MonoBehaviour
 
 
 		place.transform.position = new Vector3 (x, 0, z);
-		Quaternion rotation = place.transform.rotation;
-		if (rotation.eulerAngles.y != deg) {
-			rotation.eulerAngles = (new Vector3 (0, deg, 0));
+		if (place.transform.rotation.y != deg) {
+			place.transform.rotation = Quaternion.Euler (0, deg, 0);
+		
 		}
 
 	}
@@ -41,11 +41,5 @@ public class Grid : MonoBehaviour
 		level = GameMode.getCurrentLevel ();
 		grid = new GameObject[level.getWidth (), level.getHeight ()];
 		makeGrid ();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-	
 	}
 }

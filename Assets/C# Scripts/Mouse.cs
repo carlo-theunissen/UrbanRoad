@@ -69,8 +69,9 @@ public class Mouse : MonoBehaviour {
 
 	private void placeObject(){
 		if (lastGridPos != null && piece != null) {
-			if (canPlacePiece ((Vector2)lastGridPos)) {
-				Debug.Log ("place!!");
+			Vector2 temp = (Vector2)lastGridPos;
+			if (canPlacePiece (temp)) {
+				GameMode.getCurrentLevel ().setBlock ((int) temp.x, (int) temp.y, piece, deg);
 			} else {
 				piece.removeBlueprintPrefab ();
 			}
@@ -81,15 +82,7 @@ public class Mouse : MonoBehaviour {
 		if (piece == null) {
 			return;
 		}
-		float width = 0;
-		float height = 0;
-
-		foreach(Vector2 collision in piece.getCollision ()){
-			Vector2 temp = VectorCalculation.rotateVector (collision, deg);
-			width = Mathf.Max (width, Mathf.Abs(temp.x));
-			height = Mathf.Max (height, Mathf.Abs(temp.y));
-		}
-		dimensions = new Vector2 ((width + 1) , ((height + 1) ));
+		dimensions = piece.getWidthHeight (deg);
 	}
 
 	/**

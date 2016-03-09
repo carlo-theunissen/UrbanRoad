@@ -89,26 +89,53 @@ public class Level {
 			.clearPos ()
 			.setRotation (0);
 	}
-		
+
+	private void printGrid(){
+		for (int y = 0; y < blockHeight; y++) {
+			string row = "";
+			for(int x = 0; x < blockWidth; x++){
+				row += getPos (x, y) == null ? "0" : "*";
+			}
+			Debug.Log (row);
+		}
+	}
 
 	public bool setBlock(int x, int y, Block block, float deg=0){
 		if (grid == null) {
 			clear ();
 		}
-		if (!canSet (x, y, block, deg)) {
-			return false;
-		}
+
+		removeBlock (block);
+
 		Vector2 start = new Vector2 (x, y);
+		Vector2 least = new Vector2();
+		bool calculated = false;
 		foreach(Vector2 col in block.getCollision()){
-			Vector2 temp = VectorCalculation.revertToOrigin( start +  VectorCalculation.rotateVector(col, deg) , this);
-			grid [(int) temp.x, (int) temp.y] = block;
+			Vector2 temp = VectorCalculation.rotateVector (col, deg);
+			if (!calculated) {
+				least = temp;
+				calculated = true;
+			}
+			if (temp.x < least.x) {
+				least.x = temp.x;
+			}
+			if (temp.y < least.y) {
+				least.y = temp.y;
+			}
+		}
+		least.x = Mathf.Abs (least.x);
+		least.y = Mathf.Abs (least.y);
+
+		foreach(Vector2 col in block.getCollision()){
+			Vector2 temp = start +  VectorCalculation.rotateVector(col, deg) + least;
+			temp = VectorCalculation.revertToOrigin (temp, this);
+		
+			grid [(int)temp.x, (int)temp.y] = block;
 		}
 
-		block
-			.setPos (start)
-			.setRotation (deg);
 
 		saveToDevice ();
+		printGrid (); 
 		return true;
 	}
 
