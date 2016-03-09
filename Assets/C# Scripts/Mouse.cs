@@ -12,6 +12,7 @@ public class Mouse : MonoBehaviour {
 
 	public void setDeg(int deg){
 		this.deg = deg;
+		setWidthHeight ();
 	}
 	public void setPiece(Block block){
 		piece = block;
@@ -77,6 +78,9 @@ public class Mouse : MonoBehaviour {
 	}
 
 	private void setWidthHeight(){
+		if (piece == null) {
+			return;
+		}
 		float width = 0;
 		float height = 0;
 

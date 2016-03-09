@@ -30,7 +30,7 @@ public class GUI : MonoBehaviour
 			if (UnityEngine.GUI.RepeatButton(new Rect(Screen.width - 130, 45 + i * 150, 135, 150), block.getPlaceholder()))
             {
 
-				blockplacer.setDeg (90); 
+				blockplacer.setDeg (180); 
 				blockplacer.setPiece (block);
 				blockplacer.setFollowing (true);
             }

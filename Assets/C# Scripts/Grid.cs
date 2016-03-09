@@ -28,8 +28,9 @@ public class Grid : MonoBehaviour
 
 
 		place.transform.position = new Vector3 (x, 0, z);
-		if (place.transform.rotation.eulerAngles.y != deg) {
-			place.transform.Rotate (new Vector3 (0, deg, 0));
+		Quaternion rotation = place.transform.rotation;
+		if (rotation.eulerAngles.y != deg) {
+			rotation.eulerAngles = (new Vector3 (0, deg, 0));
 		}
 
 	}
