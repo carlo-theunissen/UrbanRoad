@@ -3,6 +3,7 @@ using System.Collections;
 
 public class GameMode
 {
+	private static Level currentLevel; 
 	private GameMode(){} 
 
 	public static Level getLevel(int id){
@@ -12,6 +13,12 @@ public class GameMode
 	private static string getLevelData(int id){
 		TextAsset level = (TextAsset)Resources.Load ("Config/Levels/level_" + id);
 		return level.text;
+	}
+	public static Level getCurrentLevel(){
+		if (currentLevel == null) {
+			currentLevel = getLevel (1);
+		}
+		return currentLevel;
 	}
 }
 

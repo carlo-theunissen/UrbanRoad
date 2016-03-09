@@ -29,14 +29,20 @@ public class PieceFactory
 		XmlNodeList blocks = node.SelectNodes ("blocks/block");
 		config.collision = getCollision (blocks);
 		config.blockCount = blocks.Count;
-		config.prefab = getPrefab (node.SelectSingleNode ("//prefab"));
-
+		config.prefab = getPrefab (node.SelectSingleNode ("prefab"));
+		config.placeholder = getTexture(node.SelectSingleNode ("placeholder"));
 		return config;
 	}
 
 	private GameObject getPrefab(XmlNode node){
+
 		string name = node.Attributes ["name"].Value;
-		return (GameObject)Resources.Load (name);
+		return (GameObject)Resources.Load ("Prefabs/"+name);
+	}
+
+	private Texture2D getTexture(XmlNode node){
+		string name = node.Attributes ["image"].Value;
+		return (Texture2D)Resources.Load ("Placeholders/"+name);
 	}
 
 	private List<Vector2> getCollision(XmlNodeList list){

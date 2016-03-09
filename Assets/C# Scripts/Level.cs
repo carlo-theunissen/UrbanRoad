@@ -79,7 +79,7 @@ public class Level {
 	public void removeBlock(Block block){
 		for (int x = 0; x < grid.GetLength(0); x++) {
 			for (int y = 0; y < grid.GetLength(1); y++) {
-				if (grid [x, y] == block) {
+				if (grid [x, y] != null && grid [x, y].Equals( block )) {
 					grid [x, y] = null;
 				}
 			}
@@ -88,6 +88,13 @@ public class Level {
 		block
 			.clearPos ()
 			.setRotation (0);
+	}
+
+	private Vector2 revertToOrigin(int x, int y){
+		return new Vector2 (x, (getHeight () - y - 1));
+	}
+	private Vector2 revertToOrigin(Vector2 old){
+		return revertToOrigin ((int) old.x, (int) old.y);
 	}
 
 	public bool setBlock(int x, int y, Block block, float deg=0){
@@ -99,7 +106,7 @@ public class Level {
 		}
 		Vector2 start = new Vector2 (x, y);
 		foreach(Vector2 col in block.getCollision()){
-			Vector2 temp = start + rotateVector(col, deg);
+			Vector2 temp = revertToOrigin( start + rotateVector(col, deg) );
 			grid [(int) temp.x, (int) temp.y] = block;
 		}
 
@@ -128,7 +135,7 @@ public class Level {
 		}
 
 		foreach(Vector2 col in block.getCollision()){
-			Vector2 temp = start +  rotateVector(col, deg);
+			Vector2 temp = revertToOrigin( start +  rotateVector(col, deg) );
 			if(temp.x >= getWidth() || temp.y >= getHeight() || getPos(temp) != null) {
 				return false; 
 			}
