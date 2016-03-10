@@ -4,7 +4,7 @@ using System.Collections;
 public class Grid : MonoBehaviour
 {
     public GameObject plane;
-
+	public GameObject road;
 
     private GameObject[,] grid;
 	private Level level;
@@ -41,5 +41,33 @@ public class Grid : MonoBehaviour
 		level = GameMode.getCurrentLevel ();
 		grid = new GameObject[level.getWidth (), level.getHeight ()];
 		makeGrid ();
+		displayRoadPoints ();
+	}
+
+	private void displayRoadPoints(){
+		Vector2 pos = getOutsidePos (level.getFinish ());
+		Instantiate(road, new Vector3(pos.x, 0, pos.y) , Quaternion.identity);
+		pos = getOutsidePos (level.getStart ());
+		Instantiate(road,  new Vector3(pos.x, 0, pos.y), Quaternion.identity);
+	}
+
+	private Vector2 getOutsidePos(Vector2 calc){
+		if (calc.x == 0) {
+			calc.x--;
+			return calc;
+		}
+		if (calc.y == 0) {
+			calc.y--;
+			return calc;
+		}
+		if (calc.x + 1 == level.getWidth ()) {
+			calc.x++;
+			return calc;
+		}
+		if (calc.y + 1 == level.getHeight ()) {
+			calc.y++;
+			return calc;
+		}
+		return calc;
 	}
 }

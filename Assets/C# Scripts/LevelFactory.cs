@@ -50,12 +50,16 @@ public class LevelFactory
 		level.setEnd (getPos (level.getWidth(), level.getHeight(), loc));
 	}
 	private Vector2 getPos(int width, int height, int pos){
-		return new Vector2 ((float) (pos % width),(float) (height - pos / width));
+		return new Vector2 ((float) (pos % width) ,(float) (pos / width));
 	}
 	private void calculate(string data, Level level){
 		Dictionary<int, int> blocks = new Dictionary<int, int>();
 		int index = 0;
 		foreach(char ch in data.ToCharArray ()){
+			if (!(ch == 'A' || ch == 'B' ||  (ch >= '0' && ch <= '9' ))) {
+				continue;
+			}
+
 			if (ch == 'A') {
 				setStart (index, level);
 			}

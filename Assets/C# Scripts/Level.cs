@@ -47,11 +47,16 @@ public class Level {
 	public Block[] getBlocks(){
 		return blocks;
 	}
-
+	/**
+	 * Returns a Vector2 relative to TOP LEFT
+	 */ 
 	public Vector2 getStart(){
 		return startPos;
 	}
 		
+	/**
+	 * Returns a Vector2 relative to TOP LEFT
+	 */ 
 	public Vector2 getFinish(){
 		return endPos;
 	}

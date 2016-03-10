@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-
+<document>
 <pieces>
 	<piece id="1">
 		<prefab name="block_1" />
@@ -108,3 +108,44 @@
 		</blocks>
 	</piece>
 </pieces>
+
+<roads>
+
+	<!-- straight piece vertical   |   -->
+	<road id="1">
+		<prefab name="block_10" />
+		<rotation value="0" />
+	</road>
+
+	<!-- straight piece horizontal  -   -->
+	<road id="2">
+		<prefab name="block_10" />
+		<rotation value="0" />
+	</road>
+
+	<!-- Corner to the right |>   -->
+	<road id="3">
+		<prefab name="block_10" />
+		<rotation value="0" />
+	</road>
+
+	<!-- Corner to the left <| -->
+	<road id="4">
+		<prefab name="block_10" />
+		<rotation value="0" />
+	</road>
+
+	<!-- Corner to the top -^ -->
+	<road id="5">
+		<prefab name="block_10" />
+		<rotation value="0" />
+	</road>
+
+	<!-- Corner to the bottom -\/ -->
+	<road id="6">
+		<prefab name="block_10" />
+		<rotation value="0" />
+	</road>
+
+</roads>
+</document>
