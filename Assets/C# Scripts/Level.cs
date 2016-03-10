@@ -94,7 +94,6 @@ public class Level {
 	}
 
 	public void printGrid(){
-		Debug.Log (blockHeight);
 		for (int y = 0; y < blockHeight; y++) {
 			string row = "";
 			for(int x = 0; x < blockWidth; x++){
@@ -155,9 +154,8 @@ public class Level {
 			clear ();
 		}
 
-		if(x >= getWidth() || y >= getHeight() || getPos(VectorCalculation.revertToOrigin(start, this)) != null) { 
-			Debug.Log (start);
-			Debug.Log (getPos(start) );
+		Vector2 calc = VectorCalculation.revertToOrigin (start, this);
+		if(calc.x >= getWidth() || calc.y >= getHeight()) { 
 			return false; 
 		}
 
