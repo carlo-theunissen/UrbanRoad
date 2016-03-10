@@ -22,7 +22,11 @@ public class GUI : MonoBehaviour
         UnityEngine.GUI.Box(new Rect(Screen.width - 150, 0, 150, Screen.height), " " );
         if (UnityEngine.GUI.Button(new Rect(Screen.width - 130, 10, 135, 30), "Reset"))
         {
-            //wat doet deze button?
+			foreach (Block block in blocks) {
+				block.removeBlueprintPrefab ();
+			}
+			GameMode.getCurrentLevel ().clear ();
+			blockplacer.setFollowing (false);
         }
         int i = 0;
         foreach (Block block in blocks)
@@ -30,7 +34,7 @@ public class GUI : MonoBehaviour
 			if (UnityEngine.GUI.RepeatButton(new Rect(Screen.width - 130, 45 + i * 150, 135, 150), block.getPlaceholder()))
             {
 
-				blockplacer.setDeg (0); 
+				blockplacer.setDeg (90); 
 				blockplacer.setPiece (block);
 				blockplacer.setFollowing (true);
             }
