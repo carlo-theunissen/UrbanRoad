@@ -93,7 +93,7 @@ public class Level {
 
 	}
 
-	private void printGrid(){
+	public void printGrid(){
 		for (int y = 0; y < blockHeight; y++) {
 			string row = "";
 			for(int x = 0; x < blockWidth; x++){

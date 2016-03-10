@@ -73,6 +73,7 @@ public class Mouse : MonoBehaviour {
 			if (canPlacePiece (temp)) {
 				GameMode.getCurrentLevel ().setBlock ((int) temp.x, (int) temp.y, piece, deg);
 			} else {
+				GameMode.getCurrentLevel ().removeBlock (piece);
 				piece.removeBlueprintPrefab ();
 			}
 		}
