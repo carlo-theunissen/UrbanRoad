@@ -113,38 +113,38 @@
 
 	<!-- straight piece vertical   |   -->
 	<road id="1">
-		<prefab name="block_10" />
+		<prefab name="road_1" />
 		<rotation value="0" />
 	</road>
 
 	<!-- straight piece horizontal  -   -->
 	<road id="2">
-		<prefab name="block_10" />
-		<rotation value="0" />
+		<prefab name="road_1" />
+		<rotation value="90" />
 	</road>
 
 	<!-- Corner from bot to the right |>   -->
 	<road id="3">
-		<prefab name="block_10" />
-		<rotation value="0" />
+		<prefab name="road_2" />
+		<rotation value="180" />
 	</road>
 
 	<!-- Corner from top the left <| -->
 	<road id="4">
-		<prefab name="block_10" />
+		<prefab name="road_2" />
 		<rotation value="0" />
 	</road>
 
 	<!-- Corner from right to the top ^- -->
 	<road id="5">
-		<prefab name="block_10" />
-		<rotation value="0" />
+		<prefab name="road_2" />
+		<rotation value="90" />
 	</road>
 
 	<!-- Corner from left to the bottom -\/ -->
 	<road id="6">
-		<prefab name="block_10" />
-		<rotation value="0" />
+		<prefab name="road_2" />
+		<rotation value="270" />
 	</road>
 
 </roads>
