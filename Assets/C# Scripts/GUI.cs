@@ -68,7 +68,6 @@ public class GUI : MonoBehaviour
     private Block[] getBlocks()
     {
 		Level level = GameMode.getCurrentLevel();
-		Debug.Log (level.getFinish ());
         return level.getBlocks();
     }
 }

@@ -6,7 +6,7 @@ public class GameMode
 	private static Level currentLevel; 
 	private GameMode(){} 
 
-	public static Level getLevel(int id){
+	private static Level getLevel(int id){
 		string data = getLevelData (id);
 		return LevelFactory.getInstance ().createLevel (data, id);
 	}
