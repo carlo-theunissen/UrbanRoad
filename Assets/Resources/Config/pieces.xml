@@ -123,25 +123,25 @@
 		<rotation value="0" />
 	</road>
 
-	<!-- Corner to the right |>   -->
+	<!-- Corner from bot to the right |>   -->
 	<road id="3">
 		<prefab name="block_10" />
 		<rotation value="0" />
 	</road>
 
-	<!-- Corner to the left <| -->
+	<!-- Corner from top the left <| -->
 	<road id="4">
 		<prefab name="block_10" />
 		<rotation value="0" />
 	</road>
 
-	<!-- Corner to the top -^ -->
+	<!-- Corner from right to the top ^- -->
 	<road id="5">
 		<prefab name="block_10" />
 		<rotation value="0" />
 	</road>
 
-	<!-- Corner to the bottom -\/ -->
+	<!-- Corner from left to the bottom -\/ -->
 	<road id="6">
 		<prefab name="block_10" />
 		<rotation value="0" />
