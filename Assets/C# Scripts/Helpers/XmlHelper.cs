@@ -1,12 +1,21 @@
 ﻿using System;
+using System.Xml;
+using UnityEngine;
 
-namespace AssemblyCSharp
+public class XmlHelper
 {
-	public class XmlHelper
-	{
-		public XmlHelper ()
-		{
+	private static XmlDocument doc;
+	public static XmlDocument getXml(){
+		if (doc == null) {
+			doc = new XmlDocument ();
+			doc.LoadXml (getPieceData ()); 
 		}
+		return doc;
+	}
+	private static string getPieceData(){
+		TextAsset level = (TextAsset)Resources.Load ("Config/pieces");
+		return level.text;
 	}
 }
+
 
