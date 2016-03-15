@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Level {
 	private int levelId;
@@ -64,8 +64,23 @@ public class Level {
 	public void saveToDevice(){
 	}
 
+	public bool containsAllBlocks(){
+		if (grid == null) {
+			clear ();
+		}
+		List<Block> temp = new List<Block> ();
+		for (int y = 0; y < blockHeight; y++) {
+			for(int x = 0; x < blockWidth; x++){
+				if (grid [x, y] != null && !temp.Contains(grid [x, y])) {
+					temp.Add (grid [x, y]);
+				}
+			}
+		}
+		return temp.Count == blocks.Length;
+	}
+
 	public bool isValidPath(){
-		return true;
+		return containsAllBlocks () && getRoad() == null;
 	}
 		
 	public Block getPos(int x, int y){
@@ -178,7 +193,7 @@ public class Level {
 	}
 
 	public RoadPiece[] getRoad(){
-		return new RoadPiece[2];
+		return Pathfinding.getInstance ().getRoad (this);
 	}
 
 	public int getHeight(){

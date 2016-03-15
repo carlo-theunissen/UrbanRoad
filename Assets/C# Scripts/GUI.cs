@@ -57,9 +57,8 @@ public class GUI : MonoBehaviour
 		}
 
 		if (Input.GetKeyUp ("p")) {
-			Debug.Log ("DDSFDFSFSDF");
-			GameMode.getCurrentLevel ().printGrid ();
-			Debug.Log ("DDSFDFSFSDF");
+			Debug.Log( GameMode.getCurrentLevel ().getRoad ());
+
 		}
 
 

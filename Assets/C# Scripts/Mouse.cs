@@ -72,9 +72,22 @@ public class Mouse : MonoBehaviour {
 			Vector2 temp = (Vector2)lastGridPos;
 			if (canPlacePiece (temp)) {
 				GameMode.getCurrentLevel ().setBlock ((int) temp.x, (int) temp.y, piece, deg);
+				drawRoad ();
 			} else {
 				GameMode.getCurrentLevel ().removeBlock (piece);
 				piece.removeBlueprintPrefab ();
+			}
+		}
+	}
+
+	private void drawRoad(){
+		Level level = GameMode.getCurrentLevel ();
+		if (level.containsAllBlocks ()) {
+			RoadPiece[] pieces = level.getRoad ();
+			if (pieces != null) {
+				foreach (RoadPiece road in pieces) {
+					grid.placeRoad (road.Position.x, road.Position.y, road.getPrefab ());
+				}
 			}
 		}
 	}
