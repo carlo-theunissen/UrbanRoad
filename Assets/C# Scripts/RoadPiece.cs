@@ -4,8 +4,12 @@ public class RoadPiece
 {
 	public int type = 1;
 	public Vector2 Position;
+	private GameObject displayedObject;
 	public GameObject getPrefab(){
-		return RoadPieceHelper.getRoadPrefab (type);
+		if (displayedObject == null) {
+			displayedObject = Object.Instantiate (RoadPieceHelper.getRoadPrefab (type));
+		}
+		return displayedObject;
 	}
 }
 

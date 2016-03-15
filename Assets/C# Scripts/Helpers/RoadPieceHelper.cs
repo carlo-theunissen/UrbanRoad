@@ -41,8 +41,8 @@ public class RoadPieceHelper
 			Debug.LogError ("Id:"+id + " road not found!");
 			return null;
 		}
-		string name = node.Attributes ["name"].Value;
-		return (GameObject)Resources.Load ("Prefabs/"+name);
+		string name = node.SelectSingleNode ("prefab").Attributes ["name"].Value;
+		return (GameObject) Resources.Load ("Prefabs/"+name);
 	}
 }
 
