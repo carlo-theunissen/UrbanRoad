@@ -10,7 +10,7 @@ public class Pathfinding
     private Vector2 up = new Vector2(0, 1);
     private Vector2 right = new Vector2(1, 0);
     private Vector2 down = new Vector2(0, -1);
-    private Vector2[] prev;
+
 
     private Pathfinding()
     { }
@@ -45,24 +45,32 @@ public class Pathfinding
             start = neighbors[0];
         }
     }
+
     private RoadPiece[] makeRoadPieces(ref List<Vector2> previous) {
 		RoadPiece[] pieces = new RoadPiece[previous.Count];
 		int index = 0;
 		foreach (Vector2 vec in previous) {
-			pieces [index++].Position = vec;
+			pieces [index] = new RoadPiece ();
+			pieces [index].Position = vec;
+			index++;
 		}
 		return pieces; 
     }
+
     private Vector2[] getNeighbors(Level level,Vector2 pos, ref List<Vector2> previous) {
         List<Vector2> array = new List<Vector2>();
         Vector2[] checks = { pos + left, pos + up, pos + right, pos + down };
         foreach(Vector2 check in checks) { 
-            if(level.getPos(check) == null && !search(check,ref previous)) {
+			if(isValidPos((int) check.x, (int) check.y, ref level) && level.getPos(check) == null && !search(check,ref previous)) {
                 array.Add(check);
             }
         }
         return array.ToArray();
     }
+
+	private bool isValidPos(int x, int y, ref Level level){
+		return x < level.getWidth () && y < level.getHeight ();
+	}
     private bool search(Vector2 pos, ref List<Vector2> previous) {
         foreach(Vector2 temp in previous) {
             if(temp.x == pos.x && temp.y == pos.y) {
