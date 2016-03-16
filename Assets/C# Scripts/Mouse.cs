@@ -89,6 +89,7 @@ public class Mouse : MonoBehaviour {
 					grid.placeRoad (road.Position.x, road.Position.y, road.getPrefab ());
 				}
 			}
+			AudioProvider.getInstance().getra
 		}
 	}
 
