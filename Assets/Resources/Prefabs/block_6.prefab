@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 402186}
   - 23: {fileID: 2378836}
   m_Layer: 0
-  m_Name: blok_6
+  m_Name: block_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 233.69556, y: 162.21352, z: 225.9489}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 494492}
