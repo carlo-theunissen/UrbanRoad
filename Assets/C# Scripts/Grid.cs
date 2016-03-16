@@ -35,6 +35,11 @@ public class Grid : MonoBehaviour
 
 	}
 
+
+	public void placeRoad(float x, float z, GameObject road, bool moveY = true){
+		road.transform.position = new Vector3 (x, moveY? 0.1f : 0, z);
+	}
+
 	// Use this for initialization
 	void Start ()
     {
@@ -45,29 +50,40 @@ public class Grid : MonoBehaviour
 	}
 
 	private void displayRoadPoints(){
-		Vector2 pos = getOutsidePos (level.getFinish ());
-		Instantiate(road, new Vector3(pos.x, 0, pos.y) , Quaternion.identity);
-		pos = getOutsidePos (level.getStart ());
-		Instantiate(road,  new Vector3(pos.x, 0, pos.y), Quaternion.identity);
+		RoadPiece pos = getRoadPiece (level.getFinish ());
+		placeRoad (pos.Position.x, pos.Position.y, pos.getPrefab ());
+
+		pos = getRoadPiece (level.getStart ());
+		placeRoad (pos.Position.x, pos.Position.y, pos.getPrefab ());
 	}
 
-	private Vector2 getOutsidePos(Vector2 calc){
+	private RoadPiece getRoadPiece(Vector2 calc){
+		RoadPiece road = new RoadPiece();
 		if (calc.x == 0) {
 			calc.x--;
-			return calc;
+			road.Position = calc;
+			road.type = 2;
+			return road;
 		}
 		if (calc.y == 0) {
 			calc.y--;
-			return calc;
+			road.Position = calc;
+			road.type = 2;
+			return road;
 		}
 		if (calc.x + 1 == level.getWidth ()) {
 			calc.x++;
-			return calc;
+			road.Position = calc;
+			road.type = 1;
+			return road;
 		}
 		if (calc.y + 1 == level.getHeight ()) {
 			calc.y++;
-			return calc;
+			road.Position = calc;
+			road.type = 1;
+			return road;
 		}
-		return calc;
+		road.Position = calc;
+		return road;
 	}
 }
