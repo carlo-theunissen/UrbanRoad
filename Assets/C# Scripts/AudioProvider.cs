@@ -17,7 +17,7 @@ public class AudioProvider
 	public AudioClip getAudio(string name){
 		makeCache ();
 
-		AudioSource gameObj = getCached (name);
+		AudioClip gameObj = getCached (name);
 		if (gameObj != null) {
 			return gameObj;
 		}
