@@ -1,16 +1,17 @@
 fileFormatVersion: 2
-guid: 2500cc85d4aa08343b3118baaeda094b
-timeCreated: 1457343709
+guid: 6c97f87f8375dbe4a91f33aa145f29f5
+timeCreated: 1458119653
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: blok_3:polySurface22
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: block_10
-    9500000: //RootNode
+    400002: blok_3:polySurface22
+    2300000: blok_3:polySurface22
+    3300000: blok_3:polySurface22
+    4300000: blok_3:polySurface22
   materials:
     importMaterials: 1
     materialName: 0
@@ -69,7 +70,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

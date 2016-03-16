@@ -1,16 +1,17 @@
 fileFormatVersion: 2
-guid: b1e511a3abdc56b46833456dba211dc6
-timeCreated: 1457343710
+guid: 13ce7c47942186c49b3d8b7cffe491f7
+timeCreated: 1458119653
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: blok_10:pCube37
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: block_8
-    9500000: //RootNode
+    400002: blok_10:pCube37
+    2300000: blok_10:pCube37
+    3300000: blok_10:pCube37
+    4300000: blok_10:pCube37
   materials:
     importMaterials: 1
     materialName: 0
@@ -69,7 +70,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
