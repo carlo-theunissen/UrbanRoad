@@ -30,9 +30,10 @@ public class LevelFactory
 		if (rows.Length == 0) {
 			return false;
 		}
-		int length = rows [0].Length;
+        int length = rows[0].Split(',').Length;
 		for (int i = 0; i < rows.Length -1; i++) {
-			if (length != rows [i].Length) {
+            string[] temp = rows[i].Split(',');
+			if (length != temp.Length) {
 				return false;
 			}
 		}
