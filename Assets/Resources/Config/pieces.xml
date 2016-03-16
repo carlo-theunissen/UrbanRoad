@@ -148,4 +148,9 @@
 	</road>
 
 </roads>
+
+<audios>
+	<audio name="error" file="error" />
+</audios>
+
 </document>
