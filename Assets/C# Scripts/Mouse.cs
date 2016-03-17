@@ -67,16 +67,28 @@ public class Mouse : MonoBehaviour {
 		}
 	}
 
+    private void AudioPlayer(string audioBuild)
+    {
+
+        AudioSource source = gameObject.GetComponent<AudioSource>();
+        source.clip = AudioProvider.getInstance().getAudio(audioBuild);
+        source.Play();
+
+    }
+
 	private void placeObject(){
 		if (lastGridPos != null && piece != null) {
 			Vector2 temp = (Vector2)lastGridPos;
 			if (canPlacePiece (temp)) {
 				GameMode.getCurrentLevel ().setBlock ((int) temp.x, (int) temp.y, piece, deg);
 				drawRoad ();
-			} else {
+                AudioPlayer("build");
+
+            } else {
 				GameMode.getCurrentLevel ().removeBlock (piece);
 				piece.removeBlueprintPrefab ();
-			}
+                AudioPlayer("error");
+            }
 		}
 	}
 
@@ -89,6 +101,7 @@ public class Mouse : MonoBehaviour {
 					grid.placeRoad (road.Position.x, road.Position.y, road.getPrefab ());
 				}
 			}
+
 		}
 	}
 

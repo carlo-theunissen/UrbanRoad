@@ -36,8 +36,8 @@ public class Grid : MonoBehaviour
 	}
 
 
-	public void placeRoad(float x, float z, GameObject road){
-		road.transform.position = new Vector3 (x, 0.1f, z);
+	public void placeRoad(float x, float z, GameObject road, bool moveY = true){
+		road.transform.position = new Vector3 (x, moveY? 0.1f : 0, z);
 	}
 
 	// Use this for initialization

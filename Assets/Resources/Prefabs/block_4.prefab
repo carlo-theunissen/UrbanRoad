@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 465922}
   - 33: {fileID: 3333058}
   - 23: {fileID: 2393630}
-  - 95: {fileID: 9521012}
   m_Layer: 0
   m_Name: block_4
   m_TagString: Untagged
@@ -63,23 +62,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195520}
   m_Mesh: {fileID: 4300000, guid: ee48ea0b275bbab4cbbb677a9b52faac, type: 3}
---- !u!95 &9521012
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 195520}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ee48ea0b275bbab4cbbb677a9b52faac, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
