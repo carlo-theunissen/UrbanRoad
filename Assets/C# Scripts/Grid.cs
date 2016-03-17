@@ -55,6 +55,7 @@ public class Grid : MonoBehaviour
 
 		pos = getRoadPiece (VectorCalculation.revertToOrigin(level.getStart (), level));
 		placeRoad (pos.Position.x, pos.Position.y, pos.getPrefab ());
+		Debug.Log (level.getStart ());
 	}
 
 	private RoadPiece getRoadPiece(Vector2 calc){

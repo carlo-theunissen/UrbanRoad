@@ -42,7 +42,7 @@ public class LevelFactory
 	private void setWidthHeight(Level level, string[] rows){
 		int length = rows [rows.Length - 1] == "" ? rows.Length - 1 : rows.Length;
 		level.setHeight (length);
-		level.setWidth (rows[0].Replace(",","").Length -1);
+		level.setWidth (rows[0].Split(',').Length);
 	}
 	private void setStart(int loc, Level level){
 		level.setStart (getPos (level.getWidth(), level.getHeight(), loc));
@@ -72,15 +72,16 @@ public class LevelFactory
 				}
 
 				int id;
-				if (int.TryParse (el, out id) && id >= 1) {
-				
-					int val = 1;
-					if (blocks.ContainsKey (id)) {
-						blocks.TryGetValue (id, out val);
-						val++;
-						blocks.Remove (id);
+				if (int.TryParse (el, out id)) {
+					if (id >= 1) {
+						int val = 1;
+						if (blocks.ContainsKey (id)) {
+							blocks.TryGetValue (id, out val);
+							val++;
+							blocks.Remove (id);
+						}
+						blocks.Add (id, val);
 					}
-					blocks.Add (id, val);
 					index++;
 				}
 		
@@ -104,10 +105,7 @@ public class LevelFactory
 				block.Add (makeBlock (config));
 			}
 		}
-
-		foreach (Block temp in block.ToArray ()) {
-			Debug.Log (temp.getId ());
-		}
+			
 		level.setBlocks (block.ToArray ());
 
 	}
