@@ -69,7 +69,7 @@ public class Pathfinding
     }
 
 	private bool isValidPos(int x, int y, ref Level level){
-		return x < level.getWidth () && y < level.getHeight ();
+		return x < level.getWidth () && y < level.getHeight () && x >= 0 && y >= 0 ;
 	}
     private bool search(Vector2 pos, ref List<Vector2> previous) {
         foreach(Vector2 temp in previous) {
