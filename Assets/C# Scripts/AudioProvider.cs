@@ -14,7 +14,12 @@ public class AudioProvider
 		}
 	}
 
-	public AudioClip getAudio(string name){
+	public void playAudio(string name, AudioSource source){
+		source.clip = getAudio (name);
+		source.Play ();
+	}
+
+	private AudioClip getAudio(string name){
 		makeCache ();
 
 		AudioClip gameObj = getCached (name);

@@ -74,8 +74,7 @@ public class Mouse : MonoBehaviour {
     {
 
         AudioSource source = gameObject.GetComponent<AudioSource>();
-        source.clip = AudioProvider.getInstance().getAudio(audioBuild);
-        source.Play();
+		AudioProvider.getInstance().playAudio(audioBuild,source);
 
     }
 
