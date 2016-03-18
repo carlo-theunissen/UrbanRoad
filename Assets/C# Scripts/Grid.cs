@@ -50,6 +50,7 @@ public class Grid : MonoBehaviour
 	}
 
 	private void displayRoadPoints(){
+		Debug.Log (level.getFinish ());
 		RoadPiece pos = getRoadPiece (VectorCalculation.revertToOrigin(level.getFinish (), level));
 		placeRoad (pos.Position.x, pos.Position.y, pos.getPrefab ());
 
@@ -60,22 +61,10 @@ public class Grid : MonoBehaviour
 
 	private RoadPiece getRoadPiece(Vector2 calc){
 		RoadPiece road = new RoadPiece();
-		if (calc.x == 0) {
-			calc.x--;
-			road.Position = calc;
-			road.type = 2;
-			return road;
-		}
 		if (calc.y == 0) {
 			calc.y--;
 			road.Position = calc;
 			road.type = 2;
-			return road;
-		}
-		if (calc.x + 1 == level.getWidth ()) {
-			calc.x++;
-			road.Position = calc;
-			road.type = 1;
 			return road;
 		}
 		if (calc.y + 1 == level.getHeight ()) {

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class LevelFactory
@@ -58,21 +59,25 @@ public class LevelFactory
 		int index = 0;
 		foreach (string data in rows) {
 			foreach (string el in data.Split (',')) {
+				string escaped = el.Trim ();
 
-				if (el == "A") {
+				if (escaped.Equals ("A")) {
 					setStart (index, level);
 					index++;
 					continue;
 				}
 
-				if (el == "B") {
+			
+				if (escaped.Equals("B")) {
+					
 					setEnd (index, level);
+
 					index++;
 					continue;
 				}
 
 				int id;
-				if (int.TryParse (el, out id)) {
+				if (int.TryParse (escaped, out id)) {
 					if (id >= 1) {
 						int val = 1;
 						if (blocks.ContainsKey (id)) {
