@@ -98,7 +98,8 @@ public class Mouse : MonoBehaviour {
 			RoadPiece[] pieces = level.getRoad ();
 			if (pieces != null) {
 				foreach (RoadPiece road in pieces) {
-					grid.placeRoad (road.Position.x, road.Position.y, road.getPrefab ());
+					Vector2 pos = VectorCalculation.revertToOrigin (road.Position, level);
+					grid.placeRoad (pos.x, pos.y, road.getPrefab ());
 				}
 			}
 
