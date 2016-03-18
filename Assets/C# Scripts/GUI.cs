@@ -42,8 +42,8 @@ public class GUI : MonoBehaviour
 		int i = 0;
 		foreach (Block block in blocks) {
 			pos = new Rect (Screen.width - 130, 45 + i * 150, 135, 150);
-			UnityEngine.GUI.Box (new Rect (Screen.width - 130, 45 + i * 150, 135, 150), block.getPlaceholder ());
-			if (!blockplacer.getFollowing () && GUIcalculation.collisionWithTouch (pos)) {
+			UnityEngine.GUI.Box (new Rect (Screen.width - 130, 45 + i * 150, 135, 150), block.getPlaceholder());
+			if ( !blockplacer.getFollowing () && GUIcalculation.collisionWithTouch (pos)) {
 				deg = 0;
 				blockplacer.setDeg (0); 
 				blockplacer.setPiece (block);

@@ -15,7 +15,10 @@ public class GUIcalculation
 			}
 		} else if (Input.GetMouseButton (0)) { 
 			guiPos = new Vector2[1];
-			guiPos [0] = Input.mousePosition;
+			Vector2 temp = Input.mousePosition;
+			temp.y = Mathf.Abs(temp.y -  Screen.height);
+
+			guiPos [0] = temp;
 		}
 	}
 
@@ -24,6 +27,7 @@ public class GUIcalculation
 		if (rect.height == 0 || rect.width == 0) {
 			return false;
 		}
+
 		foreach (Vector2 pos in guiPos) {
 			if ( rect.Contains(pos)) {
 				return true;
