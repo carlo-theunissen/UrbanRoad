@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class CustomGUI
+public class GUIcalculation
 {
 	private static Vector2[] guiPos;
 	public static void setGuiPos(){
@@ -11,19 +11,21 @@ public class CustomGUI
 		if (Input.touchCount > 0) {
 			for (int i = 0; i < Input.touchCount; i++) {
 				Touch touch = Input.GetTouch (i);
-				guiPos[i] = touch.position - screenVector;
+				guiPos [i] = touch.position - screenVector;
 			}
+		} else if (Input.GetMouseButton (0)) { 
+			guiPos = new Vector2[1];
+			guiPos [0] = Input.mousePosition;
 		}
 	}
+
 
 	public static bool collisionWithTouch(Rect rect){
 		if (rect.height == 0 || rect.width == 0) {
 			return false;
 		}
 		foreach (Vector2 pos in guiPos) {
-			if ( 
-				rect.x >= pos.x && rect.x + rect.width < pos.x &&
-				rect.y >= pos.y && rect.y + rect.height < pos.y) {
+			if ( rect.Contains(pos)) {
 				return true;
 			}
 		}

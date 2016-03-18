@@ -22,6 +22,9 @@ public class Mouse : MonoBehaviour {
     {
         this.following = following;
     }
+	public bool getFollowing(){
+		return following;
+	}
 	private Vector2? getMousePos(){
 		if (Input.touchCount > 0) {
 			return Input.GetTouch (0).position;

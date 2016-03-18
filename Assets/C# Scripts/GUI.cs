@@ -15,13 +15,20 @@ public class GUI : MonoBehaviour
 
     void OnGUI()
     {
+
+		GUIcalculation.setGuiPos (); //calculates the positions of the fingers
+		Rect pos;
+
         if(blocks == null)
         {
             blocks = getBlocks();
         }
         // Make a background box
         UnityEngine.GUI.Box(new Rect(Screen.width - 150, 0, 150, Screen.height), " " );
-        if (UnityEngine.GUI.Button(new Rect(Screen.width - 130, 10, 135, 30), "Reset"))
+
+		pos = new Rect (Screen.width - 130, 10, 135, 30);
+		UnityEngine.GUI.Box (pos, "Reset");
+		if (GUIcalculation.collisionWithTouch(pos))
         {
 			foreach (Block block in blocks) {
 				block.removeBlueprintPrefab ();
@@ -30,20 +37,25 @@ public class GUI : MonoBehaviour
 			blockplacer.setFollowing (false);
         }
 
-        int i = 0;
-        foreach (Block block in blocks)
-        {
-			if (UnityEngine.GUI.RepeatButton(new Rect(Screen.width - 130, 45 + i * 150, 135, 150), block.getPlaceholder()))
-            {
+       
+
+		int i = 0;
+		foreach (Block block in blocks) {
+			pos = new Rect (Screen.width - 130, 45 + i * 150, 135, 150);
+			UnityEngine.GUI.Box (new Rect (Screen.width - 130, 45 + i * 150, 135, 150), block.getPlaceholder ());
+			if (!blockplacer.getFollowing () && GUIcalculation.collisionWithTouch (pos)) {
 				deg = 0;
 				blockplacer.setDeg (0); 
 				blockplacer.setPiece (block);
 				blockplacer.setFollowing (true);
-            }
-            i++;
-        }
+			}
+			i++;
+		}
 
-		if (Input.GetKeyUp ("r") || UnityEngine.GUI.Button (new Rect (30, Screen.height - 60, 40, 40), "R")) {
+
+		pos = new Rect (30, Screen.height - 60, 40, 40);
+		UnityEngine.GUI.Box (pos, "R");
+		if (Input.GetKeyUp ("r") || GUIcalculation.collisionWithTouch(pos)) {
 			if (!rotated) {
 				rotated = true;
 				deg += 90;
