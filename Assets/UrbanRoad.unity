@@ -214,7 +214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47534b57209857643b98e97ae22e1f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouse: {fileID: 0}
+  mouse: {fileID: 1618068220}
+  placer: {fileID: 995920326}
 --- !u!4 &812504905
 Transform:
   m_ObjectHideFlags: 0
@@ -514,7 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4030ad36747d9044fa7bdd76b2b7da6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placer: {fileID: 0}
+  placer: {fileID: 995920326}
 --- !u!4 &1618068221
 Transform:
   m_ObjectHideFlags: 0

@@ -34,6 +34,10 @@ public class Grid : MonoBehaviour
 
 	}
 
+	public void placeObject(float x, float z, GameObject place, float deg = 0 ){
+		placeDummy (x, z, place, deg);
+	}
+
 
 	public void placeRoad(float x, float z, GameObject road, bool moveY = true){
 		road.transform.position = new Vector3 (x, moveY? 0.1f : 0, z);

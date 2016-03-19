@@ -11,7 +11,7 @@ public class Block
 	private int id;
 	private List<Vector2> collision;
 	private int uuid;
-	private Vector2 pos = new Vector2(-1,-1);
+	private Vector2? pos;
 	private float rotation;
 	private Texture2D placeholder;
 
@@ -29,17 +29,19 @@ public class Block
 		}
 		return new Vector2 ((width + 1) , ((height + 1) ));
 	}
-	public Block setPos(Vector2 pos){
+	public Block setPos(Vector2? pos){
 		this.pos = pos;
 		return this;
 	}
-	public Block clearPos(){
-		pos = new Vector2(-1,-1);
-		return this;
+	public Vector2? getPos(){
+		return pos;
 	}
 	public Block setRotation(float rotation){
 		this.rotation = rotation;
 		return this;
+	}
+	public float getRotation(){
+		return rotation;
 	}
 	public int getId(){
 		return id;
@@ -64,6 +66,7 @@ public class Block
 	public void removeBlueprintPrefab(){
 		if (blueprintObject != null && blueprintObject.activeInHierarchy) {
 			Object.Destroy (blueprintObject);
+			blueprintObject = null;
 		}
 	}
 
@@ -72,10 +75,21 @@ public class Block
 	}
 
 	public string serialize(){
-		return "";
+		if (getPos () == null) {
+			return "";
+		}
+		Vector2 temp = (Vector2)getPos ();
+		return temp.x + "," + temp.y + "," + getRotation();
 	}
 
 	public void unserialize(string text){
+		string[] data = text.Split (',');
+		Vector2 pos = new Vector2 ();
+		pos.x = int.Parse (data [0]);
+		pos.y = int.Parse (data [1]);
+		setRotation (float.Parse (data [2]));
+		setPos (pos);
+		
 	}
 
 	public static Block createFromConfig(PieceConfig config){

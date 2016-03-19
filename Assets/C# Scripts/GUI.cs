@@ -6,6 +6,7 @@ public class GUI : MonoBehaviour
     private Block[] blocks = null;
 	public static int boxRightWidth;
 	public Mouse mouse;
+	public BlockPlacer placer;
 	private bool rotated;
 	private int deg = 0;
 	static GUI()
@@ -30,10 +31,7 @@ public class GUI : MonoBehaviour
 		UnityEngine.GUI.Box (pos, "Reset");
 		if (GUIcalculation.collisionWithTouch(pos))
         {
-			foreach (Block block in blocks) {
-				block.removeBlueprintPrefab ();
-			}
-			GameMode.getCurrentLevel ().clear ();
+			placer.clearBlocks ();
 			mouse.setFollowing (false);
         }
 
@@ -69,7 +67,7 @@ public class GUI : MonoBehaviour
 		}
 
 		if (Input.GetKeyUp ("p")) {
-			Debug.Log( GameMode.getCurrentLevel ().getRoad ());
+			placer.loadFromDevice ();
 
 		}
 

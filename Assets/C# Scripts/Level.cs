@@ -61,13 +61,22 @@ public class Level {
 		return endPos;
 	}
 
-	public void saveToDevice(){
+	public void saveToDevice(string data){
+		PlayerPrefs.SetString("level."+getId()+".data", data);
+	}
+	public string getSavedData(){
+		return PlayerPrefs.GetString("level."+getId()+".data", "KOEKJES");
 	}
 
 	public bool containsAllBlocks(){
+		return getPlacedBlocks().Length == blocks.Length;
+	}
+	public Block[] getPlacedBlocks(){
 		if (grid == null) {
 			clear ();
 		}
+
+
 		List<Block> temp = new List<Block> ();
 		for (int y = 0; y < blockHeight; y++) {
 			for(int x = 0; x < blockWidth; x++){
@@ -76,7 +85,7 @@ public class Level {
 				}
 			}
 		}
-		return temp.Count == blocks.Length;
+		return temp.ToArray ();
 	}
 
 	public bool isValidPath(){
@@ -108,7 +117,7 @@ public class Level {
 			}
 		}
 		block
-			.clearPos ()
+			.setPos (null)
 			.setRotation (0);
 
 	}
@@ -162,8 +171,10 @@ public class Level {
 			grid [(int)temp.x, (int)temp.y] = block;
 		}
 
+		block
+			.setPos (start)
+			.setRotation(deg);
 
-		saveToDevice (); 
 		return true;
 	}
 

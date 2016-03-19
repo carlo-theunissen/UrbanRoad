@@ -8,9 +8,11 @@ public class BlockPlacer: MonoBehaviour {
 	public BlockPlacer(){
 		level = GameMode.getCurrentLevel ();
 	}
-
+	public void Start(){
+		loadFromDevice ();
+	}
 	public void hover(Block block, Vector2 pos, float deg){
-		
+	
 		GameObject prefab = block.getBlueprintPrefab ();
 		Vector2 temp = transformToGrid (pos, block.getWidthHeight (deg));
 
@@ -20,11 +22,17 @@ public class BlockPlacer: MonoBehaviour {
 		grid.placeDummy (temp.x, temp.y, prefab, deg);
 	}
 
-	public void placeObject(Block block, Vector2 pos, float deg){
+	public void placeObject(Block block, Vector2 pos, float deg, bool wasDummy = true){
 		if (canPlacePiece (pos, block, deg)) {
-			GameMode.getCurrentLevel ().setBlock ((int) pos.x, (int) pos.y, block, deg);
+			level.setBlock ((int) pos.x, (int) pos.y, block, deg);
+			if (!wasDummy) {
+				pos = transformToGrid (pos, block.getWidthHeight (deg));
+				grid.placeObject (pos.x, pos.y, block.getBlueprintPrefab (), deg);
+			} else {
+				AudioPlayer("build");
+				saveToDevice ();
+			}
 			drawRoad ();
-			AudioPlayer("build");
 
 		} else {
 			level.removeBlock (block);
@@ -32,7 +40,48 @@ public class BlockPlacer: MonoBehaviour {
 			AudioPlayer("error");
 		}
 	}
-
+	public void clearBlocks(bool keepStoredData = false){
+		foreach (Block block in level.getBlocks()) {
+			block.setPos (null).setRotation (0);
+			block.removeBlueprintPrefab ();
+		}
+		level.clear ();
+		if (!keepStoredData) {
+			level.saveToDevice ("");
+		}
+	}
+	private void saveToDevice(){
+		level.saveToDevice (serializeBlocks ());
+	}
+	public void loadFromDevice(){
+		clearBlocks (true);
+		loadFromData (level.getSavedData ());
+	}
+	private void loadFromData(string data){
+		foreach(string line in data.Split('|')){
+			if (line != "") {
+				
+				string[] calc = line.Split (':');
+				foreach (Block block in level.getBlocks()) {
+					if (block.getId () == int.Parse( calc [0] ) && block.getPos () == null) {
+						
+						block.unserialize (calc [1]);
+						placeObject (block, (Vector2) block.getPos (), block.getRotation (), false);
+						break;
+					}
+				}
+			}
+		}
+	}
+	private string serializeBlocks(){
+		string calc = "";
+		foreach (Block block in level.getBlocks()) {
+			if (block.getPos () != null) {
+				calc += "|"+block.getId()+":"+block.serialize()+"|";
+			}
+		}
+		return calc;
+	}
 	private void drawRoad(){
 		if (level.containsAllBlocks ()) {
 			RoadPiece[] pieces = level.getRoad ();
