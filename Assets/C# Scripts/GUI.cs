@@ -5,7 +5,7 @@ public class GUI : MonoBehaviour
 {
     private Block[] blocks = null;
 	public static int boxRightWidth;
-	public Mouse blockplacer;
+	public Mouse mouse;
 	private bool rotated;
 	private int deg = 0;
 	static GUI()
@@ -34,7 +34,7 @@ public class GUI : MonoBehaviour
 				block.removeBlueprintPrefab ();
 			}
 			GameMode.getCurrentLevel ().clear ();
-			blockplacer.setFollowing (false);
+			mouse.setFollowing (false);
         }
 
        
@@ -43,11 +43,11 @@ public class GUI : MonoBehaviour
 		foreach (Block block in blocks) {
 			pos = new Rect (Screen.width - 130, 45 + i * 150, 135, 150);
 			UnityEngine.GUI.Box (new Rect (Screen.width - 130, 45 + i * 150, 135, 150), block.getPlaceholder());
-			if ( !blockplacer.getFollowing () && GUIcalculation.collisionWithTouch (pos)) {
+			if ( !mouse.getFollowing () && GUIcalculation.collisionWithTouch (pos)) {
 				deg = 0;
-				blockplacer.setDeg (0); 
-				blockplacer.setPiece (block);
-				blockplacer.setFollowing (true);
+				mouse.setDeg (0); 
+				mouse.setPiece (block);
+				mouse.setFollowing (true);
 			}
 			i++;
 		}
@@ -60,7 +60,7 @@ public class GUI : MonoBehaviour
 				rotated = true;
 				deg += 90;
 				deg %= 360;
-				blockplacer.setDeg (deg);
+				mouse.setDeg (deg);
 
 			}
 			

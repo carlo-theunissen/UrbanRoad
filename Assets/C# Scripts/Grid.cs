@@ -6,7 +6,7 @@ public class Grid : MonoBehaviour
     public GameObject plane;
 	public GameObject road;
 
-    private GameObject[,] grid;
+
 	private Level level;
 
 	private void makeGrid(){
@@ -18,7 +18,6 @@ public class Grid : MonoBehaviour
 				GameObject gridPlane = (GameObject)Instantiate(plane);
 				gridPlane.transform.position = new Vector3(x,
 					0, z);
-				grid[x, z] = gridPlane;
 			}
 		}
 	}
@@ -44,7 +43,6 @@ public class Grid : MonoBehaviour
 	void Start ()
     {
 		level = GameMode.getCurrentLevel ();
-		grid = new GameObject[level.getWidth (), level.getHeight ()];
 		makeGrid ();
 		displayRoadPoints ();
 	}

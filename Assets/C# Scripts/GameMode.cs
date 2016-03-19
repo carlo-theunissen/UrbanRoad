@@ -16,7 +16,7 @@ public class GameMode
 	}
 	public static Level getCurrentLevel(){
 		if (currentLevel == null) {
-			currentLevel = getLevel (2);
+			currentLevel = getLevel (1);
 		}
 		return currentLevel;
 	}
