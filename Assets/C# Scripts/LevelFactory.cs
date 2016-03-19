@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class LevelFactory
@@ -22,7 +23,7 @@ public class LevelFactory
 		}
 		Level creation = new Level (id);
 		setWidthHeight (creation, rows);
-		calculate (data,  creation);
+		calculate (rows,  creation);
 		return creation;
 
 	}
@@ -42,7 +43,7 @@ public class LevelFactory
 	private void setWidthHeight(Level level, string[] rows){
 		int length = rows [rows.Length - 1] == "" ? rows.Length - 1 : rows.Length;
 		level.setHeight (length);
-		level.setWidth (rows[0].Replace(",","").Length -1);
+		level.setWidth (rows[0].Split(',').Length);
 	}
 	private void setStart(int loc, Level level){
 		level.setStart (getPos (level.getWidth(), level.getHeight(), loc));
@@ -53,33 +54,45 @@ public class LevelFactory
 	private Vector2 getPos(int width, int height, int pos){
 		return new Vector2 ((float) (pos % width) ,(float) (pos / width));
 	}
-	private void calculate(string data, Level level){
+	private void calculate(string[] rows, Level level){
 		Dictionary<int, int> blocks = new Dictionary<int, int>();
 		int index = 0;
-		foreach(char ch in data.ToCharArray ()){
-			if (!(ch == 'A' || ch == 'B' ||  (ch >= '0' && ch <= '9' ))) {
-				continue;
-			}
+		foreach (string data in rows) {
+			foreach (string el in data.Split (',')) {
+				string escaped = el.Trim ();
 
-			if (ch == 'A') {
-				setStart (index, level);
-			}
-			if (ch == 'B'){
-				setEnd(index, level);
-			}
-			if ((ch >= '1' && ch <= '9')) {
-				int id = int.Parse (ch.ToString ());
-				int val = 1;
-
-				if (blocks.ContainsKey (id)) {
-					blocks.TryGetValue (id, out val);
-					val++;
-					blocks.Remove (id);
+				if (escaped.Equals ("A")) {
+					setStart (index, level);
+					index++;
+					continue;
 				}
-				blocks.Add (id, val);
+
+			
+				if (escaped.Equals("B")) {
+					
+					setEnd (index, level);
+
+					index++;
+					continue;
+				}
+
+				int id;
+				if (int.TryParse (escaped, out id)) {
+					if (id >= 1) {
+						int val = 1;
+						if (blocks.ContainsKey (id)) {
+							blocks.TryGetValue (id, out val);
+							val++;
+							blocks.Remove (id);
+						}
+						blocks.Add (id, val);
+					}
+					index++;
+				}
+		
 			}
-			index++;
 		}
+	
 
 		calculateBlocks (blocks, level);
 	}
@@ -97,7 +110,7 @@ public class LevelFactory
 				block.Add (makeBlock (config));
 			}
 		}
-
+			
 		level.setBlocks (block.ToArray ());
 
 	}

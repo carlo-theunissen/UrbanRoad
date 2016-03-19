@@ -85,7 +85,7 @@
 		<blocks>
 			<block x="0" y="0" />
 			<block x="1" y="0" />
-			<block x="0" y="1" />
+			<block x="1" y="1" />
 		</blocks>
 	</piece>
 	<piece id="9">
@@ -104,7 +104,7 @@
 
 		<blocks>
 			<block x="0" y="0" />
-			<block x="1" y="0" />
+			<block x="0" y="1" />
 		</blocks>
 	</piece>
 </pieces>

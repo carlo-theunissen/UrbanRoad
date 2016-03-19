@@ -5,7 +5,7 @@ public class GUI : MonoBehaviour
 {
     private Block[] blocks = null;
 	public static int boxRightWidth;
-	public Mouse blockplacer;
+	public Mouse mouse;
 	private bool rotated;
 	private int deg = 0;
 	static GUI()
@@ -15,40 +15,52 @@ public class GUI : MonoBehaviour
 
     void OnGUI()
     {
+
+		GUIcalculation.setGuiPos (); //calculates the positions of the fingers
+		Rect pos;
+
         if(blocks == null)
         {
             blocks = getBlocks();
         }
         // Make a background box
         UnityEngine.GUI.Box(new Rect(Screen.width - 150, 0, 150, Screen.height), " " );
-        if (UnityEngine.GUI.Button(new Rect(Screen.width - 130, 10, 135, 30), "Reset"))
+
+		pos = new Rect (Screen.width - 130, 10, 135, 30);
+		UnityEngine.GUI.Box (pos, "Reset");
+		if (GUIcalculation.collisionWithTouch(pos))
         {
 			foreach (Block block in blocks) {
 				block.removeBlueprintPrefab ();
 			}
 			GameMode.getCurrentLevel ().clear ();
-			blockplacer.setFollowing (false);
+			mouse.setFollowing (false);
         }
 
-        int i = 0;
-        foreach (Block block in blocks)
-        {
-			if (UnityEngine.GUI.RepeatButton(new Rect(Screen.width - 130, 45 + i * 150, 135, 150), block.getPlaceholder()))
-            {
+       
+
+		int i = 0;
+		foreach (Block block in blocks) {
+			pos = new Rect (Screen.width - 130, 45 + i * 150, 135, 150);
+			UnityEngine.GUI.Box (new Rect (Screen.width - 130, 45 + i * 150, 135, 150), block.getPlaceholder());
+			if ( !mouse.getFollowing () && GUIcalculation.collisionWithTouch (pos)) {
 				deg = 0;
-				blockplacer.setDeg (0); 
-				blockplacer.setPiece (block);
-				blockplacer.setFollowing (true);
-            }
-            i++;
-        }
+				mouse.setDeg (0); 
+				mouse.setPiece (block);
+				mouse.setFollowing (true);
+			}
+			i++;
+		}
 
-		if (Input.GetKeyUp ("r") || UnityEngine.GUI.Button (new Rect (30, Screen.height - 60, 40, 40), "R")) {
+
+		pos = new Rect (30, Screen.height - 60, 40, 40);
+		UnityEngine.GUI.Box (pos, "R");
+		if (Input.GetKeyUp ("r") || GUIcalculation.collisionWithTouch(pos)) {
 			if (!rotated) {
 				rotated = true;
 				deg += 90;
 				deg %= 360;
-				blockplacer.setDeg (deg);
+				mouse.setDeg (deg);
 
 			}
 			

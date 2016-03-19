@@ -6,7 +6,7 @@ public class Grid : MonoBehaviour
     public GameObject plane;
 	public GameObject road;
 
-    private GameObject[,] grid;
+
 	private Level level;
 
 	private void makeGrid(){
@@ -18,7 +18,6 @@ public class Grid : MonoBehaviour
 				GameObject gridPlane = (GameObject)Instantiate(plane);
 				gridPlane.transform.position = new Vector3(x,
 					0, z);
-				grid[x, z] = gridPlane;
 			}
 		}
 	}
@@ -44,37 +43,24 @@ public class Grid : MonoBehaviour
 	void Start ()
     {
 		level = GameMode.getCurrentLevel ();
-		grid = new GameObject[level.getWidth (), level.getHeight ()];
 		makeGrid ();
 		displayRoadPoints ();
 	}
 
 	private void displayRoadPoints(){
-		RoadPiece pos = getRoadPiece (level.getFinish ());
+		RoadPiece pos = getRoadPiece (VectorCalculation.revertToOrigin(level.getFinish (), level));
 		placeRoad (pos.Position.x, pos.Position.y, pos.getPrefab ());
 
-		pos = getRoadPiece (level.getStart ());
+		pos = getRoadPiece (VectorCalculation.revertToOrigin(level.getStart (), level));
 		placeRoad (pos.Position.x, pos.Position.y, pos.getPrefab ());
 	}
 
 	private RoadPiece getRoadPiece(Vector2 calc){
 		RoadPiece road = new RoadPiece();
-		if (calc.x == 0) {
-			calc.x--;
-			road.Position = calc;
-			road.type = 2;
-			return road;
-		}
 		if (calc.y == 0) {
 			calc.y--;
 			road.Position = calc;
 			road.type = 2;
-			return road;
-		}
-		if (calc.x + 1 == level.getWidth ()) {
-			calc.x++;
-			road.Position = calc;
-			road.type = 1;
 			return road;
 		}
 		if (calc.y + 1 == level.getHeight ()) {
