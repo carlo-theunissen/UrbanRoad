@@ -5,15 +5,17 @@ using UnityEngine;
 public class XmlHelper
 {
 	private static XmlDocument doc;
-	public static XmlDocument getXml(){
-		if (doc == null) {
+	private static string storedFile;
+	public static XmlDocument getXml(string file="game"){
+		if (storedFile != file || doc == null) {
+			storedFile = file;
 			doc = new XmlDocument ();
-			doc.LoadXml (getPieceData ()); 
+			doc.LoadXml (getPieceData (file)); 
 		}
 		return doc;
 	}
-	private static string getPieceData(){
-		TextAsset level = (TextAsset)Resources.Load ("Config/pieces");
+	private static string getPieceData(string file){
+		TextAsset level = (TextAsset)Resources.Load ("Config/"+file);
 		return level.text;
 	}
 }
