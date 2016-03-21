@@ -7,11 +7,18 @@ namespace Game
 		public int type = 1;
 		public Vector2 Position;
 		private GameObject displayedObject;
+		private int? rotation;
 		public GameObject getPrefab(){
 			if (displayedObject == null) {
 				displayedObject = Object.Instantiate (RoadPieceHelper.getRoadPrefab (type));
 			}
 			return displayedObject;
+		}
+		public int getRotation(){
+			if (rotation == null) {
+				rotation = RoadPieceHelper.getRotation (type);
+			}
+			return (int)rotation;
 		}
 	}
 
