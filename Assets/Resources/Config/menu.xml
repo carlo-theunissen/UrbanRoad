@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<buttons>
+
+	<button id="level_select" x="10%" y="10%" max-x="20px" max-y="20px" min-width="100px" width="30%">
+		<img type="default" src="level_select_default" />
+		<img type="clicked" src="level_select_clicked" />
+	</button>
+
+	<button id="audio_mute" x="10%" y="20%" max-x="20px" max-y="20px" width="30%">
+		<img type="default" src="audio_mute_default" />
+		<img type="clicked" src="audio_mute_clicked" />
+	</button>
+
+	<button id="audio_unmute" x="10%" y="30%" max-x="20px" max-y="30px" width="30%">
+		<img type="default" src="audio_unmute_default" />
+		<img type="clicked" src="audio_unmute_clicked" />
+	</button>
+
+	<button id="credits" x="10%"  y="40%" max-x="20px" max-y="40px" width="30%">
+		<img type="default" src="credits_default" />
+		<img type="clicked" src="credits_clicked" />
+	</button>
+
+</buttons>
