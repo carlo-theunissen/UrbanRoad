@@ -63,6 +63,9 @@ namespace Game
 				if (line != "") {
 					
 					string[] calc = line.Split (':');
+					if(calc.Length != 2 || calc[0] == "") {
+						                    return;
+						                }
 					foreach (Block block in level.getBlocks()) {
 						if (block.getId () == int.Parse( calc [0] ) && block.getPos () == null) {
 							
