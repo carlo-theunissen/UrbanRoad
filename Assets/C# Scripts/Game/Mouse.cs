@@ -10,6 +10,7 @@ namespace Game
 		public BlockPlacer placer;
 		private int deg = 0;
 		private Vector2? lastGridPos;
+		private Vector2? lastRawPos;
 
 		public void setDeg(int deg){
 			this.deg = deg;
@@ -47,7 +48,10 @@ namespace Game
 			}
 
 			Vector2? mousePos = getMousePos ();
-
+			if (lastRawPos == mousePos) {
+				return;
+			}
+			lastRawPos = getMousePos ();
 			if (mousePos != null && piece != null) {
 				lastGridPos = gridPos ((Vector2) mousePos);
 				placer.hover(piece, (Vector2) lastGridPos, deg);
