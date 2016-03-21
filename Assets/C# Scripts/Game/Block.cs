@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-
+namespace Game
+{
 public class Block
 {
 	private GameObject blueprintPrefab;
@@ -96,5 +97,5 @@ public class Block
 		return new Block (config.id, 0, config.collision, config.prefab, config.placeholder);
 	}
 }
-
+}
 

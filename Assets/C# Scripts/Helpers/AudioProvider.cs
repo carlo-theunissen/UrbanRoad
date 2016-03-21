@@ -5,17 +5,19 @@ using System.Collections.Generic;
 
 public class AudioProvider
 {
-	private static Dictionary<string,AudioClip> cache;
+	private Dictionary<string,AudioClip> cache;
 	private AudioProvider (){}
 	private static AudioProvider instance;
-	private static void makeCache(){
+
+	private void makeCache(){
 		if(cache == null){
 			cache = new Dictionary<string,AudioClip>();
 		}
 	}
 
-	public void playAudio(string name, AudioSource source){
+	public void playAudio(string name, AudioSource source, bool loop =false){
 		source.clip = getAudio (name);
+		source.loop = loop;
 		source.Play ();
 	}
 
@@ -32,7 +34,7 @@ public class AudioProvider
 		return gameObj;
 	}
 
-	private static AudioClip getCached(string id){
+	private AudioClip getCached(string id){
 
 		if (cache.ContainsKey (id)) {
 			return cache [id];
@@ -47,7 +49,7 @@ public class AudioProvider
 		}
 		return instance;
 	}
-	private static AudioClip getResource(string name){
+	private AudioClip getResource(string name){
 		XmlDocument doc = XmlHelper.getXml ();
 		XmlNode node = doc.SelectSingleNode ("//audio[@name = '"+name+"']");
 		if (node == null) {
