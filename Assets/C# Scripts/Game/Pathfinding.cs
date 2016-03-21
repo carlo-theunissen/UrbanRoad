@@ -7,10 +7,10 @@ namespace Game
 	{
 
 	    private static Pathfinding instance = null;
-	    private Vector2 left = new Vector2(-1, 0);
-	    private Vector2 up = new Vector2(0, 1);
-	    private Vector2 right = new Vector2(1, 0);
-	    private Vector2 down = new Vector2(0, -1);
+	    private Vector2 left = new Vector2(-1, 0);//0
+	    private Vector2 up = new Vector2(0, 1);//1
+	    private Vector2 right = new Vector2(1, 0);//2
+	    private Vector2 down = new Vector2(0, -1);//3
 
 
 	    private Pathfinding()
@@ -55,8 +55,85 @@ namespace Game
 				pieces [index].Position = vec;
 				index++;
 			}
+            int lastAction = 1;
+            index = 0;
+            foreach (RoadPiece current in pieces) {
+                
+                int nextAction = 1;
+                if (index + 1 < pieces.Length)
+                {
+                    Vector2 diff = current.Position - pieces[index + 1].Position;
+                    if (diff.Equals(left)) {
+                        nextAction = 0;
+                    }
+                    if (diff.Equals(up))
+                    {
+                        nextAction = 1;
+                    }
+                    if (diff.Equals(right)) {
+                        nextAction = 2;
+                    }
+                    if (diff.Equals(down)) {
+                        nextAction = 3;
+                    }
+                }
+
+                pieces[index ++].type = calculateRoadType(lastAction, nextAction);
+                lastAction = nextAction;
+            }
 			return pieces; 
-	    }
+	    } 
+
+        private int calculateRoadType(int lastAction, int nextAction) {
+            // from left to ...
+            if (lastAction == 0 && nextAction == 0)
+            {
+                return 2;
+            }
+            if (lastAction == 0 && nextAction == 1)
+            {
+                return 5;
+            }
+            if (lastAction == 0 && nextAction == 3)
+            {
+                return 3;
+            }
+            // from up to ...
+            if (lastAction == 1 && nextAction == 0)
+            {
+                return 3;
+            }
+            if (lastAction == 1 && nextAction == 1)
+            {
+                return 1;
+            }
+            if (lastAction == 1 && nextAction == 2) 
+            {
+                return 6;
+            }
+            // from right to ...
+            if (lastAction == 2 && nextAction == 1) {
+                return 4;
+            }
+            if (lastAction == 2 && nextAction == 2) {
+                return 2;
+            }
+            if (lastAction == 2 && nextAction == 3) {
+                return 6;
+            }
+            // from down to ..
+            if (lastAction == 3 && nextAction == 0) {
+                return 4;
+            }
+            if (lastAction == 3 && nextAction == 2) {
+                return 5;
+            }
+            if (lastAction == 3 && nextAction == 3) {
+                return 1;
+            }
+
+            return 1;
+        }
 
 	    private Vector2[] getNeighbors(Level level,Vector2 pos, ref List<Vector2> previous) {
 	        List<Vector2> array = new List<Vector2>();
