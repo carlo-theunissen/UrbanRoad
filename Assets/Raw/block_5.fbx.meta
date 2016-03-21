@@ -1,80 +1,15 @@
 fileFormatVersion: 2
-guid: 78a52ab121de7c049ac26894f5756fc7
-timeCreated: 1457343710
+guid: 324f4ba2f76d5744f8171986938896e5
+timeCreated: 1458555817
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: block_1
-    100002: block_10
-    100004: block_11
-    100006: block_12
-    100008: block_2
-    100010: block_3
-    100012: block_4
-    100014: //RootNode
-    100016: block_5
-    100018: block_6
-    100020: block_7
-    100022: block_8
-    100024: block_9
-    100026: pCube31
-    100028: pPlane1
-    400000: block_1
-    400002: block_10
-    400004: block_11
-    400006: block_12
-    400008: block_2
-    400010: block_3
-    400012: block_4
-    400014: //RootNode
-    400016: block_5
-    400018: block_6
-    400020: block_7
-    400022: block_8
-    400024: block_9
-    400026: pCube31
-    400028: pPlane1
-    2300000: block_1
-    2300002: block_10
-    2300004: block_11
-    2300006: block_12
-    2300008: block_2
-    2300010: block_3
-    2300012: block_4
-    2300014: block_5
-    2300016: block_6
-    2300018: block_7
-    2300020: block_8
-    2300022: block_9
-    2300024: pPlane1
-    3300000: block_1
-    3300002: block_10
-    3300004: block_11
-    3300006: block_12
-    3300008: block_2
-    3300010: block_3
-    3300012: block_4
-    3300014: block_5
-    3300016: block_6
-    3300018: block_7
-    3300020: block_8
-    3300022: block_9
-    3300024: pPlane1
-    4300000: block_7
-    4300002: block_6
-    4300004: block_9
-    4300006: pPlane1
-    4300008: block_10
-    4300010: block_8
-    4300012: block_5
-    4300014: block_4
-    4300016: block_3
-    4300018: block_2
-    4300020: block_1
-    4300022: block_11
-    4300024: block_12
-    9500000: //RootNode
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Object054
   materials:
     importMaterials: 1
     materialName: 0
@@ -133,7 +68,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
