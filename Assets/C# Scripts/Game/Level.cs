@@ -15,7 +15,8 @@ namespace Game
 		private RoadPiece[] road;
 		private List<Block> placedBlocks;
 
-		public Level(){
+		public Level(int levelId){
+			this.levelId = levelId;
 			placedBlocks = new List<Block> ();
 		}
 		public Level setWidth(int width){
@@ -41,9 +42,6 @@ namespace Game
 		public Level setEnd(Vector2 end){
 			endPos = end;
 			return this;
-		}
-		public Level(int levelId){
-			this.levelId = levelId;
 		}
 		public int getId(){
 			return levelId;

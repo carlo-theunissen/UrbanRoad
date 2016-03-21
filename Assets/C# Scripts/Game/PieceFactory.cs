@@ -8,9 +8,12 @@ namespace Game
 	public class PieceFactory
 	{
 		static PieceFactory instance = null;
+		private static Dictionary<int,PieceConfig> cache;
+
 		private XmlDocument xml;
 		private PieceFactory() {
 			xml = XmlHelper.getXml ();
+			cache = new Dictionary<int,PieceConfig> ();
 		}
 		public static PieceFactory getInstance(){
 			if (instance == null) {
@@ -20,6 +23,11 @@ namespace Game
 		}
 
 		public PieceConfig getConfig(int id){
+			
+			if (cache.ContainsKey (id)) {
+				return cache [id];
+			}
+
 			PieceConfig config = new PieceConfig ();
 			config.id = id;
 			XmlNode node = xml.SelectSingleNode ("//piece[@id = '"+id+"']");
@@ -32,6 +40,7 @@ namespace Game
 			config.blockCount = blocks.Count;
 			config.prefab = getPrefab (node.SelectSingleNode ("prefab"));
 			config.placeholder = getTexture(node.SelectSingleNode ("placeholder"));
+			cache.Add (id, config);
 			return config;
 		}
 
