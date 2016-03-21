@@ -62,9 +62,6 @@ public class BlockPlacer: MonoBehaviour {
 			if (line != "") {
 				
 				string[] calc = line.Split (':');
-                if(calc.Length != 2 || calc[0] == "") {
-                    return;
-                }
 				foreach (Block block in level.getBlocks()) {
 					if (block.getId () == int.Parse( calc [0] ) && block.getPos () == null) {
 						
@@ -118,7 +115,7 @@ public class BlockPlacer: MonoBehaviour {
 	}
 
 
-	private void AudioPlayer(string audioBuild)
+	public void AudioPlayer(string audioBuild)
 	{
 
 		AudioSource source = gameObject.GetComponent<AudioSource>();
