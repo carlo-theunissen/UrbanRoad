@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-
+using Game;
 public class VectorCalculation
 {
 	public static Vector2 rotateVector(Vector2 old, float deg){
