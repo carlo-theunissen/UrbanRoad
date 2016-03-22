@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8969b89fe64b9a940b9684832dbe5f7a
-timeCreated: 1457950175
+guid: a56f9554eb16f0946962909cffb9bf8f
+timeCreated: 1458634867
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Object039
+    4300000: Road
   materials:
     importMaterials: 1
     materialName: 0
