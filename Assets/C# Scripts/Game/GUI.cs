@@ -32,7 +32,8 @@ namespace Game
 			UnityEngine.GUI.Box (pos, "Reset");
 			if (GUIcalculation.collisionWithTouch(pos))
 	        {
-				placer.clearBlocks ();
+                AudioProvider.getInstance().playAudio("Reset");
+                placer.clearBlocks ();
 				mouse.setFollowing (false);
 	        }
 
@@ -43,8 +44,8 @@ namespace Game
 				pos = new Rect (Screen.width - 130, 45 + i * 150, 135, 150);
 				UnityEngine.GUI.Box (new Rect (Screen.width - 130, 45 + i * 150, 135, 150), block.getPlaceholder());
 				if ( !mouse.getFollowing () && GUIcalculation.collisionWithTouch (pos)) {
-
-					deg = 0;
+   
+                    deg = 0;
 					mouse.setDeg (0); 
 					mouse.setPiece (block);
 					mouse.setFollowing (true);
@@ -57,7 +58,7 @@ namespace Game
 			UnityEngine.GUI.Box (pos, "R");
 			if (Input.GetKeyUp ("r") || GUIcalculation.collisionWithTouch(pos)) {
 				if (!rotated) {
-					AudioProvider.getInstance().playAudio("error");
+					AudioProvider.getInstance().playAudio("Sound Button");
 					rotated = true;
 					deg += 90;
 					deg %= 360;

@@ -30,7 +30,7 @@ namespace Game
 					pos = transformToGrid (pos, block.getWidthHeight (deg));
 					grid.placeObject (pos.x, pos.y, block.getBlueprintPrefab (), deg);
 				} else {
-					AudioPlayer("build");
+					AudioPlayer("Building");
 					saveToDevice ();
 				}
 				drawRoad ();
