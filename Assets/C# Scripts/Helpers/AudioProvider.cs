@@ -15,7 +15,7 @@ public class AudioProvider
 		}
 	}
 
-	public void playAudio(string name, AudioSource source, bool loop =false){
+	public void playAudio(string name, bool loop =false){
 		source.clip = getAudio (name);
 		source.loop = loop;
 		source.Play ();
