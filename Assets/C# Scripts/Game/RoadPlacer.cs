@@ -7,7 +7,7 @@ namespace Game
 	{
 		private RoadPiece[] data;
 		private int current = 0;
-		private const int speed = 2;
+		private const int speed = 4;
 		public RoadPlacer (RoadPiece[] data)
 		{
 			this.data = data;
