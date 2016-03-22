@@ -148,10 +148,18 @@
 	</road>
 
 </roads>
-
+ 
 <audios>
-	<audio name="error" file="error" />
-	<audio name="build" file="build" />
+	<audio name="error" file="Button/error" />
+	<audio name="Building" file="Building/Building" />
+	<audio name="Complete" file="Complete/Complete" />
+	<audio name="CarClaxon" file="Enviroment/CarClaxon" />
+	<audio name="Menu_Background" file="Menu/Menu_Background" />
+	<audio name="Menu Button" file="Button/Menu Button" />
+	<audio name="Reset" file="Button/Reset" />
+	<audio name="Sound Button" file="Button/Sound Button" />
+	<audio name="Standard Button" file="Button/Standard Button" />
+
 </audios>
 
 </document>
