@@ -29,7 +29,7 @@ namespace Game
 
 			place.transform.position = new Vector3 (x, 0, z);
 			if (place.transform.rotation.y != deg) {
-				place.transform.rotation = Quaternion.Euler (0, deg, 0);
+				place.transform.rotation = Quaternion.Euler (place.transform.rotation.x, deg, place.transform.rotation.z);
 			
 			}
 
@@ -42,7 +42,7 @@ namespace Game
 
 		public void placeRoad(float x, float z, GameObject road, float deg,  bool moveY = true){
 			road.transform.position = new Vector3 (x, moveY? 0.1f : 0, z);
-			road.transform.rotation = Quaternion.Euler (-90, deg, 0);
+			road.transform.rotation = Quaternion.Euler (0, deg, 0);
 		}
 
 		// Use this for initialization

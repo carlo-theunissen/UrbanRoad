@@ -122,8 +122,7 @@ namespace Game
 		private void AudioPlayer(string audioBuild)
 		{
 
-			AudioSource source = gameObject.GetComponent<AudioSource>();
-			AudioProvider.getInstance().playAudio(audioBuild,source);
+			AudioProvider.getInstance().playAudio(audioBuild);
 
 		}
 

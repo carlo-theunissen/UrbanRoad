@@ -14,6 +14,7 @@ namespace Game
 
 		public void setDeg(int deg){
 			this.deg = deg;
+			lastRawPos = null;
 		}
 
 		public void setPiece(Block block){

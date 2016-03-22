@@ -57,7 +57,7 @@ namespace Game
 			UnityEngine.GUI.Box (pos, "R");
 			if (Input.GetKeyUp ("r") || GUIcalculation.collisionWithTouch(pos)) {
 				if (!rotated) {
-                    AudioProvider.playAudio("error");
+					AudioProvider.getInstance().playAudio("error");
 					rotated = true;
 					deg += 90;
 					deg %= 360;
