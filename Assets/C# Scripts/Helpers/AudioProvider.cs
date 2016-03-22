@@ -8,6 +8,7 @@ public class AudioProvider
 	private Dictionary<string,AudioClip> cache;
 	private AudioProvider (){}
 	private static AudioProvider instance;
+	private AudioSource cachedSource; 
 
 	private void makeCache(){
 		if(cache == null){
@@ -15,10 +16,11 @@ public class AudioProvider
 		}
 	}
 	public void playAudio(string name){
-	
-		GameObject go = GameObject.Find ("SoundPlayer");
-		AudioSource source = go.GetComponent<AudioSource> ();
-		playAudio (name, source, false);
+		if (cachedSource == null) {
+			GameObject go = GameObject.Find ("SoundPlayer");
+			cachedSource = go.GetComponent<AudioSource> ();
+		}
+		playAudio (name, cachedSource, false);
 	}
 
 	public void playAudio(string name, AudioSource source, bool loop =false){
