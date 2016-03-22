@@ -14,8 +14,14 @@ public class AudioProvider
 			cache = new Dictionary<string,AudioClip>();
 		}
 	}
+	public void playAudio(string name){
+	
+		GameObject go = GameObject.Find ("SoundPlayer");
+		AudioSource source = go.GetComponent<AudioSource> ();
+		playAudio (name, source, false);
+	}
 
-	public void playAudio(string name, bool loop =false){
+	public void playAudio(string name, AudioSource source, bool loop =false){
 		source.clip = getAudio (name);
 		source.loop = loop;
 		source.Play ();
