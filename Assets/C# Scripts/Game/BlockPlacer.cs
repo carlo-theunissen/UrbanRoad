@@ -63,6 +63,9 @@ namespace Game
 				if (line != "") {
 					
 					string[] calc = line.Split (':');
+					if(calc.Length != 2 || calc[0] == "") {
+						                    return;
+						                }
 					foreach (Block block in level.getBlocks()) {
 						if (block.getId () == int.Parse( calc [0] ) && block.getPos () == null) {
 							
@@ -89,7 +92,7 @@ namespace Game
 				if (pieces != null) {
 					foreach (RoadPiece road in pieces) {
 						Vector2 pos = VectorCalculation.revertToOrigin (road.Position, level);
-						grid.placeRoad (pos.x, pos.y, road.getPrefab ());
+						grid.placeRoad (pos.x, pos.y, road.getPrefab (), road.getRotation());
 					}
 				}
 			}

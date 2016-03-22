@@ -16,10 +16,19 @@ public class Block
 	private float rotation;
 	private Texture2D placeholder;
 
+	private Vector2? cachedWidthHight;
+	private float? cachedDeg;
+	
 	public Texture2D getPlaceholder(){
 		return placeholder;
 	}
+	
 	public Vector2 getWidthHeight(float deg){
+		if (deg == cachedDeg) {
+				return (Vector2) cachedWidthHight;
+		}
+		cachedDeg = deg;
+
 		float width = 0;
 		float height = 0;
 
@@ -28,7 +37,8 @@ public class Block
 			width = Mathf.Max (width, Mathf.Abs(temp.x));
 			height = Mathf.Max (height, Mathf.Abs(temp.y));
 		}
-		return new Vector2 ((width + 1) , ((height + 1) ));
+			cachedWidthHight = new Vector2 ((width + 1) , ((height + 1) ));
+			return (Vector2)cachedWidthHight;
 	}
 	public Block setPos(Vector2? pos){
 		this.pos = pos;

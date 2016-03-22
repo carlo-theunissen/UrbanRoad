@@ -11,6 +11,14 @@ namespace Game
 		private Vector2 endPos;
 		private Block[,] grid = null;
 
+		private bool hasChanged = false;
+		private RoadPiece[] road;
+		private List<Block> placedBlocks;
+
+		public Level(int levelId){
+			this.levelId = levelId;
+			placedBlocks = new List<Block> ();
+		}
 		public Level setWidth(int width){
 			blockWidth = width;
 			return this;
@@ -35,13 +43,11 @@ namespace Game
 			endPos = end;
 			return this;
 		}
-		public Level(int levelId){
-			this.levelId = levelId;
-		}
 		public int getId(){
 			return levelId;
 		}
 		public void clear(){
+			hasChanged = true;
 			grid = new Block[getWidth(),getHeight()];
 		}
 
@@ -76,21 +82,7 @@ namespace Game
 			if (grid == null) {
 				clear ();
 			}
-
-
-			List<Block> temp = new List<Block> ();
-			for (int y = 0; y < blockHeight; y++) {
-				for(int x = 0; x < blockWidth; x++){
-					if (grid [x, y] != null && !temp.Contains(grid [x, y])) {
-						temp.Add (grid [x, y]);
-					}
-				}
-			}
-			return temp.ToArray ();
-		}
-
-		public bool isValidPath(){
-			return containsAllBlocks () && getRoad() == null;
+			return placedBlocks.ToArray ();
 		}
 			
 		public Block getPos(int x, int y){
@@ -110,6 +102,10 @@ namespace Game
 			if (grid == null) {
 				clear ();
 			}
+			if (!placedBlocks.Contains (block)) {
+				return;
+			}
+			placedBlocks.Remove (block);
 			for (int y = 0; y < blockHeight; y++) {
 				for(int x = 0; x < blockWidth; x++){
 					if (grid [x, y] != null && grid [x, y].Equals (block)) {
@@ -117,9 +113,12 @@ namespace Game
 					}
 				}
 			}
+
 			block
 				.setPos (null)
 				.setRotation (0);
+			
+			hasChanged = true;
 
 		}
 
@@ -161,6 +160,7 @@ namespace Game
 			if (grid == null) {
 				clear ();
 			}
+			hasChanged = true; 
 
 			removeBlock (block);
 
@@ -171,6 +171,8 @@ namespace Game
 				Vector2 temp = getGridPoint (col, start, least, deg);
 				grid [(int)temp.x, (int)temp.y] = block;
 			}
+
+			placedBlocks.Add (block);
 
 			block
 				.setPos (start)
@@ -204,8 +206,17 @@ namespace Game
 			return true;
 		}
 
+
+		public bool isValidPath(){
+			return containsAllBlocks () && getRoad() != null;
+		}
+
 		public RoadPiece[] getRoad(){
-			return Pathfinding.getInstance ().getRoad (this);
+			if (!hasChanged && road != null) {
+				return road;
+			}
+			hasChanged = false;
+			return road = Pathfinding.getInstance ().getRoad (this);
 		}
 
 		public int getHeight(){

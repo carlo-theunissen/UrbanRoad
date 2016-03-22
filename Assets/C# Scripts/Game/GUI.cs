@@ -43,6 +43,7 @@ namespace Game
 				pos = new Rect (Screen.width - 130, 45 + i * 150, 135, 150);
 				UnityEngine.GUI.Box (new Rect (Screen.width - 130, 45 + i * 150, 135, 150), block.getPlaceholder());
 				if ( !mouse.getFollowing () && GUIcalculation.collisionWithTouch (pos)) {
+
 					deg = 0;
 					mouse.setDeg (0); 
 					mouse.setPiece (block);
@@ -66,11 +67,6 @@ namespace Game
 				
 			} else {
 				rotated = false;
-			}
-
-			if (Input.GetKeyUp ("p")) {
-				placer.loadFromDevice ();
-
 			}
 
 

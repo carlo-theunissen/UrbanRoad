@@ -40,8 +40,9 @@ namespace Game
 		}
 
 
-		public void placeRoad(float x, float z, GameObject road, bool moveY = true){
+		public void placeRoad(float x, float z, GameObject road, float deg,  bool moveY = true){
 			road.transform.position = new Vector3 (x, moveY? 0.1f : 0, z);
+			road.transform.rotation = Quaternion.Euler (-90, deg, 0);
 		}
 
 		// Use this for initialization
@@ -54,10 +55,10 @@ namespace Game
 
 		private void displayRoadPoints(){
 			RoadPiece pos = getRoadPiece (VectorCalculation.revertToOrigin(level.getFinish (), level));
-			placeRoad (pos.Position.x, pos.Position.y, pos.getPrefab ());
+			placeRoad (pos.Position.x, pos.Position.y, pos.getPrefab (),0);
 
 			pos = getRoadPiece (VectorCalculation.revertToOrigin(level.getStart (), level));
-			placeRoad (pos.Position.x, pos.Position.y, pos.getPrefab ());
+			placeRoad (pos.Position.x, pos.Position.y, pos.getPrefab (),0);
 		}
 
 		private RoadPiece getRoadPiece(Vector2 calc){
