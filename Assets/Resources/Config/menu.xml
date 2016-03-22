@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <buttons>
 
-	<button id="level_select" x="10%" y="10%" max-x="2000px" max-y="2000px" min-width="100px" width="30%">
-		<img type="default" src="level_select_default" />
-		<img type="clicked" src="level_select_clicked" />
+	<button id="logo">
+		<img type="default" src="Title" />
+	</button>
+	<button id="level_select">
+		<img type="default" src="LevelSelect_button" />
 	</button>
 
-	<button id="audio_mute" x="30%" y="20%" max-x="2000px" max-y="2000px" min-width="100px" width="30%">
-		<img type="default" src="audio_mute_default" />
-		<img type="clicked" src="audio_mute_clicked" />
+	<button id="credits">
+		<img type="default" src="Credits_Button" />
 	</button>
 
-	<button id="audio_unmute" x="40%" y="30%" max-x="2000px" max-y="3000px" min-width="100px" width="30%">
-		<img type="default" src="audio_unmute_default" />
-		<img type="clicked" src="audio_unmute_clicked" />
+	<button id="audio_mute" >
+		<img type="default" src="mute_button" />
 	</button>
 
-	<button id="credits" x="60%"  y="40%" max-x="2000px" max-y="4000px" min-width="100px" width="30%">
-		<img type="default" src="credits_default" />
-		<img type="clicked" src="credits_clicked" />
+	<button id="audio_unmute">
+		<img type="default" src="unmute_button" />
 	</button>
+
 
 
 </buttons>

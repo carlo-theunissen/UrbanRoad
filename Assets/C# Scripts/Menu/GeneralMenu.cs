@@ -19,7 +19,10 @@ namespace Menu
 		}
 
 		private void setButtons(){
-			buttons = new Button[] { new Button("level_select"), PlayerPrefs.GetInt ("audio_mute") == 0 ? new Button("audio_mute") : new Button("audio_unmute"), new Button("credits")   };
+			Button logo = new Button ("logo");
+			Button levelSelect = new Button ("level_select", logo);
+
+			buttons = new Button[] { logo, levelSelect, new Button("credits", levelSelect), PlayerPrefs.GetInt ("audio_mute") == 0 ? new Button("audio_mute") : new Button("audio_unmute")   };
 		}
 
 		private float getNumber(float percentage, bool horizontal = true){
@@ -32,9 +35,10 @@ namespace Menu
 		}
 
 		void OnGUI(){
-			
+			GUI.backgroundColor = Color.clear;
 			foreach (Button button in buttons) {
-				if(GUI.Button(new Rect( button.getX() , button.getY() , button.getWidth(), button.getHeight()), button.DefaultImage) && isEnabled){
+				button.calc ();
+				if(GUI.Button(new Rect( button.X , button.Y , button.Width, button.Height), button.DefaultImage) && isEnabled){
 					switch (button.Id) {
 					case "level_select":
 						isEnabled = true;
