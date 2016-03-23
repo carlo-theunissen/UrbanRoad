@@ -69,6 +69,7 @@ public class Block
 	}
 	public GameObject getBlueprintPrefab(){
 		if (blueprintObject == null || !blueprintObject.activeInHierarchy) {
+                Debug.Log(this.id);
 			blueprintObject = Object.Instantiate (blueprintPrefab);
 		}
 
