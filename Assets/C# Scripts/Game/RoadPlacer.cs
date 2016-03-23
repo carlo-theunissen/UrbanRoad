@@ -7,7 +7,7 @@ namespace Game
 	{
 		private RoadPiece[] data;
 		private int current = 0;
-		private const int speed = 4;
+		private const int speed = 3;
 		public RoadPlacer (RoadPiece[] data)
 		{
 			this.data = data;
@@ -17,7 +17,6 @@ namespace Game
 		}
 		public IEnumerator Tick(){
 			while (current < data.Length) {
-				Debug.Log (data [current].type);
 				if (getPrefab ().transform.parent == null) {
 
                     //hier komt plof geluid
@@ -39,16 +38,13 @@ namespace Game
 		private bool needRotation(){
 			switch (data [current].flipFrom) {
 			case Direction.UP:
-				return getPrefab ().transform.parent.eulerAngles.x < 180;
 
-				case Direction.LEFT:
-				return getPrefab ().transform.parent.eulerAngles.z < 180;
-
+				return getPrefab ().transform.parent.eulerAngles.x > 10 || getPrefab ().transform.parent.eulerAngles.x < 1;
 			case Direction.BOTTOM:
-				return getPrefab ().transform.parent.eulerAngles.x > 180 || getPrefab ().transform.parent.eulerAngles.x == 0;
-
+				return getPrefab ().transform.parent.eulerAngles.x < 300;
 			case Direction.RIGHT:
-				return getPrefab ().transform.parent.eulerAngles.z > 180 || getPrefab ().transform.parent.eulerAngles.z == 0;
+			case Direction.LEFT:
+				return getPrefab ().transform.parent.eulerAngles.z > 10 || getPrefab ().transform.parent.eulerAngles.z < 1;
 			}
 			return false;
 		}
@@ -70,14 +66,15 @@ namespace Game
 			return new Vector3 ();
 		}
 		private void resetPiece(){
+			getPrefab ().transform.parent.eulerAngles = new Vector3 (0, 0, 0);
 			switch (data [current].flipFrom) {
 			case Direction.UP:
 			case Direction.BOTTOM:
-				getPrefab ().transform.parent.eulerAngles = new Vector3 (180, 0, 0);
+				//getPrefab ().transform.parent.eulerAngles = new Vector3 (180, 0, 0);
 				break;
 			case Direction.LEFT:
 			case Direction.RIGHT:
-				getPrefab ().transform.parent.eulerAngles = new Vector3 (0, 0, 180);
+				//getPrefab ().transform.parent.eulerAngles = new Vector3 (0, 0, 180);
 				break;
 			}
 			
@@ -88,26 +85,29 @@ namespace Game
 			Vector3 dir = new Vector3();
 			switch (data [current].flipFrom) {
 			case Direction.UP:
-				dir = new Vector3 (0, 0, -.5f);
+				dir = new Vector3 (0, 0, .5f);
 				break;
 			case Direction.LEFT:
-				dir = new Vector3 (0.5f,0, 0);
-				break;
-			case Direction.BOTTOM:
-				dir = new Vector3 (0,0, 0.5f);
-				break;
-			case Direction.RIGHT:
 				dir = new Vector3 (-0.5f,0, 0);
 				break;
+			case Direction.BOTTOM:
+				dir = new Vector3 (0,0, -0.5f);
+				break;
+			case Direction.RIGHT:
+				dir = new Vector3 (0.5f,0, 0);
+				break;
 			}
-			Vector3 lastPos = makeVector3 (VectorCalculation.revertToOrigin (data [current].Position, GameMode.getCurrentLevel ())) + dir;;
+			Vector3 lastPos = makeVector3 (VectorCalculation.revertToOrigin (data [current].Position, GameMode.getCurrentLevel ())) + dir * -1;
 			lastPos.y = 0.1f;
+
 			empty.transform.position = lastPos;
+
 			getPrefab ().transform.position = new Vector3 (0, 0, 0);
-			getPrefab ().transform.eulerAngles = new Vector3(0, data[current].getRotation(),0) - getRotation() * 180;
+			getPrefab ().transform.eulerAngles = new Vector3 (0, data [current].getRotation (), 0);
 			getPrefab ().transform.parent = empty.transform;
 			getPrefab ().transform.localPosition = dir;
 
+			empty.transform.eulerAngles = getRotation() * -180 ;
 
 
 
