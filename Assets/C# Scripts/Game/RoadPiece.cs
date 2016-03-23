@@ -6,7 +6,7 @@ namespace Game
 	{
 		public int type = 1;
 		public Vector2 Position;
-		public Direction flipFrom = Direction.UP;
+		public Direction flipFrom = Direction.LEFT;
 
 		private GameObject displayedObject;
 		private int? rotation;

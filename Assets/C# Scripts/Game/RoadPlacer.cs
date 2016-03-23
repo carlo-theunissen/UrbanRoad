@@ -25,7 +25,7 @@ namespace Game
 					getPrefab ().transform.parent.Rotate (getRotation() * speed);
 					yield return null;
 				}
-
+				resetPiece ();
 				current++;
 			}
 
@@ -65,6 +65,19 @@ namespace Game
 			}
 			return new Vector3 ();
 		}
+		private void resetPiece(){
+			switch (data [current].flipFrom) {
+			case Direction.UP:
+			case Direction.BOTTOM:
+				getPrefab ().transform.parent.eulerAngles = new Vector3 (180, 0, 0);
+				break;
+			case Direction.LEFT:
+			case Direction.RIGHT:
+				getPrefab ().transform.parent.eulerAngles = new Vector3 (0, 0, 180);
+				break;
+			}
+			
+		}
 		private void setParent(){
 			GameObject empty = new GameObject ();
 
@@ -90,6 +103,7 @@ namespace Game
 			getPrefab ().transform.eulerAngles = new Vector3(0, data[current].getRotation(),180);
 			getPrefab ().transform.parent = empty.transform;
 			getPrefab ().transform.localPosition = dir;
+
 
 
 
