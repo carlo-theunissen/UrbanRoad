@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 namespace Game
 {
@@ -17,7 +17,7 @@ namespace Game
 		}
 		public static Level getCurrentLevel(){
 			if (currentLevel == null) {
-				currentLevel = getLevel (4);
+				currentLevel = getLevel (1);
 			}
 			return currentLevel;
 		}
