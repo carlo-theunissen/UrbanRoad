@@ -18,8 +18,10 @@ namespace Game
 		public IEnumerator Tick(){
 			while (current < data.Length) {
 				if (getPrefab ().transform.parent == null) {
-					//@dyhart hier begint hij met het plaatsen van een nieuw blok
-					setParent ();
+
+                    //hier komt plof geluid
+                    AudioProvider.getInstance().playAudio("Metal");
+                    setParent ();
 				}
 				while (needRotation() ) {
 					getPrefab ().transform.parent.Rotate (getRotation() * speed);
@@ -29,9 +31,10 @@ namespace Game
 				current++;
 			}
 
-			//@dyhart hier is het level finished
-			
-		}
+            //@dyhart hier is het level finished
+            AudioProvider.getInstance().playAudio("Complete");
+
+        }
 		private bool needRotation(){
 			switch (data [current].flipFrom) {
 			case Direction.UP:
