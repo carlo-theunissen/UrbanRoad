@@ -159,7 +159,7 @@
 	<audio name="Reset" file="Button/Reset" />
 	<audio name="Sound Button" file="Button/Sound Button" />
 	<audio name="Standard Button" file="Button/Standard Button" />
-	<audio name="Metal" file="Building/Metal" />
+	<audio name="Metal" file="Building/Plof" />
 
 
 </audios>
