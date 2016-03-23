@@ -101,7 +101,7 @@ namespace Game
 			lastPos.y = 0.1f;
 			empty.transform.position = lastPos;
 			getPrefab ().transform.position = new Vector3 (0, 0, 0);
-			getPrefab ().transform.eulerAngles = new Vector3(0, data[current].getRotation(),0);
+			getPrefab ().transform.eulerAngles = new Vector3(0, data[current].getRotation(),0) - dir * 180 * 2;
 			getPrefab ().transform.parent = empty.transform;
 			getPrefab ().transform.localPosition = dir;
 
