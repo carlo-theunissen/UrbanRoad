@@ -126,25 +126,25 @@
 	<!-- Corner from bot to the right |>   -->
 	<road id="3">
 		<prefab name="road_2" />
-		<rotation value="180" />
+		<rotation value="0" />
 	</road>
 
 	<!-- Corner from top the left <| -->
 	<road id="4">
 		<prefab name="road_2" />
-		<rotation value="0" />
+		<rotation value="180" />
 	</road>
 
 	<!-- Corner from right to the top ^- -->
 	<road id="5">
 		<prefab name="road_2" />
-		<rotation value="90" />
+		<rotation value="270" />
 	</road>
 
 	<!-- Corner from left to the bottom -\/ -->
 	<road id="6">
 		<prefab name="road_2" />
-		<rotation value="270" />
+		<rotation value="90" />
 	</road>
 
 </roads>
@@ -159,6 +159,8 @@
 	<audio name="Reset" file="Button/Reset" />
 	<audio name="Sound Button" file="Button/Sound Button" />
 	<audio name="Standard Button" file="Button/Standard Button" />
+	<audio name="Metal" file="Building/Metal" />
+
 
 </audios>
 
