@@ -17,6 +17,7 @@ namespace Game
 		}
 		public IEnumerator Tick(){
 			while (current < data.Length) {
+				Debug.Log (data [current].type);
 				if (getPrefab ().transform.parent == null) {
 					//@dyhart hier begint hij met het plaatsen van een nieuw blok
 					setParent ();
@@ -100,7 +101,7 @@ namespace Game
 			lastPos.y = 0.1f;
 			empty.transform.position = lastPos;
 			getPrefab ().transform.position = new Vector3 (0, 0, 0);
-			getPrefab ().transform.eulerAngles = new Vector3(0, data[current].getRotation(),180);
+			getPrefab ().transform.eulerAngles = new Vector3(0, data[current].getRotation(),0);
 			getPrefab ().transform.parent = empty.transform;
 			getPrefab ().transform.localPosition = dir;
 
