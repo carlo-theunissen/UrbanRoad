@@ -64,14 +64,16 @@ namespace Game
                 {
                     Vector2 diff = current.Position - pieces[index + 1].Position;
                     if (diff.Equals(left)) {
-                        nextAction = 0;
+                        //the diffrence from left
+                        nextAction = 2;
                     }
                     if (diff.Equals(up))
                     {
                         nextAction = 1;
                     }
                     if (diff.Equals(right)) {
-                        nextAction = 2;
+                        //the diffrence from right
+                        nextAction = 0;
                     }
                     if (diff.Equals(down)) {
                         nextAction = 3;
@@ -79,6 +81,20 @@ namespace Game
                 }
 
                 pieces[index ++].type = calculateRoadType(lastAction, nextAction);
+                switch(lastAction) {
+                    case 0:
+                        current.flipFrom = Direction.LEFT;
+                        break;
+                    case 1:
+                        current.flipFrom = Direction.UP;
+                        break;
+                    case 2:
+                        current.flipFrom = Direction.RIGHT;
+                        break;
+                    case 3:
+                        current.flipFrom = Direction.BOTTOM;
+                        break;
+                }
                 lastAction = nextAction;
             }
 			return pieces; 
@@ -101,7 +117,7 @@ namespace Game
             // from up to ...
             if (lastAction == 1 && nextAction == 0)
             {
-                return 3;
+                return 6;
             }
             if (lastAction == 1 && nextAction == 1)
             {
@@ -109,7 +125,7 @@ namespace Game
             }
             if (lastAction == 1 && nextAction == 2) 
             {
-                return 6;
+                return 3;
             }
             // from right to ...
             if (lastAction == 2 && nextAction == 1) {
