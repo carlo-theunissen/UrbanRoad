@@ -12,7 +12,7 @@ namespace Menu
 		void Start(){
 			setButtons ();
 			source = gameObject.GetComponent<AudioSource>();
-			AudioProvider.getInstance ().playAudio ("build", source, true);
+			AudioProvider.getInstance ().playAudio ("Menu_Background", source, true);
 			if (PlayerPrefs.GetInt ("audio_mute") == 1) {
 				source.Stop ();
 			}

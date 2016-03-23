@@ -17,21 +17,25 @@ namespace Game
 		}
 		public IEnumerator Tick(){
 			while (current < data.Length) {
+				Debug.Log (data [current].type);
 				if (getPrefab ().transform.parent == null) {
-					//@dyhart hier begint hij met het plaatsen van een nieuw blok
-					setParent ();
+
+                    //hier komt plof geluid
+                    AudioProvider.getInstance().playAudio("Metal");
+                    setParent ();
 				}
 				while (needRotation() ) {
 					getPrefab ().transform.parent.Rotate (getRotation() * speed);
 					yield return null;
 				}
-
+				resetPiece ();
 				current++;
 			}
 
-			//@dyhart hier is het level finished
-			
-		}
+            //@dyhart hier is het level finished
+            AudioProvider.getInstance().playAudio("Complete");
+
+        }
 		private bool needRotation(){
 			switch (data [current].flipFrom) {
 			case Direction.UP:
@@ -65,6 +69,19 @@ namespace Game
 			}
 			return new Vector3 ();
 		}
+		private void resetPiece(){
+			switch (data [current].flipFrom) {
+			case Direction.UP:
+			case Direction.BOTTOM:
+				getPrefab ().transform.parent.eulerAngles = new Vector3 (180, 0, 0);
+				break;
+			case Direction.LEFT:
+			case Direction.RIGHT:
+				getPrefab ().transform.parent.eulerAngles = new Vector3 (0, 0, 180);
+				break;
+			}
+			
+		}
 		private void setParent(){
 			GameObject empty = new GameObject ();
 
@@ -87,9 +104,10 @@ namespace Game
 			lastPos.y = 0.1f;
 			empty.transform.position = lastPos;
 			getPrefab ().transform.position = new Vector3 (0, 0, 0);
-			getPrefab ().transform.eulerAngles = new Vector3(0, data[current].getRotation(),180);
+			getPrefab ().transform.eulerAngles = new Vector3(0, data[current].getRotation(),0) - getRotation() * 180;
 			getPrefab ().transform.parent = empty.transform;
 			getPrefab ().transform.localPosition = dir;
+
 
 
 
