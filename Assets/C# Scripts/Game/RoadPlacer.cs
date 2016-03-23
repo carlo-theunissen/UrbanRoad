@@ -7,7 +7,7 @@ namespace Game
 	{
 		private RoadPiece[] data;
 		private int current = 0;
-		private const int speed = 3;
+		private const int speed = 7;
 		public RoadPlacer (RoadPiece[] data)
 		{
 			this.data = data;
@@ -67,16 +67,6 @@ namespace Game
 		}
 		private void resetPiece(){
 			getPrefab ().transform.parent.eulerAngles = new Vector3 (0, 0, 0);
-			switch (data [current].flipFrom) {
-			case Direction.UP:
-			case Direction.BOTTOM:
-				//getPrefab ().transform.parent.eulerAngles = new Vector3 (180, 0, 0);
-				break;
-			case Direction.LEFT:
-			case Direction.RIGHT:
-				//getPrefab ().transform.parent.eulerAngles = new Vector3 (0, 0, 180);
-				break;
-			}
 			
 		}
 		private void setParent(){
