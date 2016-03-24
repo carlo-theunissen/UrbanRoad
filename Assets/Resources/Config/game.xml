@@ -164,4 +164,18 @@
 
 </audios>
 
+<cameras>
+	<camera width="4" height="4">
+		<position x="2" y="3" z="0.5" size="2.8" />
+	</camera>
+
+	<camera width="5" height="5">
+		<position x="4" y="3" z="0.98" size="3.29" />
+	</camera>
+
+	<camera width="6" height="6">
+		<position x="4" y="3" z="1.43" size="3.7" />
+	</camera>
+</cameras>
+
 </document>
