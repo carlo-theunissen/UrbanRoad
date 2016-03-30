@@ -160,6 +160,7 @@
 	<audio name="Sound Button" file="Button/Sound Button" />
 	<audio name="Standard Button" file="Button/Standard Button" />
 	<audio name="Plof" file="Building/Plof" />
+	<audio name="BG music" file="Background/BG music" />
 
 
 </audios>
@@ -175,6 +176,10 @@
 
 	<camera width="6" height="6">
 		<position x="4.3" y="3" z="2 " size="3.7" />
+	</camera>
+
+	<camera width="7" height="7">
+		<position x="5" y="3" z="2.5 " size="4" />
 	</camera>
 </cameras>
 
