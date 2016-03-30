@@ -6,11 +6,16 @@ namespace Game
 
 		private Block piece;
 	    private bool following = false;
-
+		public GUI gui;
 		public BlockPlacer placer;
 		private int deg = 0;
 		private Vector2? lastGridPos;
 		private Vector2? lastRawPos;
+		private float menuWide;
+
+		void Start(){
+			menuWide = gui.getMenuWidth ();
+		}
 
 		public void setDeg(int deg){
 			this.deg = deg;
@@ -77,7 +82,7 @@ namespace Game
 			int width = GameMode.getCurrentLevel ().getWidth ();
 			int height = GameMode.getCurrentLevel ().getHeight ();
 
-			float x = Mathf.Round( pos.x / ((Screen.width - GUI.boxRightWidth) / width)) -1;
+			float x = Mathf.Round( pos.x / ((Screen.width - menuWide) / width)) -1;
 			float y = Mathf.Round( pos.y / (Screen.height / height) ) -1;
 
 			x = Mathf.Min (x, width-1);

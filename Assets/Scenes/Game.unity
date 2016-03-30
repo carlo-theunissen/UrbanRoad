@@ -949,6 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4030ad36747d9044fa7bdd76b2b7da6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gui: {fileID: 844299010}
   placer: {fileID: 995920326}
 --- !u!4 &1618068221
 Transform:

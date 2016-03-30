@@ -8,16 +8,16 @@ namespace Game
 	public class GUI : MonoBehaviour
 	{
 	    
-		public static int boxRightWidth;
+		//public static int boxRightWidth;
 		public Mouse mouse;
         public GameObject canvas;
         public GameObject button;
 		private Dictionary<int,List<Block>> blocks;
 		private List<GameObject> buttons;
 
-		static GUI()
-		{         
-			boxRightWidth = 150;     
+		public float getMenuWidth(){
+			RectTransform trans = canvas.transform as RectTransform;
+			return trans.rect.width;
 		}
 			
 
