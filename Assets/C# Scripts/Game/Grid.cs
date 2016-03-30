@@ -54,29 +54,34 @@ namespace Game
 		}
 
 		private void displayRoadPoints(){
-			RoadPiece pos = getRoadPiece (VectorCalculation.revertToOrigin(level.getFinish (), level));
-			placeRoad (pos.Position.x, pos.Position.y, pos.getPrefab (),0);
+			placeRoad(VectorCalculation.revertToOrigin (level.getFinish (), level));
+			placeRoad(VectorCalculation.revertToOrigin (level.getStart (), level));
 
-			pos = getRoadPiece (VectorCalculation.revertToOrigin(level.getStart (), level));
-			placeRoad (pos.Position.x, pos.Position.y, pos.getPrefab (),0);
 		}
 
-		private RoadPiece getRoadPiece(Vector2 calc){
-			RoadPiece road = new RoadPiece();
+		private void placeRoad(Vector2 start){
+			RoadPiece piece = new RoadPiece();
+			piece.type = 1;
+
+			RoadPiece piece2 = new RoadPiece();
+			piece.type = 1;
+
+
+			Vector2 pos = start + getRoadChange (start);
+			placeRoad (pos.x, pos.y, piece.getPrefab (),0);
+
+			pos = pos + getRoadChange (start);
+			placeRoad (pos.x, pos.y, piece2.getPrefab (),0);
+		}
+
+		private Vector2 getRoadChange(Vector2 calc){
 			if (calc.y == 0) {
-				calc.y--;
-				road.Position = calc;
-				road.type = 2;
-				return road;
+				return new Vector2 (0, -1);
 			}
 			if (calc.y + 1 == level.getHeight ()) {
-				calc.y++;
-				road.Position = calc;
-				road.type = 1;
-				return road;
+				return new Vector2 (0, 1);
 			}
-			road.Position = calc;
-			return road;
+			return new Vector2(0,0);
 		}
 	}
 }
