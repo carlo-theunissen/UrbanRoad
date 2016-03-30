@@ -8,16 +8,16 @@ namespace Game
 	public class GUI : MonoBehaviour
 	{
 	    
-		public static int boxRightWidth;
+		//public static int boxRightWidth;
 		public Mouse mouse;
         public GameObject canvas;
         public GameObject button;
 		private Dictionary<int,List<Block>> blocks;
 		private List<GameObject> buttons;
 
-		static GUI()
-		{         
-			boxRightWidth = 150;     
+		public float getMenuWidth(){
+			RectTransform trans = canvas.transform as RectTransform;
+			return trans.rect.width;
 		}
 			
 
@@ -61,7 +61,7 @@ namespace Game
 		private Vector3 getPosition(int index){
 			Vector2 dimensions = getDimensions ();
 			if (index > 4) {
-				return new Vector2 (dimensions.x, dimensions.y * (index - 5));
+				return new Vector2 (dimensions.x + 10, (dimensions.y + 7) * (index - 6) - 20);
 			}
 			return new Vector2 (0, -(dimensions.y + 7)* index - 20);
 		}
