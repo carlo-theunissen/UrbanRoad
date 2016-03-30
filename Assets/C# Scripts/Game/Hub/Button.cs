@@ -89,10 +89,10 @@ namespace Game
         private GameObject getNumberButton(){
             GameObject icon = UnityEngine.Object.Instantiate(prefab);
             RectTransform t = icon.transform as RectTransform;
-            Vector2 dimension = t.sizeDelta;
-            dimension.x = 30;
-            dimension.y = 30;
-            t.sizeDelta = dimension;
+            Vector2 size = t.sizeDelta;
+			size.x = dimensions.x * .25f;
+			size.y = dimensions.y * .25f;
+			t.sizeDelta = size;
             return icon;
         }
         
