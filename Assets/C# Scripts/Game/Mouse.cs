@@ -37,7 +37,7 @@ namespace Game
 			return following;
 		}
 
-		private Vector2? getMousePos(){
+		public Vector2? getMousePos(){
 			if (Input.touchCount > 0) {
 				return Input.GetTouch (0).position;
 			}
