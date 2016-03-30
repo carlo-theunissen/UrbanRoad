@@ -19,8 +19,6 @@ namespace Game
 			RectTransform trans = canvas.transform as RectTransform;
 			return trans.rect.width;
 		}
-			
-
 		private float getNumber(float percentage, float min){
 			return Mathf.Max( percentage / 100 * Mathf.Min(Screen.width , Screen.height), min);
 		}
