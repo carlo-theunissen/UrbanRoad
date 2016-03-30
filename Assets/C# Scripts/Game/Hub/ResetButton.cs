@@ -7,7 +7,8 @@ namespace Game
 	public class ResetButton : MonoBehaviour,IPointerClickHandler {
 		public BlockPlacer placer;
 		public void OnPointerClick(PointerEventData eventData){
-			placer.clearBlocks ();
+            AudioProvider.getInstance().playAudio("Reset");
+            placer.clearBlocks ();
 		}
 	}
 }

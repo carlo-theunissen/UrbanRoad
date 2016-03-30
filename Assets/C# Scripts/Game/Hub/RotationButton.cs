@@ -15,11 +15,12 @@ namespace Game
 			deg += 90;
 			deg %= 360;
 			mouse.setDeg (deg);
-		}
+            AudioProvider.getInstance().playAudio("Standard Button");
+        }
 		void Update(){
 			if (Input.GetKey (KeyCode.R)) {
 				if (!rotating) {
-					rotate ();
+                    rotate ();
 				}
 				rotating = true;
 			} else {
