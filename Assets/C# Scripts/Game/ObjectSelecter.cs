@@ -18,7 +18,6 @@ namespace Game
 				Ray ray = Camera.main.ScreenPointToRay((Vector2) mousePos); 
 				if ( Physics.Raycast (ray,out hit,10f)) {
 					GameObject prefab = hit.collider.gameObject;
-					prefab.transform.position = new Vector3 (0, 0, 0);
 					foreach (Block block in level.getPlacedBlocks()) {
 						if (block.getBlueprintPrefab ().Equals (prefab)) {
 							mouse.setFollowing (true);
