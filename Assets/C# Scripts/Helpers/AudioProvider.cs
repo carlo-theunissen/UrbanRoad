@@ -10,6 +10,7 @@ public class AudioProvider
     { }
     private static AudioProvider instance;
     private AudioSource cachedSource;
+	private AudioSource bg;
 
     private void makeCache()
     {
@@ -30,10 +31,35 @@ public class AudioProvider
 
     public void playAudio(string name, AudioSource source, bool loop = false)
     {
-        source.clip = getAudio(name);
-        source.loop = loop;
-        source.Play();
+		if (PlayerPrefs.GetInt ("audio_mute") != 1) {
+			source.clip = getAudio (name);
+			source.loop = loop;
+			source.Play ();
+		}
     }
+
+	public void playBackground(string name, AudioSource source){
+		bg = source;
+		bg.clip = getAudio (name);
+		bg.loop = true;
+		if (PlayerPrefs.GetInt ("audio_mute") != 1) {
+			bg.Play ();
+		}
+	}
+	public bool playBackground(){
+		if (bg != null) {
+			bg.Play ();
+			return true;
+		}
+		return false;
+	}
+	public bool stopBackground(){
+		if (bg != null) {
+			bg.Stop ();
+			return true;
+		}
+		return false;
+	}
 
     private AudioClip getAudio(string name)
     {
