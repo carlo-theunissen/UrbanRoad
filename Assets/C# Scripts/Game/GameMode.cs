@@ -16,8 +16,8 @@ namespace Game
 			return level.text;
 		}
 		public static Level getCurrentLevel(){
-			if (currentLevel == null) {
-				currentLevel = getLevel (11);
+			if (currentLevel == null || currentLevel.getId() != LevelSwitcher.levelToLoad) {
+				currentLevel = getLevel (LevelSwitcher.levelToLoad);
 			}
 			return currentLevel;
 		}

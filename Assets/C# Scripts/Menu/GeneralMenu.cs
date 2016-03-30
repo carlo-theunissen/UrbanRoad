@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace Menu
 {
@@ -42,7 +43,7 @@ namespace Menu
 					switch (button.Id) {
 					case "level_select":
 						isEnabled = true;
-						Application.LoadLevel(1);
+						SceneManager.LoadScene("Menu_level_select");
 						break;
 					case "audio_mute":
 						PlayerPrefs.SetInt ("audio_mute", 1);
@@ -56,7 +57,7 @@ namespace Menu
 						break;
 					case "credits":
 						isEnabled = true;
-						Application.LoadLevel(2);
+						SceneManager.LoadScene("Menu_credits");
 						break;
 					}
 

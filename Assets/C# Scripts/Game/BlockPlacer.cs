@@ -6,10 +6,8 @@ namespace Game
 		public Grid grid;
 		private Level level;
 
-		public BlockPlacer(){
-			level = GameMode.getCurrentLevel ();
-		}
 		public void Start(){
+			level = GameMode.getCurrentLevel ();
 			loadFromDevice ();
 		}
 		public void hover(Block block, Vector2 pos, float deg){

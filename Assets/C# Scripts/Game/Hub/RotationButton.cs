@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 namespace Game
 {
@@ -25,6 +26,9 @@ namespace Game
 				rotating = true;
 			} else {
 				rotating = false;
+			}
+			if (Input.GetKey (KeyCode.A)) {
+				SceneManager.LoadScene("Menu_start");
 			}
 		}
 	}
