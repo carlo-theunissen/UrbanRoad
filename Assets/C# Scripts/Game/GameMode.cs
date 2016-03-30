@@ -17,7 +17,7 @@ namespace Game
 		}
 		public static Level getCurrentLevel(){
 			if (currentLevel == null) {
-				currentLevel = getLevel (3);
+				currentLevel = getLevel (1);
 			}
 			return currentLevel;
 		}

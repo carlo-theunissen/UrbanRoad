@@ -14,12 +14,12 @@ public class Block
 	private int uuid;
 	private Vector2? pos;
 	private float rotation;
-	private Texture2D placeholder;
+	private Sprite placeholder;
 
 	private Vector2? cachedWidthHight;
 	private float? cachedDeg;
 	
-	public Texture2D getPlaceholder(){
+	public Sprite getPlaceholder(){
 		return placeholder;
 	}
 	
@@ -57,7 +57,7 @@ public class Block
 	public int getId(){
 		return id;
 	}
-	public Block(int id, int uuid, List<Vector2> collision, GameObject blueprintPrefab, Texture2D placeholder){
+	public Block(int id, int uuid, List<Vector2> collision, GameObject blueprintPrefab, Sprite placeholder){
 		this.id = id;
 		this.uuid = uuid;
 		this.collision = collision;
@@ -69,7 +69,6 @@ public class Block
 	}
 	public GameObject getBlueprintPrefab(){
 		if (blueprintObject == null || !blueprintObject.activeInHierarchy) {
-                Debug.Log(this.id);
 			blueprintObject = Object.Instantiate (blueprintPrefab);
 		}
 

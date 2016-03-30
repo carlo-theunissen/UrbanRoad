@@ -50,9 +50,9 @@ namespace Game
 			return (GameObject)Resources.Load ("Prefabs/"+name);
 		}
 
-		private Texture2D getTexture(XmlNode node){
+		private Sprite getTexture(XmlNode node){
 			string name = node.Attributes ["image"].Value;
-			return (Texture2D)Resources.Load ("Placeholders/"+name);
+			return Resources.Load ("Placeholders/"+name, typeof(Sprite)) as Sprite;
 		}
 
 		private List<Vector2> getCollision(XmlNodeList list){

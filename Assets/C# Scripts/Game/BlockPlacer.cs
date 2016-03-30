@@ -18,8 +18,7 @@ namespace Game
 			Vector2 temp = transformToGrid (pos, block.getWidthHeight (deg));
 
 			Renderer rend = prefab.GetComponent<Renderer> ();
-			rend.material.shader = Shader.Find ("Specular");
-			rend.material.SetColor ("_SpecColor", canPlacePiece (pos, block, deg) ? Color.white : Color.red);
+			rend.material.color = canPlacePiece (pos, block, deg) ? Color.white : Color.red;
 			grid.placeDummy (temp.x, temp.y, prefab, deg);
 		}
 
