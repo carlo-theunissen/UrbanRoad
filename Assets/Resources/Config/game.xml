@@ -174,7 +174,7 @@
 	</camera>
 
 	<camera width="6" height="6">
-		<position x="4" y="3" z="2 " size="3.7" />
+		<position x="4.3" y="3" z="2 " size="3.7" />
 	</camera>
 </cameras>
 
