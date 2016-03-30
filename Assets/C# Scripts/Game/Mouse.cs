@@ -16,7 +16,9 @@ namespace Game
 			this.deg = deg;
 			lastRawPos = null;
 		}
-
+		public int getDeg(){
+			return deg;
+		}
 		public void setPiece(Block block){
 			piece = block;
 		}

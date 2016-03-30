@@ -19,14 +19,14 @@ namespace Game
 			while (current < data.Length) {
 				if (getPrefab ().transform.parent == null) {
 
-                    //hier komt plof geluid
-                    AudioProvider.getInstance().playAudio("Metal");
                     setParent ();
 				}
 				while (needRotation() ) {
 					getPrefab ().transform.parent.Rotate (getRotation() * speed);
 					yield return null;
 				}
+				//hier komt plof geluid
+				AudioProvider.getInstance().playAudio("Plof");
 				resetPiece ();
 				current++;
 			}
