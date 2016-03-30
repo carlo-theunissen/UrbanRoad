@@ -160,6 +160,7 @@
 	<audio name="Sound Button" file="Button/Sound Button" />
 	<audio name="Standard Button" file="Button/Standard Button" />
 	<audio name="Plof" file="Building/Plof" />
+	<audio name="BG music" file="Background/BG music" />
 
 
 </audios>
