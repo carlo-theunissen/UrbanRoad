@@ -42,6 +42,9 @@ public class Block
 	}
 	public Block setPos(Vector2? pos){
 		this.pos = pos;
+		if (pos == null) {
+			removeBlueprintPrefab ();
+		}
 		return this;
 	}
 	public Vector2? getPos(){
