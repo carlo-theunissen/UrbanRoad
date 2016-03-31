@@ -89,12 +89,6 @@ namespace Game
 				if (pieces != null) {
 					RoadPlacer placer = new RoadPlacer (pieces);
 					StartCoroutine (placer.Tick ());
-					/*
-					foreach (RoadPiece road in pieces) {
-						Vector2 pos = VectorCalculation.revertToOrigin (road.Position, level);
-						grid.placeRoad (pos.x, pos.y, road.getPrefab (), road.getRotation());
-					}
-					*/
 				}
 			}
 		}

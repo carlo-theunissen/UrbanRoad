@@ -59,7 +59,7 @@ namespace Game
 			if (lastRawPos == mousePos) {
 				return;
 			}
-			lastRawPos = getMousePos ();
+			lastRawPos = mousePos;
 			if (mousePos != null && piece != null) {
 				lastGridPos = gridPos ((Vector2) mousePos);
 				placer.hover(piece, (Vector2) lastGridPos, deg);

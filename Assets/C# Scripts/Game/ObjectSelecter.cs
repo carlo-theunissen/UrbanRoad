@@ -20,9 +20,12 @@ namespace Game
 					GameObject prefab = hit.collider.gameObject;
 					foreach (Block block in level.getPlacedBlocks()) {
 						if (block.getBlueprintPrefab ().Equals (prefab)) {
+							
+
 							mouse.setFollowing (true);
 							mouse.setDeg ((int) block.getRotation());
 							mouse.setPiece (block);
+							break;
 						}
 					}
 				}
