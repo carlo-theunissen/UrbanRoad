@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameLoader : MonoBehaviour {
 	IEnumerator Start() {
-		AsyncOperation async = SceneManager.LoadSceneAsync("Game");
-		yield return async;
+		yield return new WaitForSeconds (.1f);
+		AsyncOperation async = SceneManager.LoadSceneAsync("Game", LoadSceneMode.Single);
+		while (!async.isDone) {
+			yield return null;
+		}
 	}
 }
 

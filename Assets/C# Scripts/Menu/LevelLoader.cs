@@ -35,21 +35,19 @@ namespace Menu
 		}
 
 		private int[] getLevelIds(){
-			DirectoryInfo dir = new DirectoryInfo("Assets/Resources/Config/Levels");
-			FileInfo[] info = dir.GetFiles("*.csv");
-			int[] ids = new int[info.Length];
-			int index = 0;
-			foreach (FileInfo f in info) 
+			
+			List<int> list = new List<int> ();
+			int index = 1;
+			while (true) 
 			{
-				Regex regex = new Regex(@"level_([0-9]+)\.csv$");
-				Match match = regex.Match(f.FullName);
-				if (match.Success)
-				{
-					ids [index++] = int.Parse (match.Groups [1].Value);
+				if(Resources.Load ("Config/Levels/level_"+index) == null){
+					break;
 				}
+
+				list.Add (index);
+				index++;
 			}
-			Array.Sort (ids);
-			return ids;
+			return list.ToArray();
 		}
 	}
 }
