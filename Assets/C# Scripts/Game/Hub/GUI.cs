@@ -32,6 +32,7 @@ namespace Game
 			int index = 0;
 			foreach(KeyValuePair<int,List<Block>> blockList in blocks){
 				makeBlock (blockList.Value.ToArray (), index++);
+
 			}
 
 
@@ -57,7 +58,8 @@ namespace Game
 		private Vector3 getPosition(int index){
 			Vector2 dimensions = getDimensions ();
 			if (index > 4) {
-				return new Vector2 (dimensions.x + 10, (dimensions.y + 7) * (index - 5) - 20);
+				Debug.Log ((dimensions.y + 7) * (index - 6) - 20);
+				return new Vector2 (dimensions.x + 10, (dimensions.y + 7) * -(index - 5) - 20);
 			}
 			return new Vector2 (0, -(dimensions.y + 7)* index - 20);
 		}
