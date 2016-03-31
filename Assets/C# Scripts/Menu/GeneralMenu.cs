@@ -8,15 +8,10 @@ namespace Menu
 
 		private Button[] buttons;
 		private bool isEnabled = true;
-		private AudioSource source;
 
 		void Start(){
 			setButtons ();
-			source = gameObject.GetComponent<AudioSource>();
-			AudioProvider.getInstance ().playAudio ("Menu_Background", source, true);
-			if (PlayerPrefs.GetInt ("audio_mute") == 1) {
-				source.Stop ();
-			}
+			AudioProvider.getInstance ().playBackground ("Menu_Background");
 		}
 
 		private void setButtons(){
@@ -28,11 +23,6 @@ namespace Menu
 
 		private float getNumber(float percentage, bool horizontal = true){
 			return percentage / 100 * Mathf.Min(Screen.width , Screen.height);
-		}
-
-		private void playAudio(string name, bool isBackground){
-			
-			AudioProvider.getInstance().playAudio(name,source, isBackground);
 		}
 
 		void OnGUI(){
@@ -47,13 +37,13 @@ namespace Menu
 						break;
 					case "audio_mute":
 						PlayerPrefs.SetInt ("audio_mute", 1);
-						source.Stop ();
+						AudioProvider.getInstance ().stopBackground ();
 						setButtons ();
 						return;
 					case "audio_unmute":
 						PlayerPrefs.SetInt ("audio_mute", 0);
 						setButtons ();
-						source.Play ();
+						AudioProvider.getInstance ().playBackground ();
 						break;
 					case "credits":
 						isEnabled = true;

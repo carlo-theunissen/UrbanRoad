@@ -9,6 +9,7 @@ namespace Game
 		public void OnPointerClick(PointerEventData eventData){
             AudioProvider.getInstance().playAudio("Reset");
             placer.clearBlocks ();
+			GameMode.getCurrentLevel().storeCompleteStatus ();
 		}
 	}
 }

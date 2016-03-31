@@ -15,9 +15,15 @@ namespace Game
 		private RoadPiece[] road;
 		private List<Block> placedBlocks;
 
+		private SimpleLevel simpleLevel;
+
 		public Level(int levelId){
 			this.levelId = levelId;
 			placedBlocks = new List<Block> ();
+			simpleLevel = new SimpleLevel (levelId);
+		}
+		public void storeCompleteStatus(){
+			simpleLevel.setCompletedStatus (this.isValidPath ());
 		}
 		public Level setWidth(int width){
 			blockWidth = width;

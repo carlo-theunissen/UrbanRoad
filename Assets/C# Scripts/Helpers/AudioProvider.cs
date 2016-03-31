@@ -38,8 +38,10 @@ public class AudioProvider
 		}
     }
 
-	public void playBackground(string name, AudioSource source){
-		bg = source;
+	public void playBackground(string name){
+		GameObject go = GameObject.Find("BackgroundMusic");;
+		bg = go.GetComponent<AudioSource> ();
+
 		bg.clip = getAudio (name);
 		bg.loop = true;
 		if (PlayerPrefs.GetInt ("audio_mute") != 1) {

@@ -14,8 +14,14 @@ namespace Menu
 				UnityUi.Button but = work.GetComponent<UnityUi.Button> ();
 				but.image.sprite = level.getImage ();
 
-				work.AddComponent<LevelSelectButton> ().id = level.id;
+
+				LevelSelectButton selectButton = work.AddComponent<LevelSelectButton> ();
+				selectButton.id = level.id;
+				selectButton.down = level.getDownImage ();
 			}
+		}
+		void OnDestroy(){
+			LevelLoader.getInstance ().clearCache ();
 		}
 	}
 }

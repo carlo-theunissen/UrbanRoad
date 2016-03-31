@@ -6,7 +6,8 @@ namespace Game
 	public class BackgroundMusic : MonoBehaviour
 	{
 		void Start(){
-			AudioProvider.getInstance ().playBackground ("BG music", GetComponent<AudioSource> ());
+			
+			AudioProvider.getInstance ().playBackground ("BG music");
 		}
 	}
 }

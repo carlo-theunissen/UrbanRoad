@@ -33,6 +33,9 @@ namespace Menu
 			}
 			return levelCache = list.ToArray();
 		}
+		public void clearCache(){
+			levelCache = null;
+		}
 
 		private int[] getLevelIds(){
 			

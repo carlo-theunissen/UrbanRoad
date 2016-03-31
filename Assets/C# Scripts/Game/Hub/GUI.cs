@@ -38,8 +38,6 @@ namespace Game
 	    }
         
 		private void makeBlock(Block[] blocks, int index){
-   
-                    
             GameObject workingButton = UnityEngine.Object.Instantiate(button);
 			workingButton.transform.position = getPosition (index);
             RectTransform t = workingButton.transform as RectTransform;

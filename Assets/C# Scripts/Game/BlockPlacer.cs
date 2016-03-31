@@ -30,6 +30,7 @@ namespace Game
 					AudioPlayer("Building");
 					saveToDevice ();
 				}
+
 				drawRoad ();
 
 			} else {
@@ -37,6 +38,7 @@ namespace Game
 				block.removeBlueprintPrefab ();
 				AudioPlayer("error");
 			}
+			level.storeCompleteStatus ();
 		}
 		public void clearBlocks(bool keepStoredData = false){
 			foreach (Block block in level.getBlocks()) {
