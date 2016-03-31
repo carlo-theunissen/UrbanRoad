@@ -42,7 +42,6 @@ namespace Game
         }
 		private int getUnused(){
 			int calc = 0;
-			Debug.Log (blocks);
 			foreach (Block block in blocks) {
 				if (block.getPos () == null) {
 					calc++;
