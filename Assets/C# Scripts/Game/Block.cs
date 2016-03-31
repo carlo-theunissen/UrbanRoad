@@ -67,8 +67,11 @@ public class Block
 	public List<Vector2> getCollision(){
 		return collision;
 	}
+	public bool isBlueprintPrefabActive(){
+		return blueprintObject != null && blueprintObject.activeInHierarchy;
+	}
 	public GameObject getBlueprintPrefab(){
-		if (blueprintObject == null || !blueprintObject.activeInHierarchy) {
+		if (!isBlueprintPrefabActive()) {
 			blueprintObject = Object.Instantiate (blueprintPrefab);
 		}
 

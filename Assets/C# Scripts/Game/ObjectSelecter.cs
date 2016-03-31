@@ -19,7 +19,7 @@ namespace Game
 				if ( Physics.Raycast (ray,out hit,10f)) {
 					GameObject prefab = hit.collider.gameObject;
 					foreach (Block block in level.getPlacedBlocks()) {
-						if (block.getBlueprintPrefab ().Equals (prefab)) {
+						if (block.isBlueprintPrefabActive() && block.getBlueprintPrefab ().Equals (prefab)) {
 							
 
 							mouse.setFollowing (true);

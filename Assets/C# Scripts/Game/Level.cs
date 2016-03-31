@@ -221,7 +221,7 @@ namespace Game
 				col += block.getCollision ().Count;
 			}
 
-			return (blockHeight * blockWidth - col) == getRoad ().Length;
+			return (blockHeight * blockWidth - col) != getRoad ().Length;
 
 		}
 
