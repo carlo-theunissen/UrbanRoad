@@ -27,9 +27,6 @@ namespace Game
 			} else {
 				rotating = false;
 			}
-			if (Input.GetKey (KeyCode.A)) {
-				SceneManager.LoadScene("Menu_start");
-			}
 		}
 	}
 }
