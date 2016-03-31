@@ -57,7 +57,7 @@ public class AudioProvider
 	}
 	public bool stopBackground(){
 		if (bg != null) {
-			bg.Stop ();
+			bg.Pause ();
 			return true;
 		}
 		return false;
