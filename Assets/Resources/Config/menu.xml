@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<buttons>
+`
+	<button id="logo">
+		<img type="default" src="Title" />
+	</button>
+	<button id="level_select">
+		<img type="default" src="LevelSelect_button" />
+	</button>
+
+	<button id="credits">
+		<img type="default" src="Credits_Button" />
+	</button>
+
+	<button id="audio_mute" >
+		<img type="default" src="mute_button" />
+	</button>
+
+	<button id="audio_unmute">
+		<img type="default" src="unmute_button" />
+	</button>
+
+
+
+</buttons>

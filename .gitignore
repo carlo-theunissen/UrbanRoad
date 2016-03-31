@@ -3,7 +3,6 @@
 # =============== #
 Temp/
 Library/
-*.meta
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
@@ -17,7 +16,6 @@ obj/
 *.suo
 /*.sln
 *.user
-*.unityproj
 *.booproj
 
 # ============ #
@@ -30,3 +28,4 @@ obj/
 .Trashes
 ehthumbs.db
 Thumbs.db
+Assets/C# Scripts/Game/GameMode.cs

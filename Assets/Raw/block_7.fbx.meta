@@ -1,18 +1,15 @@
 fileFormatVersion: 2
-guid: d44077374b2ba0b4a8fc2ce02bd8d4f8
-timeCreated: 1457343711
+guid: 8eae40a5c4cee354eaf525d88c1f58d3
+timeCreated: 1458645988
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: block_7
-    100002: //RootNode
-    400000: block_7
-    400002: //RootNode
-    2300000: block_7
-    3300000: block_7
-    4300000: block_7
-    9500000: //RootNode
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Box003
   materials:
     importMaterials: 1
     materialName: 0
@@ -71,7 +68,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

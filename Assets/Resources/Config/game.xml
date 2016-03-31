@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<document>
+<pieces>
+	<piece id="1">
+		<prefab name="block_1" />
+		<placeholder image="block_1" />
+
+		<blocks>
+			<block x="0" y="0" />
+			<block x="0" y="1" />
+			<block x="1" y="1" />
+			<block x="0" y="2" />
+		</blocks>
+	</piece>
+	<piece id="2">
+		<prefab name="block_2" />
+		<placeholder image="block_2" />
+
+		<blocks>
+			<block x="0" y="0" />
+			<block x="0" y="1" />
+			<block x="0" y="2" />
+			<block x="0" y="3" />
+		</blocks>
+	</piece>
+	<piece id="3">
+		<prefab name="block_3" />
+		<placeholder image="block_3" />
+
+		<blocks>
+			<block x="0" y="0" />
+			<block x="1" y="0" />
+			<block x="0" y="1" />
+			<block x="1" y="1" />
+		</blocks>
+	</piece>
+	<piece id="4">
+		<prefab name="block_4" />
+		<placeholder image="block_4" />
+
+		<blocks>
+			<block x="1" y="0" />
+			<block x="1" y="1" />
+			<block x="0" y="1" />
+			<block x="0" y="2" />
+		</blocks>
+	</piece>
+	<piece id="5">
+		<prefab name="block_5" />
+		<placeholder image="block_5" />
+
+		<blocks>
+			<block x="0" y="0" />
+			<block x="0" y="1" />
+			<block x="1" y="1" />
+			<block x="1" y="2" />
+		</blocks>
+	</piece>
+	<piece id="6">
+		<prefab name="block_6" />
+		<placeholder image="block_6" />
+
+		<blocks>
+			<block x="1" y="0" />
+			<block x="1" y="1" />
+			<block x="1" y="2" />
+			<block x="0" y="2" />
+		</blocks>
+	</piece>
+	<piece id="7">
+		<prefab name="block_7" />
+		<placeholder image="block_7" />
+
+		<blocks>
+			<block x="0" y="0" />
+			<block x="0" y="1" />
+			<block x="0" y="2" />
+			<block x="1" y="2" />
+		</blocks>
+	</piece>
+	<piece id="8">
+		<prefab name="block_8" />
+		<placeholder image="block_8" />
+
+		<blocks>
+			<block x="0" y="0" />
+			<block x="1" y="0" />
+			<block x="1" y="1" />
+		</blocks>
+	</piece>
+	<piece id="9">
+		<prefab name="block_9" />
+		<placeholder image="block_9" />
+
+		<blocks>
+			<block x="0" y="0" />
+			<block x="0" y="1" />
+			<block x="0" y="2" />
+		</blocks>
+	</piece>
+	<piece id="10">
+		<prefab name="block_10" />
+		<placeholder image="block_10" />
+
+		<blocks>
+			<block x="0" y="0" />
+			<block x="0" y="1" />
+		</blocks>
+	</piece>
+</pieces>
+
+<roads>
+
+	<!-- straight piece vertical   |   -->
+	<road id="1">
+		<prefab name="road_1" />
+		<rotation value="0" />
+	</road>
+
+	<!-- straight piece horizontal  -   -->
+	<road id="2">
+		<prefab name="road_1" />
+		<rotation value="90" />
+	</road>
+
+	<!-- Corner from bot to the right |>   -->
+	<road id="3">
+		<prefab name="road_2" />
+		<rotation value="0" />
+	</road>
+
+	<!-- Corner from top the left <| -->
+	<road id="4">
+		<prefab name="road_2" />
+		<rotation value="180" />
+	</road>
+
+	<!-- Corner from right to the top ^- -->
+	<road id="5">
+		<prefab name="road_2" />
+		<rotation value="270" />
+	</road>        
+
+	<!-- Corner from left to the bottom -\/ -->
+	<road id="6">
+		<prefab name="road_2" />
+		<rotation value="90" />
+	</road>
+
+</roads>
+ 
+<audios>
+	<audio name="error" file="Button/error" />
+	<audio name="Building" file="Building/Building" />
+	<audio name="Complete" file="Complete/Complete" />
+	<audio name="CarClaxon" file="Enviroment/CarClaxon" />
+	<audio name="Menu_Background" file="Menu/Menu_Background" />
+	<audio name="Menu Button" file="Button/Menu Button" />
+	<audio name="Reset" file="Button/Reset" />
+	<audio name="Sound Button" file="Button/Sound Button" />
+	<audio name="Standard Button" file="Button/Standard Button" />
+	<audio name="Plof" file="Building/Plof" />
+	<audio name="BG music" file="Background/BG music" />
+
+
+</audios>
+
+<cameras>
+	<camera width="4" height="4">
+		<position x="2.7" y="3" z="1" size="2.5" />
+	</camera>
+
+	<camera width="5" height="5">
+		<position x="3.5" y="3" z="1.5" size="3" />
+	</camera>
+
+	<camera width="6" height="6">
+		<position x="4.3" y="3" z="2 " size="3.7" />
+	</camera>
+
+	<camera width="7" height="7">
+		<position x="5" y="3" z="2.5 " size="4" />
+	</camera>
+</cameras>
+
+</document>
