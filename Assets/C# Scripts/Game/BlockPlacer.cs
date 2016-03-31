@@ -86,7 +86,7 @@ namespace Game
 			return calc;
 		}
 		private void drawRoad(){
-			if (level.containsAllBlocks ()) {
+			if (level.isValidPath ()) {
 				RoadPiece[] pieces = level.getRoad ();
 				if (pieces != null) {
 					RoadPlacer placer = new RoadPlacer (pieces);

@@ -226,7 +226,7 @@ namespace Game
 			foreach (Block block in getBlocks()) {
 				col += block.getCollision ().Count;
 			}
-
+				
 			return (blockHeight * blockWidth - col) != getRoad ().Length;
 
 		}
