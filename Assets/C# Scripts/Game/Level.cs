@@ -206,9 +206,23 @@ namespace Game
 			return true;
 		}
 
+		 
 
 		public bool isValidPath(){
-			return containsAllBlocks () && getRoad() != null;
+			return containsAllBlocks () && getRoad() != null && !containsEmptySpots();
+		}
+
+		public bool containsEmptySpots(){
+			if (getRoad() == null) {
+				return true;
+			}
+			int col = 0;
+			foreach (Block block in getBlocks()) {
+				col += block.getCollision ().Count;
+			}
+
+			return (blockHeight * blockWidth - col) == getRoad ().Length;
+
 		}
 
 		public RoadPiece[] getRoad(){
