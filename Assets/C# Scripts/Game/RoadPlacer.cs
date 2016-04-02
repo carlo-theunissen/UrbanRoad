@@ -8,6 +8,7 @@ namespace Game
 		private RoadPiece[] data;
 		private int current = 0;
 		private const int speed = 7;
+		private bool active = false;
 		public RoadPlacer (RoadPiece[] data)
 		{
 			this.data = data;
@@ -15,13 +16,21 @@ namespace Game
 		public GameObject getPrefab(){
 			return data [current].getPrefab ();
 		}
+		public bool isActive(){
+			return active;
+		}
 		public void clearRoad(){
 			foreach (RoadPiece piece in data) {
-				piece.deletePrefab ();
+				if (piece.isPrefabActive ()) {
+					Object.Destroy (piece.getPrefab ().transform.parent.gameObject);
+					piece.deletePrefab ();
+				}
 			}
 		}
 		public IEnumerator Tick(){
+			active = true;
 			while (current < data.Length) {
+				
 				if (getPrefab ().transform.parent == null) {
 
                     setParent ();
@@ -38,6 +47,7 @@ namespace Game
 
             //@dyhart hier is het level finished
             AudioProvider.getInstance().playAudio("Complete");
+			active = false;
 
         }
 		private bool needRotation(){

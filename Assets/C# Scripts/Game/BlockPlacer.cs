@@ -4,6 +4,8 @@ namespace Game
 {
 	public class BlockPlacer: MonoBehaviour {
 		public Grid grid;
+		public GameObject succesPopup;
+
 		private Level level;
 		private RoadPlacer roadPlacer;
 
@@ -42,7 +44,11 @@ namespace Game
 			level.storeCompleteStatus ();
 		}
 		public void clearBlocks(bool keepStoredData = false){
+			succesPopup.SetActive (false);
 			if (roadPlacer != null) {
+				if (roadPlacer.isActive ()) {
+					return;
+				}
 				roadPlacer.clearRoad ();
 			}
 			foreach (Block block in level.getBlocks()) {
@@ -94,6 +100,7 @@ namespace Game
 				RoadPiece[] pieces = level.getRoad ();
 				if (pieces != null) {
 					level.setLocked (true);
+					succesPopup.SetActive (true);
 					roadPlacer = new RoadPlacer (pieces);
 					StartCoroutine (roadPlacer.Tick ());
 				}

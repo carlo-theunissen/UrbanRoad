@@ -11,16 +11,18 @@ namespace Game
 		private GameObject displayedObject;
 		private int? rotation;
 
-
+		public bool isPrefabActive(){
+			return displayedObject != null && displayedObject.activeInHierarchy;
+		}
 
 		public GameObject getPrefab(){
-			if (displayedObject == null || !displayedObject.activeInHierarchy) {
+			if (!isPrefabActive()) {
 				displayedObject = Object.Instantiate (RoadPieceHelper.getRoadPrefab (type));
 			}
 			return displayedObject;
 		}
 		public void deletePrefab(){
-			if (displayedObject != null && displayedObject.activeInHierarchy) {
+			if (isPrefabActive()) {
 				Object.Destroy (displayedObject);
 			}
 		}
