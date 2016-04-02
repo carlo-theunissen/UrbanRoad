@@ -7,7 +7,7 @@ namespace Game
 {
 	public class BackButton : MonoBehaviour,IPointerClickHandler {
 		public void OnPointerClick(PointerEventData eventData){
-			SceneManager.LoadScene("Menu_start");
+			SceneManager.LoadScene("Menu_level_select");
 		}
 	}
 }
