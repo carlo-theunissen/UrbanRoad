@@ -5,6 +5,7 @@ namespace Game
 	public class BlockPlacer: MonoBehaviour {
 		public Grid grid;
 		private Level level;
+		private RoadPlacer roadPlacer;
 
 		public void Start(){
 			level = GameMode.getCurrentLevel ();
@@ -41,6 +42,9 @@ namespace Game
 			level.storeCompleteStatus ();
 		}
 		public void clearBlocks(bool keepStoredData = false){
+			if (roadPlacer != null) {
+				roadPlacer.clearRoad ();
+			}
 			foreach (Block block in level.getBlocks()) {
 				block.setPos (null).setRotation (0);
 				block.removeBlueprintPrefab ();
@@ -89,8 +93,9 @@ namespace Game
 			if (level.isValidPath ()) {
 				RoadPiece[] pieces = level.getRoad ();
 				if (pieces != null) {
-					RoadPlacer placer = new RoadPlacer (pieces);
-					StartCoroutine (placer.Tick ());
+					level.setLocked (true);
+					roadPlacer = new RoadPlacer (pieces);
+					StartCoroutine (roadPlacer.Tick ());
 				}
 			}
 		}

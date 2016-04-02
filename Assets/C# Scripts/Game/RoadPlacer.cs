@@ -15,6 +15,11 @@ namespace Game
 		public GameObject getPrefab(){
 			return data [current].getPrefab ();
 		}
+		public void clearRoad(){
+			foreach (RoadPiece piece in data) {
+				piece.deletePrefab ();
+			}
+		}
 		public IEnumerator Tick(){
 			while (current < data.Length) {
 				if (getPrefab ().transform.parent == null) {

@@ -14,12 +14,16 @@ namespace Game
 
 
 		public GameObject getPrefab(){
-			if (displayedObject == null) {
+			if (displayedObject == null || !displayedObject.activeInHierarchy) {
 				displayedObject = Object.Instantiate (RoadPieceHelper.getRoadPrefab (type));
 			}
 			return displayedObject;
 		}
-
+		public void deletePrefab(){
+			if (displayedObject != null && displayedObject.activeInHierarchy) {
+				Object.Destroy (displayedObject);
+			}
+		}
 		public int getRotation(){
 			if (rotation == null) {
 				rotation = RoadPieceHelper.getRotation (type);
