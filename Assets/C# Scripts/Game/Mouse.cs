@@ -51,7 +51,7 @@ namespace Game
 
 		// Update is called once per frame
 		void Update () {
-			if (!following) {
+			if (!following || GameMode.getCurrentLevel().isLocked()) {
 				return;
 			}
 

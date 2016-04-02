@@ -24,6 +24,9 @@ public class AudioProvider
         if (cachedSource == null)
         {
             GameObject go = GameObject.Find("SoundPlayer");
+			if (go == null) {
+				return;
+			}
             cachedSource = go.GetComponent<AudioSource>();
         }
         playAudio(name, cachedSource, false);
@@ -40,6 +43,9 @@ public class AudioProvider
 
 	public void playBackground(string name){
 		GameObject go = GameObject.Find("BackgroundMusic");;
+		if (go == null) {
+			return;
+		}
 		bg = go.GetComponent<AudioSource> ();
 
 		bg.clip = getAudio (name);

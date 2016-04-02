@@ -16,6 +16,15 @@ namespace Game
 		private List<Block> placedBlocks;
 
 		private SimpleLevel simpleLevel;
+		private bool locked = false;
+
+		public bool isLocked(){
+			return locked;
+		}
+
+		public void setLocked(bool locked){
+			this.locked = locked;
+		}
 
 		public Level(int levelId){
 			this.levelId = levelId;
