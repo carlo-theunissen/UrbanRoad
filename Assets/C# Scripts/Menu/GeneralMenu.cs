@@ -33,6 +33,7 @@ namespace Menu
 					switch (button.Id) {
 					case "level_select":
 						isEnabled = true;
+						AudioProvider.getInstance().playAudio("Standard Button");
 						SceneManager.LoadScene("Menu_level_select");
 						break;
 					case "audio_mute":
@@ -47,7 +48,9 @@ namespace Menu
 						break;
 					case "credits":
 						isEnabled = true;
+						AudioProvider.getInstance().playAudio("Standard Button");
 						SceneManager.LoadScene("Menu_credits");
+
 						break;
 					}
 

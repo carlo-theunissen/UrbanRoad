@@ -18,6 +18,7 @@ namespace Menu
 		}
 
 		public void OnPointerClick(PointerEventData eventData){
+			AudioProvider.getInstance().playAudio("Standard Button");
 			LevelSwitcher.loadLevel (id);
 		}
 

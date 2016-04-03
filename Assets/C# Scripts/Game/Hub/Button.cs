@@ -22,6 +22,7 @@ namespace Game
 				mouse.setDeg (0);
 				mouse.setPiece ((Block)temp);
 				mouse.setFollowing (true);
+				AudioProvider.getInstance().playAudio("Standard Button");
 			}
 		}
 		void Update(){

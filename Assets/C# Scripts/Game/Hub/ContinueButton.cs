@@ -9,6 +9,7 @@ namespace Game
 		public void OnPointerClick(PointerEventData eventData){
 			this.transform.parent.transform.parent.gameObject.SetActive (false);
 			GameMode.getCurrentLevel ().setLocked (false);
+			AudioProvider.getInstance().playAudio("Standard Button");
 		}
 	}
 }

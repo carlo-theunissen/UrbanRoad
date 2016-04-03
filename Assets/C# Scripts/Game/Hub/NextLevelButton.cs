@@ -19,6 +19,7 @@ namespace Game
 		public void OnPointerClick(PointerEventData eventData){
 			if (active) {
 				LevelSwitcher.loadLevel (level.getId () + 1);
+				AudioProvider.getInstance().playAudio("Standard Button");
 			}
 		}
 	}
