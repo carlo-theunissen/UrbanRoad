@@ -5,10 +5,11 @@ namespace Game
 	public class BlockPlacer: MonoBehaviour {
 		public Grid grid;
 		public GameObject succesPopup;
-
+		public GameObject failPopup;
 		private Level level;
 		private RoadPlacer roadPlacer;
 
+		private bool popupShown = false;
 		public void Start(){
 			level = GameMode.getCurrentLevel ();
 			loadFromDevice ();
@@ -44,13 +45,14 @@ namespace Game
 			level.storeCompleteStatus ();
 		}
 		public void clearBlocks(bool keepStoredData = false){
-			succesPopup.SetActive (false);
 			if (roadPlacer != null) {
 				if (roadPlacer.isActive ()) {
 					return;
 				}
 				roadPlacer.clearRoad ();
 			}
+			succesPopup.SetActive (false);
+			failPopup.SetActive (false);
 			foreach (Block block in level.getBlocks()) {
 				block.setPos (null).setRotation (0);
 				block.removeBlueprintPrefab ();
@@ -95,6 +97,12 @@ namespace Game
 			}
 			return calc;
 		}
+		private bool shouldShowFail(){
+			
+			bool temp = !popupShown;
+			popupShown = true;
+			return temp;
+		}
 		private void drawRoad(){
 			if (level.isValidPath ()) {
 				RoadPiece[] pieces = level.getRoad ();
@@ -104,6 +112,9 @@ namespace Game
 					roadPlacer = new RoadPlacer (pieces);
 					StartCoroutine (roadPlacer.Tick ());
 				}
+			} else if (level.containsAllBlocks () && shouldShowFail() ) {
+				failPopup.SetActive (true);
+				level.setLocked (true);
 			}
 		}
 

@@ -64,6 +64,7 @@ namespace Game
 		public void clear(){
 			hasChanged = true;
 			grid = new Block[getWidth(),getHeight()];
+			placedBlocks = new List<Block> ();
 		}
 
 		public Block[] getBlocks(){
