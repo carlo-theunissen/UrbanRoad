@@ -14,10 +14,14 @@ namespace Game
         public GameObject button;
 		private Dictionary<int,List<Block>> blocks;
 		private List<GameObject> buttons;
-
+		public GameObject reloadBut;
 		public float getMenuWidth(){
 			RectTransform trans = canvas.transform as RectTransform;
 			return trans.rect.width;
+		}
+		private float getReloadButHeight(){
+			RectTransform trans = reloadBut.transform as RectTransform;
+			return trans.rect.height;
 		}
 		void Start(){
 	
@@ -52,9 +56,9 @@ namespace Game
 		private Vector3 getPosition(int index){
 			Vector2 dimensions = getDimensions ();
 			if (index > 4) {
-				return new Vector2 (dimensions.x + 20, ((dimensions.y + 7) * -(index - 5) - dimensions.y));
+				return new Vector2 (dimensions.x + 20, ((dimensions.y + 7) * -(index - 5) - getReloadButHeight() * 1.5f));
 			}
-			return new Vector2 (10, (-(dimensions.y + 7)* index - dimensions.y));
+			return new Vector2 (10, (-(dimensions.y + 7)* index - getReloadButHeight() * 1.5f ));
 		}
 
 
