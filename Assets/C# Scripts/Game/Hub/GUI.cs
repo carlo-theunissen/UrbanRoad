@@ -22,9 +22,6 @@ namespace Game
 		private float getNumber(float percentage, float min){
 			return Mathf.Max( percentage / 100 * Mathf.Min(Screen.width , Screen.height), min);
 		}
-		private float calculateHeight(Texture2D defaultImage, float width){
-			return width / (defaultImage.width / defaultImage.height);
-		}
 		void Start(){
 	
 			getBlocks();
@@ -67,7 +64,7 @@ namespace Game
 
         private Vector2 getDimensions(){
             RectTransform t = canvas.transform as RectTransform;
-			return new Vector2(t.sizeDelta.x / 2.5f, (Screen.height - 30) / 6);
+			return new Vector2(t.sizeDelta.x / 2.5f, (Screen.height * .9f) / 6);
         }
 	    private void getBlocks()
 	    {
