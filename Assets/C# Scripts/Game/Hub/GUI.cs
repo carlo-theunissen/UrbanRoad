@@ -50,18 +50,17 @@ namespace Game
         }
 
 		private Vector3 getPosition(int index){
-			float top = Screen.height * .25f;
 			Vector2 dimensions = getDimensions ();
 			if (index > 4) {
-				return new Vector2 (dimensions.x + 20, ((dimensions.y + 7) * -(index - 5) - top));
+				return new Vector2 (dimensions.x + 20, ((dimensions.y + 7) * -(index - 5) - 60));
 			}
-			return new Vector2 (10, (-(dimensions.y + 7)* index - top));
+			return new Vector2 (10, (-(dimensions.y + 7)* index - 60));
 		}
 
 
         private Vector2 getDimensions(){
             RectTransform t = canvas.transform as RectTransform;
-			return new Vector2(t.sizeDelta.x / 2.5f, (float) ((t.rect.height * t.localScale).y * .9 / 6));
+			return new Vector2(t.sizeDelta.x / 2.5f, (float) ((t.rect.height * t.localScale).y / 6));
         }
 	    private void getBlocks()
 	    {
