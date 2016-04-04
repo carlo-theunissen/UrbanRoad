@@ -881,6 +881,7 @@ MonoBehaviour:
   mouse: {fileID: 1618068220}
   canvas: {fileID: 615322671}
   button: {fileID: 178902, guid: 2aff8e5c4b2bf499b9f07b089b4bcdbe, type: 2}
+  reloadBut: {fileID: 1571817740}
 --- !u!1 &995920324
 GameObject:
   m_ObjectHideFlags: 0
