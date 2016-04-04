@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Credits : MonoBehaviour {
 
-    float speed = 2;
+    public float speed = 2;
 
 	// Use this for initialization
 	void Start () {
