@@ -84,15 +84,15 @@ namespace Game
 			icon = getNumberButton();
 			counter = icon.GetComponent< UnityEngine.UI.Button >();
 			icon.transform.SetParent(this.transform);
-			icon.transform.localPosition = new Vector3(-15,15, 0 );
+			icon.transform.localPosition = new Vector3(0,0, 0 );
 			calculateTotal ();
 		}
         private GameObject getNumberButton(){
             GameObject icon = UnityEngine.Object.Instantiate(prefab);
             RectTransform t = icon.transform as RectTransform;
             Vector2 size = t.sizeDelta;
-			size.x = dimensions.x * .25f;
-			size.y = dimensions.y * .25f;
+			size.x = dimensions.x * .3f;
+			size.y = dimensions.y * .3f;
 			t.sizeDelta = size;
             return icon;
         }
