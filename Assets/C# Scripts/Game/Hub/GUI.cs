@@ -52,9 +52,9 @@ namespace Game
 		private Vector3 getPosition(int index){
 			Vector2 dimensions = getDimensions ();
 			if (index > 4) {
-				return new Vector2 (dimensions.x + 20, ((dimensions.y + 7) * -(index - 5) - 60));
+				return new Vector2 (dimensions.x + 20, ((dimensions.y + 7) * -(index - 5) - dimensions.y));
 			}
-			return new Vector2 (10, (-(dimensions.y + 7)* index - 60));
+			return new Vector2 (10, (-(dimensions.y + 7)* index - dimensions.y));
 		}
 
 
