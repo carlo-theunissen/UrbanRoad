@@ -22,7 +22,7 @@ namespace Menu
 			case "audio_mute":
 			case "audio_unmute":
 				x = 10;
-				width = Mathf.Max(getNumber (10), 50);
+				width = Mathf.Max(getNumber (15), 50);
 				height = width / (defaultImage.width / defaultImage.height);
 				y = Screen.height - height - 10;
 				break;
