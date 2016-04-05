@@ -81,18 +81,18 @@ namespace Game
 			image.color = c;
 		}
 		private void createCounter(){
-			icon = getNumberButton();
+			icon = getNumberButton(this.transform);
 			counter = icon.GetComponent< UnityEngine.UI.Button >();
-			icon.transform.SetParent(this.transform);
-			icon.transform.localPosition = new Vector3(0,0, 0 );
+			icon.transform.localPosition = new Vector3(0,0, 0);
 			calculateTotal ();
 		}
-        private GameObject getNumberButton(){
+		private GameObject getNumberButton(Transform parent){
             GameObject icon = UnityEngine.Object.Instantiate(prefab);
-            RectTransform t = icon.transform as RectTransform;
-            Vector2 size = t.sizeDelta;
-			size.x = dimensions.x / 1.5f;
-			size.y = dimensions.y / 1.5f;
+			icon.transform.SetParent(this.transform);
+	        RectTransform t = icon.transform as RectTransform;
+			Vector2 size = Vector2.zero;
+			size.x = dimensions.x / 3f;
+			size.y = dimensions.y / 3f;
 			t.sizeDelta = size;
             return icon;
         }
