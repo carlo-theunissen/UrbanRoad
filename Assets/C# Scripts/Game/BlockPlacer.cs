@@ -4,7 +4,7 @@ namespace Game
 {
 	public class BlockPlacer: MonoBehaviour {
 		public Grid grid;
-		public GameObject succesPopup;
+		public Popup succesPopup;
 		public GameObject failPopup;
 		private Level level;
 		private RoadPlacer roadPlacer;
@@ -51,7 +51,7 @@ namespace Game
 				}
 				roadPlacer.clearRoad ();
 			}
-			succesPopup.SetActive (false);
+			succesPopup.Display ();
 			failPopup.SetActive (false);
 			foreach (Block block in level.getBlocks()) {
 				block.setPos (null).setRotation (0);
@@ -108,7 +108,7 @@ namespace Game
 				RoadPiece[] pieces = level.getRoad ();
 				if (pieces != null) {
 					level.setLocked (true);
-					succesPopup.SetActive (true);
+					succesPopup.Display ();
 					roadPlacer = new RoadPlacer (pieces);
 					StartCoroutine (roadPlacer.Tick ());
 				}
