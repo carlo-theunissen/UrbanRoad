@@ -91,8 +91,8 @@ namespace Game
             GameObject icon = UnityEngine.Object.Instantiate(prefab);
             RectTransform t = icon.transform as RectTransform;
             Vector2 size = t.sizeDelta;
-			size.x = dimensions.x / 3;
-			size.y = dimensions.y / 3;
+			size.x = dimensions.x;
+			size.y = dimensions.y;
 			t.sizeDelta = size;
             return icon;
         }
