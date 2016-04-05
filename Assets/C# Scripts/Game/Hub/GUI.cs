@@ -47,7 +47,7 @@ namespace Game
 			Button buttonController =  (Button) workingButton.AddComponent<Button> ();
 
 			buttonController.blocks = blocks;
-			buttonController.dimensions = t.sizeDelta;
+			buttonController.dimensions = getDimensions();
 			buttonController.prefab = button;
 
 			buttons.Add (workingButton);
