@@ -6,18 +6,31 @@ namespace Game
 {
 	public class Popup : MonoBehaviour
 	{
-		private bool up = true;
+
 		public float frames = 1000;
 		public float change = 1000;
-		private float tick = 0;
-
+		public float delaySec = .1f;
+		private bool isShown = false;
+		private bool animating = false;
 		public void Display(){
-			tick = 0;
-			up = true;
-			//gameObject.SetActive (true);
-			//StartCoroutine (this.Tick ());
+			if (isShown) {
+				return;
+			}
+		
+			gameObject.SetActive (true);
+			StartCoroutine (this.Show ());
 		}
-		private float easing (float t, float b, float c, float d){
+		public bool isAnimating(){
+			return animating;
+		}
+		public void OutAnimation(){
+			if (!isShown) {
+				return;
+			}
+			gameObject.SetActive (true);
+			StartCoroutine (this.Clear ());
+		}
+		private float bounce (float t, float b, float c, float d){
 			if ((t/=d) < (1/2.75f)) {  
 				return c*(7.5625f*t*t) + b;  
 			} else if (t < (2f/2.75f)) {  
@@ -28,20 +41,54 @@ namespace Game
 				return c*(7.5625f*(t-=(2.625f/2.75f))*t + .984375f) + b;  
 			}  
 		}
-		private IEnumerator Tick(){
-			tick++;
-			float calc = easing(0,1,frames,tick) * change;
-			Transform child = this.gameObject.transform.GetChild(0);
+		private float ease(float t, float b, float c, float d){
+			t /= d/2;
+			if (t < 1) return c/2*t*t*t*t*t + b;
+			t -= 2;
+			return c/2*(t*t*t*t*t + 2) + b;
+		}
+		private IEnumerator Show(){
+			
+			int tick = 0;
+			animating = true;
+			while(tick < frames){
+				if (tick == 1) {
+					yield return new WaitForSeconds (delaySec);
+				}
+				tick++;
+				float calc = bounce(tick,0,1,frames) * change;
+ 
+				Transform child = this.gameObject.transform.GetChild(0);
 
-			RectTransform trans = child as RectTransform;
-			Vector3 pos = trans.localPosition;
-			pos.y = (up ? change : 0) - calc;
+				RectTransform trans = child as RectTransform;
+				Vector3 pos = trans.localPosition;
+				pos.y = (change - calc) * 1;
 
-			trans.localPosition = pos;
-			if (tick < frames) {
+				trans.localPosition = pos;
 				yield return null;
 			}
+			animating = false;
+			isShown = true;
 
+		}
+		private IEnumerator Clear(){
+			int tick = 0;
+			animating = true;
+			while (tick < frames) {
+				tick++;
+				float calc = ease(tick,0,1,frames) * change;
+
+				Transform child = this.gameObject.transform.GetChild(0);
+
+				RectTransform trans = child as RectTransform;
+				Vector3 pos = trans.localPosition;
+				pos.y = (calc)  * -1;
+
+				trans.localPosition = pos;
+				yield return null;
+			}
+			animating = false;
+			isShown = false;
 		}
 	}
 }
