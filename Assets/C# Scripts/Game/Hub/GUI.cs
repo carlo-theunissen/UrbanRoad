@@ -15,6 +15,7 @@ namespace Game
 		private Dictionary<int,List<Block>> blocks;
 		private List<GameObject> buttons;
 		public GameObject reloadBut;
+		public GameObject iconButton;
 		public float getMenuWidth(){
 			RectTransform trans = canvas.transform as RectTransform;
 			return trans.rect.width;
@@ -48,7 +49,7 @@ namespace Game
 
 			buttonController.blocks = blocks;
 			buttonController.dimensions = getDimensions();
-			buttonController.prefab = button;
+			buttonController.prefab = iconButton;
 
 			buttons.Add (workingButton);
         }

@@ -83,15 +83,20 @@ namespace Game
 		private void createCounter(){
 			icon = getNumberButton(this.transform);
 			counter = icon.GetComponent< UnityEngine.UI.Button >();
-			icon.transform.localPosition = new Vector3(0,0, 0);
 			calculateTotal ();
 		}
 		private GameObject getNumberButton(Transform parent){
             GameObject icon = UnityEngine.Object.Instantiate(prefab);
+			icon.transform.localPosition = new Vector3(0,0, 0);
+
 			icon.transform.SetParent(this.transform);
-	        RectTransform t = icon.transform as RectTransform;
-			t.SetSizeWithCurrentAnchors (RectTransform.Axis.Vertical, 50);
-            return icon;
+
+			Vector2 temp = dimensions;
+			temp.y = -temp.y;
+			icon.transform.localPosition = temp;
+
+
+	        return icon;
         }
         
 		private Sprite getNumberIcon(int total){
