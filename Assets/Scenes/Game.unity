@@ -527,13 +527,14 @@ GameObject:
   - 223: {fileID: 319287551}
   - 114: {fileID: 319287550}
   - 114: {fileID: 319287549}
+  - 114: {fileID: 319287553}
   m_Layer: 5
   m_Name: HelpPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &319287549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,6 +608,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &319287553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 319287548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1656560f69fb146fc932a92ccd5c93c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frames: 100
+  change: 700
+  delaySec: 0
 --- !u!1 &336452847
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,6 +711,7 @@ GameObject:
   - 222: {fileID: 419217367}
   - 114: {fileID: 419217366}
   - 114: {fileID: 419217365}
+  - 114: {fileID: 419217368}
   m_Layer: 5
   m_Name: HelpButton
   m_TagString: Untagged
@@ -794,6 +810,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 419217363}
+--- !u!114 &419217368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 419217363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2ae20f249d944b9bac5592343f06a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoButton: {fileID: 319287553}
 --- !u!1 &604779165
 GameObject:
   m_ObjectHideFlags: 0
