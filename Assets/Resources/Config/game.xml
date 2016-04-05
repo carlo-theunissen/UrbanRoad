@@ -167,19 +167,19 @@
 
 <cameras>
 	<camera width="4" height="4">
-		<position x="2.7" y="3" z="1" size="2.5" />
+		<position x="2.6" y="3" z="0.5" size="2.4" />
 	</camera>
 
 	<camera width="5" height="5">
-		<position x="3.5" y="3" z="1.5" size="3" />
+		<position x="3.3" y="3" z="1" size="2.8" />
 	</camera>
 
 	<camera width="6" height="6">
-		<position x="4.3" y="3" z="2 " size="3.7" />
+		<position x="4" y="3" z="1.4 " size="3.4" />
 	</camera>
 
 	<camera width="7" height="7">
-		<position x="5" y="3" z="2.5 " size="4" />
+		<position x="4.8" y="3" z="1.9 " size="4" />
 	</camera>
 </cameras>
 
