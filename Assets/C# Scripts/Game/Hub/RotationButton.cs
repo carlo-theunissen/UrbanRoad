@@ -8,6 +8,7 @@ namespace Game
 	public class RotationButton : MonoBehaviour,IPointerClickHandler {
 		public Mouse mouse;
 		private bool rotating = false;
+		public bool listingToKeyboard = false;
 		public void OnPointerClick(PointerEventData eventData){
 			rotate ();
 		}
@@ -19,7 +20,7 @@ namespace Game
             AudioProvider.getInstance().playAudio("Standard Button");
         }
 		void Update(){
-			if (Input.GetKey (KeyCode.R)) {
+			if (listingToKeyboard && Input.GetKey (KeyCode.R)) {
 				if (!rotating) {
                     rotate ();
 				}

@@ -1002,6 +1002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouse: {fileID: 1618068220}
+  listingToKeyboard: 1
 --- !u!114 &685319788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1398,6 +1399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouse: {fileID: 1618068220}
+  listingToKeyboard: 0
 --- !u!1 &1181794599
 GameObject:
   m_ObjectHideFlags: 0
