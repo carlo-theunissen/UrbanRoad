@@ -90,10 +90,7 @@ namespace Game
             GameObject icon = UnityEngine.Object.Instantiate(prefab);
 			icon.transform.SetParent(this.transform);
 	        RectTransform t = icon.transform as RectTransform;
-			Vector2 size = Vector2.zero;
-			size.x = dimensions.x / 3f;
-			size.y = dimensions.y / 3f;
-			t.sizeDelta = size;
+			t.SetInsetAndSizeFromParentEdge (RectTransform.Edge.Left, 0, 50);
             return icon;
         }
         
