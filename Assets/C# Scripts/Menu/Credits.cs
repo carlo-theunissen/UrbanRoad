@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class Credits : MonoBehaviour {
 
     public float speed = 2;
-
+	public float max = 900;
 	// Use this for initialization
 	void Start () {
 	
@@ -15,7 +15,7 @@ public class Credits : MonoBehaviour {
 	void Update () {
         transform.Translate(Vector3.up * speed, Space.World);
 
-        if (transform.position.y > 900)
+        if (transform.position.y > max)
         {
             SceneManager.LoadScene("Menu_start");
 
