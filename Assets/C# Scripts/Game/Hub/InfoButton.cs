@@ -3,13 +3,19 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
+
 namespace Game
 {
-	public class ContinueButton : MonoBehaviour,IPointerClickHandler {
+	public class InfoButton : MonoBehaviour,IPointerClickHandler {
+		public Popup infoButton;
 		public void OnPointerClick(PointerEventData eventData){
-			this.transform.parent.transform.parent.GetComponent<Popup>().OutAnimation();
-			GameMode.getCurrentLevel ().setLocked (false);
 			AudioProvider.getInstance().playAudio("Standard Button");
+			if (infoButton.isShown ()) {
+				infoButton.OutAnimation ();
+			} else {
+				infoButton.Display ();
+			}
 		}
 	}
 }
+

@@ -10,10 +10,10 @@ namespace Game
 		public float frames = 1000;
 		public float change = 1000;
 		public float delaySec = .1f;
-		private bool isShown = false;
+		private bool show = false;
 		private bool animating = false;
 		public void Display(){
-			if (isShown) {
+			if (show) {
 				return;
 			}
 		
@@ -23,8 +23,11 @@ namespace Game
 		public bool isAnimating(){
 			return animating;
 		}
+		public bool isShown(){
+			return show;
+		}
 		public void OutAnimation(){
-			if (!isShown) {
+			if (!show) {
 				return;
 			}
 			gameObject.SetActive (true);
@@ -68,7 +71,7 @@ namespace Game
 				yield return null;
 			}
 			animating = false;
-			isShown = true;
+			show = true;
 
 		}
 		private IEnumerator Clear(){
@@ -88,7 +91,7 @@ namespace Game
 				yield return null;
 			}
 			animating = false;
-			isShown = false;
+			show = false;
 		}
 	}
 }

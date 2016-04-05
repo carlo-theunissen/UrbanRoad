@@ -82,7 +82,7 @@ namespace Game
 			int width = GameMode.getCurrentLevel ().getWidth ();
 			int height = GameMode.getCurrentLevel ().getHeight ();
 
-			float x = Mathf.Round( pos.x / ((Screen.width - menuWide) / width)) -1;
+			float x = Mathf.Round( pos.x / ((Screen.width * .7f) / width)) -1;
 			float y = Mathf.Round( pos.y / (Screen.height / height) ) -1;
 
 			x = Mathf.Min (x, width-1);
