@@ -15,16 +15,13 @@ public class Timer : MonoBehaviour {
 		while (true) {
 			Debug.Log ("test!");
 			yield return new WaitForSeconds (sec);
-			if (!controller.AutoStart) {
-				controller.AutoStart = true;
-				controller.Animate ();
-			} else {
 				GetComponent<SplineInterpolator> ().Restart ();
-			}
+
 
 			//break;
 		}
 	}
+
 	
 	// Update is called once per frame
 	void Update () {

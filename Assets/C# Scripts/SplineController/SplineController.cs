@@ -44,9 +44,8 @@ public class SplineController : MonoBehaviour
 	}
 
 
-	public void Animate()
+	void Start()
 	{
-		
 		mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
 
 		mTransforms = GetTransforms();
@@ -103,9 +102,9 @@ public class SplineController : MonoBehaviour
 
 			transforms.Remove(SplineRoot.transform);
 			transforms.Sort(delegate(Transform a, Transform b)
-			{
-				return a.name.CompareTo(b.name);
-			});
+				{
+					return a.name.CompareTo(b.name);
+				});
 
 			return transforms.ToArray();
 		}

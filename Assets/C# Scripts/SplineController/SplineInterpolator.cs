@@ -133,12 +133,6 @@ public class SplineInterpolator : MonoBehaviour
 	float mCurrentTime;
 	int mCurrentIdx = 1;
 
-	public void Restart(){
-		mCurrentIdx = 1;
-		mCurrentTime = 0;
-		mState = "Once"; 
-	}
-
 	void Update()
 	{
 		if (mState == "Reset" || mState == "Stopped" || mNodes.Count < 4)
@@ -232,6 +226,11 @@ public class SplineInterpolator : MonoBehaviour
 		return Blend1 * P1 + Blend2 * P2 + Blend3 * T1 + Blend4 * T2;
 	}
 
+	public void Restart(){
+		mCurrentIdx = 1;
+		mCurrentTime = 0;
+		mState = "Once"; 
+	}
 
 	public Vector3 GetHermiteAtTime(float timeParam)
 	{
