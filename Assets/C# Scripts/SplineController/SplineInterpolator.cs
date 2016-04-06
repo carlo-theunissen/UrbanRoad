@@ -133,6 +133,12 @@ public class SplineInterpolator : MonoBehaviour
 	float mCurrentTime;
 	int mCurrentIdx = 1;
 
+	public void Restart(){
+		mCurrentIdx = 1;
+		mCurrentTime = 0;
+		mState = "Once"; 
+	}
+
 	void Update()
 	{
 		if (mState == "Reset" || mState == "Stopped" || mNodes.Count < 4)

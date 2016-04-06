@@ -473,8 +473,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SplineRoot: {fileID: 1881435823}
   Duration: 10
-  OrientationMode: 0
-  WrapMode: 1
+  OrientationMode: 1
+  WrapMode: 0
   AutoStart: 0
   AutoClose: 0
   HideOnExecute: 1
@@ -500,6 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f9b9f32e3ec1475593eef2686a07e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sec: 15
 --- !u!1 &1031025827
 GameObject:
   m_ObjectHideFlags: 0

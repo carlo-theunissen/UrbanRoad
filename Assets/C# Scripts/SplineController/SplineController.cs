@@ -46,6 +46,7 @@ public class SplineController : MonoBehaviour
 
 	public void Animate()
 	{
+		
 		mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
 
 		mTransforms = GetTransforms();
