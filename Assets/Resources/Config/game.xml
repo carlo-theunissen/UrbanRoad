@@ -181,6 +181,10 @@
 	<camera width="7" height="7">
 		<position x="4.8" y="3" z="1.9 " size="4" />
 	</camera>
+
+	<camera width="10" height="10">
+		<position x="7.2" y="3" z="3.4 " size="6" />
+	</camera>
 </cameras>
 
 </document>
