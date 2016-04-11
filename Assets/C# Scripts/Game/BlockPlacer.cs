@@ -38,11 +38,14 @@ namespace Game
 				drawRoad ();
 
 			} else {
-				level.removeBlock (block);
-				block.removeBlueprintPrefab ();
+				removeFromGame (block);
 				AudioPlayer("error");
 			}
 			level.storeCompleteStatus ();
+		}
+		public void removeFromGame(Block block){
+			level.removeBlock (block);
+			block.removeBlueprintPrefab ();
 		}
 		public void clearBlocks(bool keepStoredData = false){
 			if (succesPopup.isAnimating () || failPopup.isAnimating ()) {

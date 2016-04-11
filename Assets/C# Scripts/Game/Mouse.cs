@@ -11,6 +11,7 @@ namespace Game
 		private int deg = 0;
 		private Vector2? lastGridPos;
 		private Vector2? lastRawPos;
+		private bool? lastAbove;
 		private float menuWide;
 
 		void Start(){
@@ -61,6 +62,7 @@ namespace Game
 			}
 			lastRawPos = mousePos;
 			if (mousePos != null && piece != null) {
+				lastAbove = isAboveMenu((Vector2) mousePos);
 				lastGridPos = gridPos ((Vector2) mousePos);
 				placer.hover(piece, (Vector2) lastGridPos, deg);
 
@@ -72,12 +74,19 @@ namespace Game
 
 		private void placeObject(){
 			if (lastGridPos != null && piece != null) {
-				placer.placeObject (piece, (Vector2) lastGridPos, deg);
+				if (lastAbove != null && (bool) lastAbove) {
+					placer.removeFromGame (piece);
+
+				} else {
+					placer.placeObject (piece, (Vector2)lastGridPos, deg);
+				}
 			}
 		}
 			
 			
-
+		private bool isAboveMenu(Vector2 pos){
+			return pos.x > (Screen.width * .7f);
+		}
 		private Vector2 gridPos(Vector2 pos){
 			int width = GameMode.getCurrentLevel ().getWidth ();
 			int height = GameMode.getCurrentLevel ().getHeight ();
