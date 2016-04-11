@@ -88,7 +88,7 @@ namespace Game
 			PlayerPrefs.SetString("level."+getId()+".data", data);
 		}
 		public string getSavedData(){
-			return PlayerPrefs.GetString("level."+getId()+".data", "KOEKJES");
+			return PlayerPrefs.GetString("level."+getId()+".data");
 		}
 
 		public bool containsAllBlocks(){

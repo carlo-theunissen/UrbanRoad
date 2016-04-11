@@ -27,16 +27,19 @@ namespace Game
 		public void placeDummy(float x, float z, GameObject place, float deg = 0 ){
 
 
-			place.transform.position = new Vector3 (x, 0, z);
+			place.transform.position = new Vector3 (x, .3f, z);
+			setRotation (deg, place);
+		}
+		private void setRotation(float deg, GameObject place){
 			if (place.transform.rotation.y != deg) {
 				place.transform.rotation = Quaternion.Euler (place.transform.rotation.x, deg, place.transform.rotation.z);
-			
+
 			}
-
 		}
-
 		public void placeObject(float x, float z, GameObject place, float deg = 0 ){
-			placeDummy (x, z, place, deg);
+			place.transform.position = new Vector3 (x, 0, z);
+			setRotation (deg, place);
+
 		}
 
 

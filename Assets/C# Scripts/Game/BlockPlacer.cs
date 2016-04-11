@@ -27,13 +27,13 @@ namespace Game
 		public void placeObject(Block block, Vector2 pos, float deg, bool wasDummy = true){
 			if (canPlacePiece (pos, block, deg)) {
 				level.setBlock ((int) pos.x, (int) pos.y, block, deg);
-				if (!wasDummy) {
-					pos = transformToGrid (pos, block.getWidthHeight (deg));
-					grid.placeObject (pos.x, pos.y, block.getBlueprintPrefab (), deg);
-				} else {
+				if (wasDummy) {
 					AudioPlayer("Building");
 					saveToDevice ();
 				}
+					pos = transformToGrid (pos, block.getWidthHeight (deg));
+					grid.placeObject (pos.x, pos.y, block.getBlueprintPrefab (), deg);
+
 
 				drawRoad ();
 
